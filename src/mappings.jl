@@ -104,6 +104,7 @@ UA_DOBTPP =     Area("UA_DOBTPP", "10Y1001A1001A869", "Ukraine-DobTPP CTA",     
 UA_BEI =        Area("UA_BEI", "10YUA-WEPS-----0", "Ukraine BEI CTA",                              "Europe/Kiev")
 UA_IPS =        Area("UA_TPS", "10Y1001C--000182", "Ukraine IPS CTA",                              "Europe/Kiev")
 XK =            Area("XK", "10Y1001C--00100H", "Kosovo/ XK CA / XK BZN",                       "Europe/Rome")
+CZ_SK	=       Area("CZ-SK", "10YDOM-1001A083J", "Border Area Czech Republic Slovakia",        "Europe/Prague")
 
 Areas = Set([
     DE_50HZ,
@@ -200,7 +201,8 @@ Areas = Set([
     UA_DOBTPP,
     UA_BEI,
     UA_IPS,
-    XK            
+    XK,
+    CZ_SK            
 ])
 
 
@@ -396,6 +398,7 @@ function lookup_area(s ::Union{Area, AbstractString})
             if isa(e, BoundsError)
                 # It is not, it may be a direct code
                 area = [area for area in Areas if area.value == s][1]
+                print(area)
             end
         end
     end

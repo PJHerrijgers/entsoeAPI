@@ -1,0 +1,575 @@
+HTTP/1.1 200 OK
+Date: Mon, 25 Jul 2022 14:55:04 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Powered-By: Undertow/1
+Transfer-Encoding: chunked
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:0">
+	<mRID>ee21994c1686478281d7955b47f5990d</mRID>
+	<revisionNumber>1</revisionNumber>
+	<type>A26</type>
+	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+	<receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+	<createdDateTime>2022-07-25T14:55:04Z</createdDateTime>
+	<period.timeInterval>
+		<start>2016-01-01T23:00Z</start>
+		<end>2016-01-02T23:00Z</end>
+	</period.timeInterval>
+	<TimeSeries>
+		<mRID>1</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-01T23:00Z</start>
+					<end>2016-01-02T00:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>5</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>2</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T00:00Z</start>
+					<end>2016-01-02T01:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>5</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>3</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T01:00Z</start>
+					<end>2016-01-02T02:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>5</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>4</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T02:00Z</start>
+					<end>2016-01-02T03:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>5</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>5</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T04:00Z</start>
+					<end>2016-01-02T05:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>0</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>6</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T06:00Z</start>
+					<end>2016-01-02T07:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>1</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>7</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T05:00Z</start>
+					<end>2016-01-02T06:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>0</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>8</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T07:00Z</start>
+					<end>2016-01-02T08:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>1</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>9</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T08:00Z</start>
+					<end>2016-01-02T09:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>1</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>10</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T09:00Z</start>
+					<end>2016-01-02T10:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>0</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>11</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T10:00Z</start>
+					<end>2016-01-02T11:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>1</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>12</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T03:00Z</start>
+					<end>2016-01-02T04:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>0</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>13</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T11:00Z</start>
+					<end>2016-01-02T12:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>6</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>14</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T12:00Z</start>
+					<end>2016-01-02T13:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>16</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>15</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T14:00Z</start>
+					<end>2016-01-02T15:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>39</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>16</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T17:00Z</start>
+					<end>2016-01-02T18:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>33</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>17</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T18:00Z</start>
+					<end>2016-01-02T19:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>40</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>18</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T19:00Z</start>
+					<end>2016-01-02T20:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>76</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>19</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T21:00Z</start>
+					<end>2016-01-02T22:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>71</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>20</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T20:00Z</start>
+					<end>2016-01-02T21:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>76</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>21</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T22:00Z</start>
+					<end>2016-01-02T23:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>70</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>22</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T15:00Z</start>
+					<end>2016-01-02T16:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>33</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>23</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T13:00Z</start>
+					<end>2016-01-02T14:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>35</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>24</mRID>
+		<auction.mRID>CP_ADWS_Base_SK-CZ(CTA)</auction.mRID>
+		<auction.type>A02</auction.type>
+		<auction.category>A01</auction.category>
+		<businessType>A29</businessType>
+		<in_Domain.mRID codingScheme="A01">10YSK-SEPS-----K</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<contract_MarketAgreement.type>A07</contract_MarketAgreement.type>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+			<Period>
+				<timeInterval>
+					<start>2016-01-02T16:00Z</start>
+					<end>2016-01-02T17:00Z</end>
+				</timeInterval>
+				<resolution>PT60M</resolution>
+					<Point>
+						<position>1</position>
+						<quantity>179</quantity>
+					</Point>
+			</Period>
+	</TimeSeries>
+</Publication_MarketDocument>
