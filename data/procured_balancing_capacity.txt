@@ -1,0 +1,31 @@
+HTTP/1.1 200 OK
+Date: Tue, 26 Jul 2022 12:18:39 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Powered-By: Undertow/1
+Content-Length: 982
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Acknowledgement_MarketDocument
+	xmlns="urn:iec62325.351:tc57wg16:451-1:acknowledgementdocument:7:0">
+	<mRID>8ac2b29f-4038-4</mRID>
+	<createdDateTime>2022-07-26T12:18:50Z</createdDateTime>
+
+	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+
+	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+	<receiver_MarketParticipant.marketRole.type>A39</receiver_MarketParticipant.marketRole.type>
+
+	
+	<received_MarketDocument.createdDateTime>2022-07-26T12:18:50Z</received_MarketDocument.createdDateTime>
+
+
+	<Reason>
+		<code>999</code>
+		<text>No matching data found for Data item Procured balancing capacity [GL EB 12.3.F] (10YCZ-CEPS-----N) and interval 2019-12-31T23:00:00.000Z/2020-01-01T00:00:00.000Z.</text>
+	</Reason>
+
+
+</Acknowledgement_MarketDocument>

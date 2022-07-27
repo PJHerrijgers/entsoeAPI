@@ -104,7 +104,9 @@ UA_DOBTPP =     Area("UA_DOBTPP", "10Y1001A1001A869", "Ukraine-DobTPP CTA",     
 UA_BEI =        Area("UA_BEI", "10YUA-WEPS-----0", "Ukraine BEI CTA",                              "Europe/Kiev")
 UA_IPS =        Area("UA_TPS", "10Y1001C--000182", "Ukraine IPS CTA",                              "Europe/Kiev")
 XK =            Area("XK", "10Y1001C--00100H", "Kosovo/ XK CA / XK BZN",                       "Europe/Rome")
-CZ_SK	=       Area("CZ-SK", "10YDOM-1001A083J", "Border Area Czech Republic Slovakia",        "Europe/Prague")
+CZ_SK =         Area("CZ_SK", "10YDOM-1001A083J", "Border Area Czech Republic Slovakia",        "Europe/Prague")
+EU_SYN =        Area("EU_SYN", "10YEU-CONT-SYNC0", "Synchronous Zone of Continental Europe",    "Europe/Brussels")
+DE_DK1_LU =     Area("DE_DK1_LU", "10YCB-GERMANY--8", "CB Germany_Denmark_Luxemburg",           "Europe/Copenhagen")
 
 Areas = Set([
     DE_50HZ,
@@ -202,7 +204,9 @@ Areas = Set([
     UA_BEI,
     UA_IPS,
     XK,
-    CZ_SK            
+    CZ_SK,
+    EU_SYN,
+    DE_DK1_LU      
 ])
 
 
@@ -242,7 +246,8 @@ DOCSTATUS = Dict("A01"=> "Intermediate",
                  "A09"=> "Cancelled",
                  "X01"=> "Estimated")
 
-BSNTYPE = Dict("A29"=> "Already allocated capacity (AAC)",
+BSNTYPE = Dict("A25"=> "General capacity information",
+               "A29"=> "Already allocated capacity (AAC)",
                "A43"=> "Requested capacity (without price)",
                "A46"=> "System Operator redispatching",
                "A53"=> "Planned maintenance",
@@ -261,7 +266,12 @@ BSNTYPE = Dict("A29"=> "Already allocated capacity (AAC)",
                "B08"=> "Total nominated capacity",
                "B09"=> "Net position",
                "B10"=> "Congestion income",
-               "B11"=> "Production unit")
+               "B11"=> "Production unit",
+               "B33"=> "Area control error",
+               "B95"=> "Procured capacity",
+               "C22"=> "Shared balancing reserve capacity",
+               "C23"=> "Share of reserve capacity",
+               "C24"=> "Actual reserve capacity")
 
 MARKETAGREEMENTTYPE = Dict("A01"=> "Daily",
                        "A02"=> "Weekly",
@@ -394,11 +404,12 @@ function lookup_area(s ::Union{Area, AbstractString})
         try
             # If it is a "country code" string, we do a lookup
             area = [area for area in Areas if area.name == s][1]
-        catch e
-            if isa(e, BoundsError)
+        catch 
+            try
                 # It is not, it may be a direct code
                 area = [area for area in Areas if area.value == s][1]
-                print(area)
+            catch e
+                throw(DomainError(s, "Invalid region: check for typo or add the region yourself in mappings.jl"))
             end
         end
     end

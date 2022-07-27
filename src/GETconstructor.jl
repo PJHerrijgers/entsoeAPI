@@ -240,7 +240,7 @@ function query_total_commercial_schedules(contract_MarketAgreementType, in_Domai
 end
 
 function query_phyiscal_flows(in_Domain, out_Domain, periodStart, periodEnd)
-    param = Dict{String, String}("documentType" => "A26")
+    param = Dict{String, String}("documentType" => "A11")
     
     response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
     return response
@@ -250,7 +250,7 @@ function query_capacity_allocated_outside_EU(auctionType, contract_MarketAgreeme
     param = Dict{String, String}("documentType" => "A94", "auction.Type" => auctionType, "contract_MarketAgreement.Type" => contract_MarketAgreementType)
     
     if auctionCategory != ""
-        param["acution.Category"] = auctionCategory
+        param["auction.Category"] = auctionCategory
     end
     if classificationSequence_AttributeInstanceComponentPosition != ""
         param["classificationSequence_AttributeInstanceComponent.Position"] = classificationSequence_AttributeInstanceComponentPosition
@@ -359,7 +359,7 @@ function query_day_ahead_aggregated_generation(in_Domain, periodStart, periodEnd
     return response
 end
 
-function query_day_ahead_generation_forcasts_wind_solar(in_Domain, periodStart, periodEnd, psrType = "")
+function query_day_ahead_generation_forecasts_wind_solar(in_Domain, periodStart, periodEnd, psrType = "")
     param = Dict{String, String}("documentType" => "A69", "processType" => "A01")
 
     if psrType != ""
@@ -381,7 +381,7 @@ function query_current_generation_forecasts_wind_solar(in_Domain, periodStart, p
     return response
 end
 
-function query_intraday_generation_forecasts_wind_solar(n_Domain, periodStart, periodEnd, psrType = "")
+function query_intraday_generation_forecasts_wind_solar(in_Domain, periodStart, periodEnd, psrType = "")
     param = Dict{String, String}("documentType" => "A69", "processType" => "A40")
 
     if psrType != ""
@@ -462,6 +462,17 @@ function base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param
     return response
 end
 
+function base_query_balancing3(acquiring_Domain, connecting_Domain, periodStart, periodEnd, param = Dict())
+    acquiring_Domain = mappings.lookup_area(acquiring_Domain)
+    connecting_Domain = mappings.lookup_area(connecting_Domain)
+
+    base_param = Dict{String, String}("acquiring_Domain" => acquiring_Domain.value, "connecting_Domain" => connecting_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
+    param = merge(param, base_param)
+    
+    response = base_query(param, key)
+    return response
+end
+
 function query_current_balancing_state(area_Domain, periodStart, periodEnd)
     param = Dict{String, String}("documentType" => "A86", "businessType" => "B33")
 
@@ -469,15 +480,30 @@ function query_current_balancing_state(area_Domain, periodStart, periodEnd)
     return response
 end
 
-function query_aggregated_balancing_energy_bids(area_Domain, periodStart, periodEnd)
-    param = Dict{String, String}("documentType" => "A24", "porcessType" => "A51")
+function query_balancing_energy_bids(area_Domain, periodStart, periodEnd, processType)
+    if !(processType in argumentLimitations.bidsProcessType)
+        throw(DomainError(processType, "Incorrect value for processType, choose between A51 (aFFR), A47 (mFRR), A46 (RR)"))
+    end
+
+    param = Dict{String, String}("documentType" => "A37", "processType" => processType)
+
+    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response
+end
+
+function query_aggregated_balancing_energy_bids(area_Domain, periodStart, periodEnd, processType)
+    if !(processType in argumentLimitations.bidsProcessType)
+        throw(DomainError(processType, "Incorrect value for processType, choose between A51 (aFFR), A47 (mFRR), A46 (RR)"))
+    end
+
+    param = Dict{String, String}("documentType" => "A24", "processType" => processType)
 
     response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
     return response
 end
 
 function query_procured_balancing_capacity(area_Domain, periodStart, periodEnd, type_MarketAgreementType = "")
-    param = Dict{String, String}("documentType" => "A15", "porcessType" => "A51")
+    param = Dict{String, String}("documentType" => "A15", "processType" => "A51")
 
     if type_MarketAgreementType != ""
         param["type_MarketAgreement.Type"] = type_MarketAgreementType
@@ -490,21 +516,46 @@ end
 function query_crossZonal_balancing_capacity(acquiring_Domain, connecting_Domain, periodStart, periodEnd)
     acquiring_Domain = mappings.lookup_area(acquiring_Domain)
 
-    param = Dict{String, String}("documentType" => "A38", "porcessType" => "A46", "acquiring_Domain" => acquiring_Domain.value, "connecting_Domain" => connecting_Domain, "periodStart" => periodStart, "periodEnd" => periodEnd) 
+    param = Dict{String, String}("documentType" => "A38", "processType" => "A46", "acquiring_Domain" => acquiring_Domain.value, "connecting_Domain" => connecting_Domain, "periodStart" => periodStart, "periodEnd" => periodEnd) 
 
     response = base_query(param, key)
     return response
 end
 
-"""
-Volumes or volumes and prices
-"""
+function query_volumes_and_prices_contracted_reserves(type_MarketAgreementType, processType, controlArea_Domain, periodStart, periodEnd, psrType = "", offset::Int = 0)
+    if !(offset in argumentLimitations.offset)
+        throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
+    end
+    if !(processType in argumentLimitations.volPricProcessType)
+        throw(DomainError(processType, "Incorrect value for processType, choose between A52 (FCR), A51 (aFFR), A47 (mFRR), A46 (RR)"))
+    end
+    if !(psrType in argumentLimitations.balancingPsrType)
+        throw(DomainError(psrType, "Incorrect value for psrType, choose between A03 (resource object), A04 (generation), A05 (load)"))
+    end
+
+    
+    param = Dict{String, String}("documentType" => "A81", "type_MarketAgreement.Type" => type_MarketAgreementType, "businessType" => "B95", "processType" => processType) 
+
+    if psrType != ""
+        param["psrType"] = psrType
+    end
+    if offset != 0
+        param["offset"] = string(offset)
+    end
+
+    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response
+end
+
 function query_volumes_contracted_reserves(type_MarketAgreementType, controlArea_Domain, periodStart, periodEnd, businessType = "", psrType = "", offset::Int = 0)
     if !(businessType in argumentLimitations.balancingBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A95 (FCR) and A96 (aFFR) and A97 (mFFR) and A98 (RR)"))
     end
     if !(offset in argumentLimitations.offset)
-        throw(DomainError(offset, "Incorrect value of offset, choose a value between 0 en 4800"))
+        throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
+    end
+    if !(psrType in argumentLimitations.balancingPsrType)
+        throw(DomainError(psrType, "Incorrect value for psrType, choose between A03 (resource object), A04 (generation), A05 (load)"))
     end
     
     param = Dict{String, String}("documentType" => "A81", "type_MarketAgreement.Type" => type_MarketAgreementType) 
@@ -528,7 +579,10 @@ function query_prices_contracted_reserves(type_MarketAgreementType, controlArea_
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A95 (FCR) and A96 (aFFR) and A97 (mFFR) and A98 (RR)"))
     end
     if !(offset in argumentLimitations.offset)
-        throw(DomainError(offset, "Incorrect value of offset, choose a value between 0 en 4800"))
+        throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
+    end
+    if !(psrType in argumentLimitations.balancingPsrType)
+        throw(DomainError(psrType, "Incorrect value for psrType, choose between A03 (resource object), A04 (generation), A05 (load)"))
     end
     
     param = Dict{String, String}("documentType" => "A89", "type_MarketAgreement.Type" => type_MarketAgreementType) 
@@ -601,12 +655,8 @@ function query_prices_activated_balancing_energy(controlArea_Domain, periodStart
     return response
 end
 
-function query_imbalance_prices(controlArea_Domain, periodStart, periodEnd, psrType = "")
+function query_imbalance_prices(controlArea_Domain, periodStart, periodEnd)
     param = Dict{String, String}("documentType" => "A85") 
-
-    if psrType != ""
-        param["psrType"] = psrType
-    end
 
     response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
     return response
@@ -654,10 +704,43 @@ function query_contracted_reserve_capacity_FCR(area_Domain, periodStart, periodE
     return response
 end
 
-##########
-# no constistency between entsoe documents about possible values for parameters
-# ask Stephen and finish later
-##########
+function query_FRR_actual_capacity(area_Domain, periodStart, periodEnd)
+    param = Dict{String, String}("documentType" => "A26", "processType" => "A56", "businessType" => "C24") 
+
+    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response
+end
+
+function query_RR_actual_capacity(area_Domain, periodStart, periodEnd)
+    param = Dict{String, String}("documentType" => "A26", "processType" => "A46", "businessType" => "C24") 
+
+    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response
+end
+
+function query_sharing_of_reserves(processType, acquiring_Domain, connecting_Domain, periodStart, periodEnd)
+    if !(processType in argumentLimitations.sharingProcessType)
+        throw(DomainError(processType, "Incorrect value for processType, choose between A46 (RR) and A56 (FFR)"))
+    end
+
+    param = Dict{String, String}("documentType" => "A26", "processType" => processType, "businessType" => "C22") 
+
+    response = base_query_balancing3(acquiring_Domain, connecting_Domain, periodStart, periodEnd, param)
+    return response
+end
+
+function query_balancing_border_capacity_limitations()
+    # NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+end
+
+function query_permanent_allocation_limitations_HVDC()
+    # NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+end
+
+function query_netted_and_exchanged_volumes()
+    # NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+end
+
 
 ######################### Outages data ################################
 
@@ -691,7 +774,7 @@ function query_unavailability_generation_units(biddingZone_Domain, periodStart, 
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A53 (planned maintenance) and A54 (forced unavailability)"))
     end
     if !(offset in argumentLimitations.offset)
-        throw(DomainError(offset, "Incorrect value of offset, choose a value between 0 en 4800"))
+        throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
     end
 
     param = Dict{String, String}("documentType" => "A80") 
@@ -727,7 +810,7 @@ function query_unavailability_production_units(biddingZone_Domain, periodStart, 
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A53 (planned maintenance) and A54 (forced unavailability)"))
     end
     if !(offset in argumentLimitations.offset)
-        throw(DomainError(offset, "Incorrect value of offset, choose a value between 0 en 4800"))
+        throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
     end
 
     param = Dict{String, String}("documentType" => "A77") 
@@ -760,7 +843,7 @@ end
 
 function query_unavailability_offshore_grid(biddingZone_Domain, periodStart, periodEnd, docStatus = "", periodStartUpdate = "", periodEndUpdate = "", mRID = "", offset::Int = 0)
     if !(offset in argumentLimitations.offset)
-        throw(DomainError(offset, "Incorrect value of offset, choose a value between 0 en 4800"))
+        throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
     end
     
     param = Dict{String, String}("documentType" => "A79") 
@@ -791,13 +874,13 @@ function query_unavailability_transmission_infrastructure(in_Domain, out_Domain,
     end
     
     if !(offset in argumentLimitations.offset)
-        throw(DomainError(offset, "Incorrect value of offset, choose a value between 0 en 4800"))
+        throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
     end
 
     in_Domain = mappings.lookup_area(in_Domain)
-    out_Domain = mappings.lookup_are(out_Domain)
+    out_Domain = mappings.lookup_area(out_Domain)
 
-    param = Dict{String, String}("documentType" => "A78", "in_Domain" => in_Domain, "out_Domain" => out_Domain, "periodStart" => periodStart, "periodEnd" => periodEnd)
+    param = Dict{String, String}("documentType" => "A78", "in_Domain" => in_Domain.value, "out_Domain" => out_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
     
     if businessType != ""
         param["businessType"] = businessType
@@ -822,8 +905,8 @@ function query_unavailability_transmission_infrastructure(in_Domain, out_Domain,
     return response
 end
 
-###############
-# What to do with fall-backs
-###############
+function query_fallBacks()
+    # NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+end
 
 end
