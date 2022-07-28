@@ -1,5 +1,7 @@
 module argumentLimitations
 
+using Dates
+
 FlowbasedProcessType = Set(["A01", "A02"])
 eaiCapacityBusinessType = Set(["A43", "B05"])
 ianpBusinessType = Set(["B09", "B10"])
@@ -18,4 +20,10 @@ balancingPsrType = Set(["A03", "A04", "A05", ""])
 outageBusinessType = Set(["A53", "A54", ""])
 
 offset = range(0, 4800)
+
+function check_range_limit(periodStart::DateTime, periodEnd::DateTime, Range::Period)
+    if periodEnd > Range + periodStart
+        throw(ArgumentError("The range between periodStart and periodEnd is too large, check documentation for maximum range."))
+    end
+end
 end

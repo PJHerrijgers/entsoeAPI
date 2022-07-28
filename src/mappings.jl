@@ -1,5 +1,7 @@
 module mappings
 
+using Dates
+
 struct Area
     name::String
     value::String
@@ -209,42 +211,42 @@ Areas = Set([
     DE_DK1_LU      
 ])
 
-
-
-PSRTYPE_MAPPINGS = Dict(
-    "A03"=> "Mixed",
-    "A04"=> "Generation",
-    "A05"=> "Load",
-    "B01"=> "Biomass",
-    "B02"=> "Fossil Brown coal/Lignite",
-    "B03"=> "Fossil Coal-derived gas",
-    "B04"=> "Fossil Gas",
-    "B05"=> "Fossil Hard coal",
-    "B06"=> "Fossil Oil",
-    "B07"=> "Fossil Oil shale",
-    "B08"=> "Fossil Peat",
-    "B09"=> "Geothermal",
-    "B10"=> "Hydro Pumped Storage",
-    "B11"=> "Hydro Run-of-river and poundage",
-    "B12"=> "Hydro Water Reservoir",
-    "B13"=> "Marine",
-    "B14"=> "Nuclear",
-    "B15"=> "Other renewable",
-    "B16"=> "Solar",
-    "B17"=> "Waste",
-    "B18"=> "Wind Offshore",
-    "B19"=> "Wind Onshore",
-    "B20"=> "Other",
-    "B21"=> "AC Link",
-    "B22"=> "DC Link",
-    "B23"=> "Substation",
-    "B24"=> "Transformer")
+PSRTYPE = Dict("A03"=> "Mixed",
+               "A04"=> "Generation",
+               "A05"=> "Load",
+               "B01"=> "Biomass",
+               "B02"=> "Fossil Brown coal/Lignite",
+               "B03"=> "Fossil Coal-derived gas",
+               "B04"=> "Fossil Gas",
+               "B05"=> "Fossil Hard coal",
+               "B06"=> "Fossil Oil",
+               "B07"=> "Fossil Oil shale",
+               "B08"=> "Fossil Peat",
+               "B09"=> "Geothermal",
+               "B10"=> "Hydro Pumped Storage",
+               "B11"=> "Hydro Run-of-river and poundage",
+               "B12"=> "Hydro Water Reservoir",
+               "B13"=> "Marine",
+               "B14"=> "Nuclear",
+               "B15"=> "Other renewable",
+               "B16"=> "Solar",
+               "B17"=> "Waste",
+               "B18"=> "Wind Offshore",
+               "B19"=> "Wind Onshore",
+               "B20"=> "Other",
+               "B21"=> "AC Link",
+               "B22"=> "DC Link",
+               "B23"=> "Substation",
+               "B24"=> "Transformer"
+               )
 
 DOCSTATUS = Dict("A01"=> "Intermediate",
                  "A02"=> "Final",
                  "A05"=> "Active",
                  "A09"=> "Cancelled",
-                 "X01"=> "Estimated")
+                 "A13"=> "Withdrawn",
+                 "X01"=> "Estimated"
+                 )
 
 BSNTYPE = Dict("A25"=> "General capacity information",
                "A29"=> "Already allocated capacity (AAC)",
@@ -271,7 +273,8 @@ BSNTYPE = Dict("A25"=> "General capacity information",
                "B95"=> "Procured capacity",
                "C22"=> "Shared balancing reserve capacity",
                "C23"=> "Share of reserve capacity",
-               "C24"=> "Actual reserve capacity")
+               "C24"=> "Actual reserve capacity"
+               )
 
 MARKETAGREEMENTTYPE = Dict("A01"=> "Daily",
                        "A02"=> "Weekly",
@@ -280,7 +283,18 @@ MARKETAGREEMENTTYPE = Dict("A01"=> "Daily",
                        "A05"=> "Total",
                        "A06"=> "Long term",
                        "A07"=> "Intraday",
-                       "A13"=> "Hourly")
+                       "A13"=> "Hourly"   # Type_MarketAgreement.Type only!!!!!!!!!!!!!!!!!!!!
+                       )
+
+AUCTIONTYPE = Dict("A01"=> "Implicit",
+                   "A02"=> "Explicit"
+                   )
+
+AUCTIONCATERGORY = Dict("A01"=> "Base",
+                        "A02"=> "Peak",
+                        "A03"=> "Off peak",
+                        "A04"=> "Hourly"
+                        )
 
 DOCUMENTTYPE = Dict("A09"=> "Finalised schedule",
                 "A11"=> "Aggregated energy data report",
@@ -322,7 +336,8 @@ DOCUMENTTYPE = Dict("A09"=> "Finalised schedule",
                 "A93"=> "DC link capacity",
                 "A94"=> "Non EU allocations",
                 "A95"=> "Configuration document",
-                "B11"=> "Flow-based allocations")
+                "B11"=> "Flow-based allocations"
+                )
 
 PROCESSTYPE = Dict(
     "A01"=> "Day ahead",
@@ -339,7 +354,7 @@ PROCESSTYPE = Dict(
     "A51"=> "Automatic frequency restoration reserve",
     "A52"=> "Frequency containment reserve",
     "A56"=> "Frequency restoration reserve"
-)
+    )
 
 # neighbouring bidding zones that have cross_border flows
 NEIGHBOURS = Dict(
@@ -394,9 +409,9 @@ NEIGHBOURS = Dict(
     "IT_CALA"=> ["IT_SICI", "IT_SUD"],
     "MT"=> ["IT_SICI"],
     "HR"=> ["BA", "HU", "RS", "SI"]
-)
+    )
 
-function lookup_area(s ::Union{Area, AbstractString})
+function lookup_area(s::Union{Area, AbstractString})
     if isa(s, Area)
         # If it already is an Area object, we're happy
         area = s
@@ -415,5 +430,17 @@ function lookup_area(s ::Union{Area, AbstractString})
     end
     return area
 end
+
+function DateTimeTranslator(dateTime::DateTime, standard::Int = 0)
+    if standard == 0
+        dateTimeString = Dates.format(dateTime,"yyyymmddHHMM")
+    elseif standard== 1
+        dateTimeString = Dates.format(dateTime, "yyyymmddHHMMSSsss")
+    elseif standard == 2
+        dateTimeString = Dates.format(dateTime, "yyyy-mm-dd")
+    end
+    return dateTimeString
+end
+
 
 end

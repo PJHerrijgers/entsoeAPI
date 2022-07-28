@@ -1,9 +1,12 @@
 include("../src/GETconstructor.jl")
 include("../src/mappings.jl")
+include("../src/argumentLimitations.jl")
 using .GETconstructor
 using .mappings
+using .argumentLimitations
 using Test
 using HTTP
+using Dates
 
 APIkey = "6e9d0b18-9bde-41cf-938f-c8ad9b35d97d"
 
@@ -16,7 +19,7 @@ APIkey = "6e9d0b18-9bde-41cf-938f-c8ad9b35d97d"
         @test GETconstructor.key == APIkey
     end
 end
-
+=#
 
 @testset verbose = true "mappings.jl" begin
     @testset "mapping with country code" begin
@@ -31,8 +34,17 @@ end
         @test mappings.lookup_area("10YBE----------2") == mappings.BE
         @test mappings.lookup_area("10YNO-0--------C") == mappings.NO
     end
+    @testset "DateTimeTranslator" begin
+        @test mappings.DateTimeTranslator(DateTime(2000,1,1,0,0,0,0)) == "200001010000"
+        @test mappings.DateTimeTranslator(DateTime(2000,1,1,0,0,0)) == "200001010000"
+        @test mappings.DateTimeTranslator(DateTime(2000,1,1,0,0)) == "200001010000"
+        @test mappings.DateTimeTranslator(DateTime(2000,1,1,0)) == "200001010000"
+        @test mappings.DateTimeTranslator(DateTime(2000,1,1)) == "200001010000"
+
+        @test mappings.DateTimeTranslator(DateTime(2017,12,25,23,45)) == "201712252345"
+    end
 end
-=#
+
 
 
 GETconstructor.initialize_key(APIkey)
@@ -339,4 +351,5 @@ open("data/fallBacks.txt", "w") do f
 end 
 # STILL NEEDS TO BE TESTED
 =#
+
 
