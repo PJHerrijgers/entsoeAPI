@@ -290,7 +290,7 @@ AUCTIONTYPE = Dict("A01"=> "Implicit",
                    "A02"=> "Explicit"
                    )
 
-AUCTIONCATERGORY = Dict("A01"=> "Base",
+AUCTIONCATEGORY = Dict("A01"=> "Base",
                         "A02"=> "Peak",
                         "A03"=> "Off peak",
                         "A04"=> "Hourly"

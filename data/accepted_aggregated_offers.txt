@@ -1,5 +1,5 @@
 HTTP/1.1 200 OK
-Date: Wed, 27 Jul 2022 07:51:13 GMT
+Date: Fri, 29 Jul 2022 14:16:04 GMT
 Server: Apache
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Powered-By: Undertow/1
@@ -8,7 +8,7 @@ Content-Type: text/xml
 
 <?xml version="1.0" encoding="UTF-8"?>
 <Balancing_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:balancingdocument:3:0">
-	<mRID>a6cb5e2cdd2b4d0e9e249f6be856aa4d</mRID>
+	<mRID>b208088368bb4053ad16d9da0cc903ad</mRID>
 	<revisionNumber>1</revisionNumber>
 	<type>A82</type>
 	<process.processType>A34</process.processType>
@@ -16,7 +16,7 @@ Content-Type: text/xml
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
 	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
 	<receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
-	<createdDateTime>2022-07-27T07:51:17Z</createdDateTime>
+	<createdDateTime>2022-07-29T14:16:08Z</createdDateTime>
 	<controlArea_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</controlArea_Domain.mRID>
 	<period.timeInterval>
 		<start>2015-12-31T23:00Z</start>

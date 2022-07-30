@@ -24,6 +24,11 @@ function initialize_key(APIkey::String)
     return key
 end
 
+
+function ZIPhandler(HTTPresponse)
+
+end
+
 """
     base_query(param::Dict, key::String[, url::String = URL])
 
@@ -39,6 +44,11 @@ function base_query(param::Dict, key::String, url::String = URL)
     length(key) > 0 ?  base_param = Dict{String, String}("securityToken" => key) : throw(DomainError("API-key not initialized! Call 'initialize_key(API-key)' to initialize."))
     param = merge(base_param, param)
     response = HTTP.get(url, query = param)
+
+    if false # ZIP-file
+        response = ZIPhandler(response)
+    end
+
     return response
 end
 
@@ -61,10 +71,10 @@ Returns the received HTTP response.
 - `periodEnd::DateTime`: End date and time of the needed data 
 """
 function base_query_load(param::Dict, outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    outBiddingZone_Domain = mappings.lookup_area(outBiddingZone_Domain)
     periodStart = mappings.DateTimeTranslator(periodStart)
     periodEnd = mappings.DateTimeTranslator(periodEnd)
-
+    outBiddingZone_Domain = mappings.lookup_area(outBiddingZone_Domain)
+    
     base_param = Dict{String, String}("documentType" => "A65", "periodStart" => periodStart, "periodEnd" => periodEnd, "outBiddingZone_Domain" => outBiddingZone_Domain.value)
     param = merge(param, base_param)
 
@@ -87,7 +97,7 @@ Minimum time interval in query response is one MTU period!
 ! One year range limit applies !
 """
 function query_actual_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     process = Dict{String, String}("processType" => "A16")
 
@@ -110,7 +120,7 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function query_day_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     process = Dict{String, String}("processType" => "A01")
 
@@ -133,7 +143,7 @@ Minimum time interval in query response is one week!
 ! One year range limit applies !
 """
 function query_week_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     process = Dict{String, String}("processType" => "A31")
 
@@ -156,7 +166,7 @@ Minimum time interval in query response is one month!
 ! One year range limit applies !
 """
 function query_month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     process = Dict{String, String}("processType" => "A32")
 
@@ -179,7 +189,7 @@ Minimum time interval in query response is one year!
 ! One year range limit applies !
 """
 function query_year_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     process = Dict{String, String}("processType" => "A33")
 
@@ -202,8 +212,10 @@ Minimum time interval in query response is one year!
 ! One year range limit applies !
 """
 function query_year_ahead_margin(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
     outBiddingZone_Domain = mappings.lookup_area(outBiddingZone_Domain)
 
     param = Dict{String, String}("documentType" => "A70", "periodStart" => periodStart, "periodEnd" => periodEnd, "outBiddingZone_Domain" => outBiddingZone_Domain.value, "processType" => "A33")
@@ -283,7 +295,7 @@ Minimum time interval in query response ranges from day to year, depending on se
 ! One year range limit applies !
 """
 function query_forecasted_capacity(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     if !(contract_MarketAgreementType in keys(mappings.MARKETAGREEMENTTYPE)) || contract_MarketAgreementType == "A13"
         throw(DomainError(contract_MarketAgreementType, "Incorrect value for contract_MarketAgreementType, check mappings.MARKETAGREEMENTTYPE for the possible values."))
@@ -315,7 +327,7 @@ Minimum time interval in query response ranges from day to year, depending on se
 
 ! 100 document limit applies !
 """
-function query_offered_capacity(auctionType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area}, periodStart::DateTime, periodEnd::DateTime, auctionCategory::String = "", update_DateAndOrTime::DateTime = DateTime(0), classificationSequence_AttributeInstanceComponentPosition::String = "")
+function query_offered_capacity(auctionType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, auctionCategory::String = "", update_DateAndOrTime::DateTime = DateTime(0), classificationSequence_AttributeInstanceComponentPosition::String = "")
     if !(auctionType in keys(mappings.AUCTIONTYPE))
         throw(DomainError(auctionType, "Incorrect value for auctionType, check mappings.AUCTIONTYPE for the possible values."))
     end
@@ -385,7 +397,7 @@ Minimum time interval in query response ranges from part of day up to one day!
 ! One year range limit applies !
 """
 function query_intraday_transfer_limits(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
     
     param = Dict{String, String}("documentType" => "A93")
 
@@ -479,7 +491,7 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function query_total_capacity_nominated(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     param = Dict{String, String}("documentType" => "A26", "businessType" => "B08")
     
@@ -537,7 +549,7 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function query_day_ahead_prices(domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     param = Dict{String, String}("documentType" => "A44")
     
@@ -561,9 +573,10 @@ Minimum time interval in query response is one day!
 - `periodEnd::DateTime`: End date and time of the needed data 
 
 ! One year range limit applies !
+! 100 documents limit applies !
 """
 function query_implicit_auction_net_positions_and_congestion_income(businessType::String, contract_MarketAgreementType::String, domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
     
     if !(businessType in argumentLimitations.ianpBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between B09 (net position) and B10 (congestion income)"))
@@ -595,7 +608,7 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function query_total_commercial_schedules(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     if !(contract_MarketAgreementType in argumentLimitations.SchedulesContractType)
         throw(DomainError(contract_MarketAgreementType, "Incorrect value for contract_MarketAgreementType, choose between A01 (day ahead) and A05 (total)"))
@@ -623,7 +636,7 @@ Minimum time interval in query response is MTU period!
 ! One year range limit applies !
 """
 function query_phyiscal_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
     
     param = Dict{String, String}("documentType" => "A11")
     
@@ -698,7 +711,7 @@ function query_expansion_and_dismantling(in_Domain::Union{mappings.Area, String}
     if !(businessType in argumentLimitations.ExpansionBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between B01 (evolution) and B02 (dismantling)"))
     end
-    if !(docStatus in mappings.DOCSTATUS) && docStatus != ""
+    if !(docStatus in keys(mappings.DOCSTATUS)) && docStatus != ""
         throw(DomainError(docStatus, "Incorrect value for docStatus, check mappings.DOCSTATUS for the possible values."))
     end
 
@@ -802,7 +815,7 @@ end
 ##################### generation functions #######################
 
 """
-    base_query_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::Datetime, param::Dict)
+    base_query_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
 
 Covers the parameters which are the same for all the generation queries: in_Domain, periodStart and periodEnd are added to the param dictionary.
 Returns the received HTTP response.
@@ -813,7 +826,9 @@ Returns the received HTTP response.
 - `periodEnd::DateTime`: End date and time of the needed data 
 - `param::Dict`: Dictionary with load query specific parameters, the key represents the name and the value represents the value of the parameter
 """
-function base_query_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::Datetime, param::Dict)
+function base_query_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
     in_Domain = mappings.lookup_area(in_Domain)
 
     base_param = Dict{String, String}("in_Domain" => in_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
@@ -839,9 +854,9 @@ Minimum time interval in query response is one year!
 ! One year range limit applies !
 """
 function query_installed_generation_capacity_aggregated(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
-    if !(psrType in mappings.PSRTYPE) && psrType != ""
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
         throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
     end
     
@@ -871,9 +886,9 @@ Minimum time interval in query response is one year!
 ! One year range limit applies !
 """
 function query_installed_generation_capacity_per_unit(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
-    if !(psrType in mappings.PSRTYPE) && psrType != ""
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
         throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
     end
     
@@ -902,7 +917,7 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function query_day_ahead_aggregated_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     param = Dict{String, String}("documentType" => "A71", "processType" => "A01")
 
@@ -926,9 +941,9 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function query_day_ahead_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
-    if !(psrType in mappings.PSRTYPE) && psrType != ""
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
         throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
     end
     
@@ -958,9 +973,9 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function query_current_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
-    if !(psrType in mappings.PSRTYPE) && psrType != ""
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
         throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
     end
     
@@ -975,7 +990,7 @@ function query_current_generation_forecasts_wind_solar(in_Domain::Union{mappings
 end
 
 """
-    query_intraday_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::Datetime, periodEnd::DateTime[, psrType::String = ""])
+    query_intraday_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])
 
 Constructs the HTTP request for the data about the intraday forecast of wind and solar generation in a certain area (article 14.1 D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Generation%20Forecast%20-%20Day%20Ahead.html).
 Returns the received HTTP response.
@@ -989,10 +1004,10 @@ Minimum time interval in query response is one MTU period!
 
 ! One year range limit applies !
 """
-function query_intraday_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::Datetime, periodEnd::DateTime, psrType::String = "")
-    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(year(1)))
+function query_intraday_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
-    if !(psrType in mappings.PSRTYPE) && psrType != ""
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
         throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
     end
     
@@ -1026,7 +1041,7 @@ Minimum time interval in query response is one MTU period!
 function query_actual_generation_per_generation_unit(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "", registeredResource::String = "")
     argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Day(1)))
 
-    if !(psrType in mappings.PSRTYPE) && psrType != ""
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
         throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
     end
     
@@ -1062,7 +1077,7 @@ Minimum time interval in query response is one MTU period!
 function query_aggregated_generation_per_type(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
     argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
-    if !(psrType in mappings.PSRTYPE) && psrType != ""
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
         throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
     end
     
@@ -1184,7 +1199,7 @@ end
 """
     base_query_balancing3(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
 
-Covers the parameters which are the same for some of the balancing queries: acquiring_Domain, connectingDomain, periodStart and periodEnd are added to the param dictionary.
+Covers the parameters which are the same for some of the balancing queries: acquiring_Domain, connecting_Domain, periodStart and periodEnd are added to the param dictionary.
 Returns the received HTTP response.
 Use when acquiring_Domain and connecting_Domain are needed in the request!
 
@@ -1208,16 +1223,45 @@ function base_query_balancing3(acquiring_Domain::Union{mappings.Area, String}, c
     return response
 end
 
+"""
+    query_current_balancing_state(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
+Constructs the HTTP request for the data about the current balancing state in a certain area (article GL EB 12.3 A).
+Returns the received HTTP response.
 
-function query_current_balancing_state(area_Domain, periodStart, periodEnd)
+# Arguments
+- `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! 100 day range limit applies !
+"""
+function query_current_balancing_state(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Day(100)))
+
     param = Dict{String, String}("documentType" => "A86", "businessType" => "B33")
 
     response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_balancing_energy_bids(area_Domain, periodStart, periodEnd, processType)
+"""
+    query_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
+
+Constructs the HTTP request for the data about the balancing energy bids in a certain area (article GL EB 12.3 B-D).
+Returns the received HTTP response.
+
+# Arguments
+- `processType::String`:  identifies the type of processing to be carried out on the information
+- `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! 1 day range limit applies !
+"""
+function query_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Day(1)))
+    
     if !(processType in argumentLimitations.bidsProcessType)
         throw(DomainError(processType, "Incorrect value for processType, choose between A51 (aFFR), A47 (mFRR), A46 (RR)"))
     end
@@ -1228,7 +1272,23 @@ function query_balancing_energy_bids(area_Domain, periodStart, periodEnd, proces
     return response
 end
 
-function query_aggregated_balancing_energy_bids(area_Domain, periodStart, periodEnd, processType)
+"""
+query_aggregated_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
+
+Constructs the HTTP request for the data about the aggregated balancing energy bids in a certain area (article GL EB 12.3 E: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Aggregated%20Bids.html).
+Returns the received HTTP response.
+
+# Arguments
+- `processType::String`:  identifies the type of processing to be carried out on the information
+- `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One year range limit applies !
+"""
+function query_aggregated_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+
     if !(processType in argumentLimitations.bidsProcessType)
         throw(DomainError(processType, "Incorrect value for processType, choose between A51 (aFFR), A47 (mFRR), A46 (RR)"))
     end
@@ -1239,7 +1299,25 @@ function query_aggregated_balancing_energy_bids(area_Domain, periodStart, period
     return response
 end
 
-function query_procured_balancing_capacity(area_Domain, periodStart, periodEnd, type_MarketAgreementType = "")
+"""
+    query_procured_balancing_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, type_MarketAgreementType::String = ""])
+
+Constructs the HTTP request for the data about the produced balancing capacity in a certain area (article GL EB 12.3 F: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Procured%20Capacity.html).
+Returns the received HTTP response.
+
+# Arguments
+- `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `type_MarketAgreementType::String = ""`: Indicates the time horizon for which balancing capacity was procured
+
+! 100 document limit applies !
+"""
+function query_procured_balancing_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, type_MarketAgreementType::String = "")
+    if !(type_MarketAgreementType in keys(mappings.MARKETAGREEMENTTYPE)) && type_MarketAgreementType != ""
+        throw(DomainError(type_MarketAgreementType, "Incorrect value for type_MarketAgreementType, check mappings.MARKETAGREEMENTTYPE for the possible values."))
+    end
+
     param = Dict{String, String}("documentType" => "A15", "processType" => "A51")
 
     if type_MarketAgreementType != ""
@@ -1250,7 +1328,23 @@ function query_procured_balancing_capacity(area_Domain, periodStart, periodEnd, 
     return response
 end
     
-function query_crossZonal_balancing_capacity(acquiring_Domain, connecting_Domain, periodStart, periodEnd)
+"""
+    query_crossZonal_balancing_capacity(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the use of the allocated cross-zonal balancing capacity over a certain border (article GL EB 12.3 H&I: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Use%20of%20allocated%20cross-zonal%20balancing%20capacity.html).
+Returns the received HTTP response.
+
+# Arguments
+- `acquiring_Domain::Union{mappings.Area, String}`: 
+- `connecting_Domain::Union{mappings.Area, String}`: 
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `type_MarketAgreementType::String = ""`: Indicates the time horizon for which balancing capacity was procured
+
+"""
+function query_crossZonal_balancing_capacity(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
     acquiring_Domain = mappings.lookup_area(acquiring_Domain)
 
     param = Dict{String, String}("documentType" => "A38", "processType" => "A46", "acquiring_Domain" => acquiring_Domain.value, "connecting_Domain" => connecting_Domain, "periodStart" => periodStart, "periodEnd" => periodEnd) 
@@ -1259,7 +1353,28 @@ function query_crossZonal_balancing_capacity(acquiring_Domain, connecting_Domain
     return response
 end
 
-function query_volumes_and_prices_contracted_reserves(type_MarketAgreementType, processType, controlArea_Domain, periodStart, periodEnd, psrType = "", offset::Int = 0)
+"""
+    query_volumes_and_prices_contracted_reserves(type_MarketAgreementType::String, processType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = "", offset::Int = 0])
+
+Constructs the HTTP request for the data about the prices and the volumes of the contracted reserves in a certain area (article 17.1 B&C).
+Returns the received HTTP response.
+Minimum time interval in query response ranges from part of day to year, depending on selected Type_MarketAgreement.Type!
+
+# Arguments
+- `type_MarketAgreementType::String`: Indicates the time horizon for which balancing capacity was procured
+- `processType::String`:  identifies the type of processing to be carried out on the information
+- `controlArea_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+- `offset::Int = 0`: allows downloading more than 100 documents. The offset ∈ [0,4800] so that paging is restricted to query for 4900 documents max., offset=n returns files in sequence between n+1 and n+100
+
+! 100 document limit applies !
+"""
+function query_volumes_and_prices_contracted_reserves(type_MarketAgreementType::String, processType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "", offset::Int = 0)
+    if !(type_MarketAgreementType in keys(mappings.MARKETAGREEMENTTYPE))
+        throw(DomainError(type_MarketAgreementType, "Incorrect value for type_MarketAgreementType, check mappings.MARKETAGREEMENTTYPE for the possible values."))
+    end
     if !(offset in argumentLimitations.offset)
         throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
     end
@@ -1270,7 +1385,6 @@ function query_volumes_and_prices_contracted_reserves(type_MarketAgreementType, 
         throw(DomainError(psrType, "Incorrect value for psrType, choose between A03 (resource object), A04 (generation), A05 (load)"))
     end
 
-    
     param = Dict{String, String}("documentType" => "A81", "type_MarketAgreement.Type" => type_MarketAgreementType, "businessType" => "B95", "processType" => processType) 
 
     if psrType != ""
@@ -1284,7 +1398,29 @@ function query_volumes_and_prices_contracted_reserves(type_MarketAgreementType, 
     return response
 end
 
-function query_volumes_contracted_reserves(type_MarketAgreementType, controlArea_Domain, periodStart, periodEnd, businessType = "", psrType = "", offset::Int = 0)
+"""
+    query_volumes_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = "", offset::Int = 0])
+
+Constructs the HTTP request for the data about the volumes of the contracted reserves in a certain area (article 17.1 B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Volumes%20of%20Contracted%20Balancing%20Reserves.html).
+Returns the received HTTP response.
+Minimum time interval in query response ranges from part of day to year, depending on selected Type_MarketAgreement.Type!
+
+# Arguments
+- `type_MarketAgreementType::String`: Indicates the time horizon for which balancing capacity was procured
+- `controlArea_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `businessType::String = ""`: The identification of the nature of the data
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+- `offset::Int = 0`: allows downloading more than 100 documents. The offset ∈ [0,4800] so that paging is restricted to query for 4900 documents max., offset=n returns files in sequence between n+1 and n+100
+
+! 100 document limit applies !
+! Doesn't work for hourly data due to some unclear reason... !
+"""
+function query_volumes_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "", offset::Int = 0)
+    if !(type_MarketAgreementType in keys(mappings.MARKETAGREEMENTTYPE))
+        throw(DomainError(type_MarketAgreementType, "Incorrect value for type_MarketAgreementType, check mappings.MARKETAGREEMENTTYPE for the possible values."))
+    end
     if !(businessType in argumentLimitations.balancingBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A95 (FCR) and A96 (aFFR) and A97 (mFFR) and A98 (RR)"))
     end
@@ -1311,7 +1447,28 @@ function query_volumes_contracted_reserves(type_MarketAgreementType, controlArea
     return response
 end
 
-function query_prices_contracted_reserves(type_MarketAgreementType, controlArea_Domain, periodStart, periodEnd, businessType = "", psrType = "", offset::Int = 0)
+"""
+    query_prices_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = "", offset::Int = 0])
+
+Constructs the HTTP request for the data about the prices of the contracted reserves in a certain area (article 17.1 C: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Price%20of%20Reserved%20Balancing%20Reserves.html).
+Returns the received HTTP response.
+Minimum time interval in query response ranges from part of day to year, depending on selected Type_MarketAgreement.Type!
+
+# Arguments
+- `type_MarketAgreementType::String`: Indicates the time horizon for which balancing capacity was procured
+- `controlArea_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `businessType::String = ""`: The identification of the nature of the data
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+- `offset::Int = 0`: allows downloading more than 100 documents. The offset ∈ [0,4800] so that paging is restricted to query for 4900 documents max., offset=n returns files in sequence between n+1 and n+100
+
+! 100 document limit applies !
+"""
+function query_prices_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "", offset::Int = 0)
+    if !(type_MarketAgreementType in keys(mappings.MARKETAGREEMENTTYPE))
+        throw(DomainError(type_MarketAgreementType, "Incorrect value for type_MarketAgreementType, check mappings.MARKETAGREEMENTTYPE for the possible values."))
+    end
     if !(businessType in argumentLimitations.balancingBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A95 (FCR) and A96 (aFFR) and A97 (mFFR) and A98 (RR)"))
     end
@@ -1338,7 +1495,28 @@ function query_prices_contracted_reserves(type_MarketAgreementType, controlArea_
     return response
 end
 
-function query_accepted_aggregated_offers(controlArea_Domain, periodStart, periodEnd, businessType = "", psrType = "")
+"""
+    query_accepted_aggregated_offers(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])
+
+Constructs the HTTP request for the data about the accepted aggregated offers in a certain area (article 17.1 D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Accepted%20Offers%20and%20Activated%20Balancing%20Reserves.html).
+Returns the received HTTP response.
+Minimum time interval in query response is one BTU period!
+
+# Arguments
+- `controlArea_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `businessType::String = ""`: The identification of the nature of the data
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+
+! One year range limit applies !
+"""
+function query_accepted_aggregated_offers(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "")
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
+        throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
+    end
     if !(businessType in argumentLimitations.balancingBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A95 (FCR) and A96 (aFFR) and A97 (mFFR) and A98 (RR)"))
     end
@@ -1356,7 +1534,28 @@ function query_accepted_aggregated_offers(controlArea_Domain, periodStart, perio
     return response
 end
 
-function query_activated_balancing_energy(controlArea_Domain, periodStart, periodEnd, businessType = "", psrType = "")
+"""
+    query_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])
+
+Constructs the HTTP request for the data about the activated balancing energy in a certain area (article 17.1 E: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Accepted%20Offers%20and%20Activated%20Balancing%20Reserves.html).
+Returns the received HTTP response.
+Minimum time interval in query response is one BTU period!
+
+# Arguments
+- `controlArea_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `businessType::String = ""`: The identification of the nature of the data
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+
+! One year range limit applies !
+"""
+function query_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "")
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
+        throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
+    end
     if !(businessType in argumentLimitations.balancingBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A95 (FCR) and A96 (aFFR) and A97 (mFFR) and A98 (RR)"))
     end
@@ -1374,7 +1573,28 @@ function query_activated_balancing_energy(controlArea_Domain, periodStart, perio
     return response
 end
 
-function query_prices_activated_balancing_energy(controlArea_Domain, periodStart, periodEnd, businessType = "", psrType = "")
+"""
+    query_prices_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])
+
+Constructs the HTTP request for the data about the prices of the activated balancing energy in a certain area (article 17.1 F: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Accepted%20Offers%20and%20Activated%20Balancing%20Reserves.html).
+Returns the received HTTP response.
+Minimum time interval in query response is one BTU period!
+
+# Arguments
+- `controlArea_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `businessType::String = ""`: The identification of the nature of the data
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+
+! One year range limit applies !
+"""
+function query_prices_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "")
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+
+    if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
+        throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
+    end
     if !(businessType in argumentLimitations.balancingBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A95 (FCR) and A96 (aFFR) and A97 (mFFR) and A98 (RR)"))
     end
@@ -1392,70 +1612,227 @@ function query_prices_activated_balancing_energy(controlArea_Domain, periodStart
     return response
 end
 
-function query_imbalance_prices(controlArea_Domain, periodStart, periodEnd)
+"""
+    query_imbalance_prices(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the imbalance prices in a certain area (article 17.1 G: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Imbalance.html).
+Returns the received HTTP response.
+Minimum time interval in query response is one BTU period!
+
+# Arguments
+- `controlArea_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One year range limit applies !
+"""
+function query_imbalance_prices(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+
     param = Dict{String, String}("documentType" => "A85") 
 
     response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_total_imbalance_volumes(controlArea_Domain, periodStart, periodEnd)
+"""
+    query_total_imbalance_volumes(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the imbalance volumes in a certain area (article 17.1 H: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Imbalance.html).
+Returns the received HTTP response.
+Minimum time interval in query response is one BTU period!
+
+# Arguments
+- `controlArea_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One year range limit applies !
+"""
+function query_total_imbalance_volumes(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    
     param = Dict{String, String}("documentType" => "A86") 
 
     response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_financial_expenses(controlArea_Domain, periodStart, periodEnd)
+"""
+    query_financial_expenses(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the financial expenses and income for balancing in a certain area (article 17.1 I: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Financial%20Expenses%20and%20Income.html).
+Returns the received HTTP response.
+Minimum time interval in query response is one month!
+
+# Arguments
+- `controlArea_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One year range limit applies !
+"""
+function query_financial_expenses(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    
     param = Dict{String, String}("documentType" => "A87") 
 
     response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_crossBorder_balancing(acquiring_Domain, connecting_Domain, periodStart, periodEnd)
-    param = Dict{String, String}("documentType" => "A88", "acquiring_Domain" => acquiring_Domain, "connecting_Domain" => connecting_Domain, "periodStart" => periodStart, "periodEnd" => periodEnd) 
+"""
+    query_crossBorder_balancing(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
-    response = base_query(param, key)
+Constructs the HTTP request for the data about the cross-border balancing over a certain border (article 17.1 J: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Cross-Border%20Balancing.html).
+Returns the received HTTP response.
+Minimum time interval in query response is one BTU period!
+
+# Arguments
+- `acquiring_Domain::Union{mappings.Area, String}`: 
+- `connecting_Domain::Union{mappings.Area, String}`: 
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One year range limit applies !
+"""
+function query_crossBorder_balancing(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    
+    param = Dict{String, String}("documentType" => "A88") 
+
+    response = base_query_balancing3(acquiring_Domain, connecting_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_FCR_total_capacity(area_Domain, periodStart, periodEnd)
+"""
+    query_FCR_total_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the FCR total capacity in a certain area (article SO GL 187.2).
+Returns the received HTTP response.
+
+# Arguments
+- `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One year range limit applies !
+"""
+function query_FCR_total_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    
     param = Dict{String, String}("documentType" => "A26", "businessType" => "A25") 
 
     response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_share_capacity_FCR(area_Domain, periodStart, periodEnd)
+"""
+    query_FCR_total_capacity(area_Domain::Union{mappings.Area, String}, periodStart::Datetime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the share of FCR capacity in a certain area (article SO GL 187.2).
+Returns the received HTTP response.
+
+# Arguments
+- `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One year range limit applies !
+"""
+function query_share_capacity_FCR(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+
     param = Dict{String, String}("documentType" => "A26", "businessType" => "C23") 
 
     response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_contracted_reserve_capacity_FCR(area_Domain, periodStart, periodEnd)
+"""
+    query_contracted_reserve_capacity_FCR(area_Domain::Union{mappings.Area}, periodStart::DateTime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the share of contracted reserve FCR capacity in a certain area (article SO GL 187.2).
+Returns the received HTTP response.
+
+# Arguments
+- `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One year range limit applies !
+"""
+function query_contracted_reserve_capacity_FCR(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+
     param = Dict{String, String}("documentType" => "A26", "businessType" => "B95") 
 
     response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_FRR_actual_capacity(area_Domain, periodStart, periodEnd)
+"""
+    query_FRR_actual_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the actual FRR capacity in a certain area (article SO GL 188.4).
+Returns the received HTTP response.
+
+# Arguments
+- `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One quarter range limit applies !
+"""
+function query_FRR_actual_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Month(3)))
+
     param = Dict{String, String}("documentType" => "A26", "processType" => "A56", "businessType" => "C24") 
 
     response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_RR_actual_capacity(area_Domain, periodStart, periodEnd)
+"""
+    query_RR_actual_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the actual RR capacity in a certain area (article SO GL 189.3).
+Returns the received HTTP response.
+
+# Arguments
+- `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One quarter range limit applies !
+"""
+function query_RR_actual_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Month(3)))
+
     param = Dict{String, String}("documentType" => "A26", "processType" => "A46", "businessType" => "C24") 
 
     response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
     return response
 end
 
-function query_sharing_of_reserves(processType, acquiring_Domain, connecting_Domain, periodStart, periodEnd)
+"""
+    query_sharing_of_reserves(processType::String, acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+
+Constructs the HTTP request for the data about the sharing of RR and FRR over a certain border (article SO GL 190.1).
+Returns the received HTTP response.
+
+# Arguments
+- `processType::String`:  identifies the type of processing to be carried out on the information
+- `acquiring_Domain::Union{mappings.Area, String}`: 
+- `connecting_Domain::Union{mappings.Area, String}`: 
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+
+! One year range limit applies !
+"""
+function query_sharing_of_reserves(processType::String, acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    
     if !(processType in argumentLimitations.sharingProcessType)
         throw(DomainError(processType, "Incorrect value for processType, choose between A46 (RR) and A56 (FFR)"))
     end
@@ -1481,7 +1858,22 @@ end
 
 ######################### Outages data ################################
 
-function base_query_outages(biddingZone_Domain, periodStart, periodEnd, param = Dict())
+"""
+    base_query_outages(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
+
+Covers the parameters which are the same for all of the outages queries: biddingZone_Domain, periodStart and periodEnd are added to the param dictionary.
+Returns the received HTTP response.
+Use when area_Domain is needed in the request!
+
+# Arugments
+- `biddingZone_Domain::Union{mappings.Area, String}`: Area for which the outages data is needed, can be represented as an Area object or a string with country code or direct code 
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `param::Dict`: Dictionary with outages query specific parameters, the key represents the name and the value represents the value of the parameter
+"""
+function base_query_outages(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
     biddingZone_Domain = mappings.lookup_area(biddingZone_Domain)
 
     base_param = Dict{String, String}("biddingZone_Domain" => biddingZone_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
@@ -1491,7 +1883,24 @@ function base_query_outages(biddingZone_Domain, periodStart, periodEnd, param = 
     return response
 end
 
-function query_unavailability_consumption_units(biddingZone_Domain, periodStart, periodEnd, businessType = "")
+"""
+    query_unavailability_consumption_units(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = ""])
+
+Constructs the HTTP request for the data about the unavailability of consumption units in a certain area (article 7.1 A&B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/outage-domain/Data-view%20Aggregated%20Unavailability%20of%20Consumption%20Units.html).
+Returns the received HTTP response.
+Minimum time interval in query response is one MTU period!
+
+# Arguments
+- `biddingZone_Domain::Union{mappings.Area, String}`: Area for which the outages data is needed, can be represented as an Area object or a string with country code or direct code 
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `businessType::String = ""`: The identification of the nature of the data
+
+! One year range limit applies !
+"""
+function query_unavailability_consumption_units(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "")
+    argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    
     if !(businessType in argumentLimitations.outageBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A53 (planned maintenance) and A54 (forced unavailability)"))
     end
@@ -1506,9 +1915,37 @@ function query_unavailability_consumption_units(biddingZone_Domain, periodStart,
     return response
 end
 
-function query_unavailability_generation_units(biddingZone_Domain, periodStart, periodEnd, businessType = "", docStatus ="", periodStartUpdate ="", periodEndUpdate = "", registeredResource = "", mRID = "", offset::Int = 0)
+"""
+    query_unavailability_generation_units(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), registeredResource::String = "", mRID::String = "", offset::Int = 0])
+
+Constructs the HTTP request for the data about the unavailability of generation units in a certain area (article 15.1 A&B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/outage-domain/Data-view%20Unavailability%20of%20Production%20and%20Generation%20Units.html).
+Returns the received HTTP response.
+Minimum time interval in query response depends on duration of matching outages!
+
+# Arguments
+- `biddingZone_Domain::Union{mappings.Area, String}`: Area for which the outages data is needed, can be represented as an Area object or a string with country code or direct code 
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `businessType::String = ""`: The identification of the nature of the data
+- `docStatus::String = ""`: Identification of the condition or position of the document with regard to its standing
+- `periodStartUpdate::DateTime = DatetTime(0)`:
+- `periodEndUpdate::DateTime = DateTime(0)`: 
+- `registeredResource::String = ""`: The unique identification of a resource
+- `mrRID::String = ""`: Unique identification of the document being exchanged within a business process flow
+- `offset::Int = 0`: allows downloading more than 200 documents. The offset ∈ [0,4800] so that paging is restricted to query for 4900 documents max., offset=n returns files in sequence between n+1 and n+200
+
+! One year range limit applies !
+! 200 documents limit applies !
+"""
+function query_unavailability_generation_units(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), registeredResource::String = "", mRID::String = "", offset::Int = 0)
+    if periodStartUpdate == DateTime(0) || periodEndUpdate == DateTime(0)
+        argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    end
     if !(businessType in argumentLimitations.outageBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A53 (planned maintenance) and A54 (forced unavailability)"))
+    end
+    if !(docStatus in keys(mappings.DOCSTATUS)) && docStatus != ""
+        throw(DomainError(docStatus, "Incorrect value for docStatus, check mappings.DOCSTATUS for the possible values."))
     end
     if !(offset in argumentLimitations.offset)
         throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
@@ -1522,10 +1959,9 @@ function query_unavailability_generation_units(biddingZone_Domain, periodStart, 
     if docStatus != ""
         param["docStatus"] = docStatus
     end
-    if periodStartUpdate != ""
+    if periodStartUpdate != DateTime(0) && periodEndUpdate != DateTime(0)
+        argumentLimitations.check_range_limit(periodStartUpdate, periodEndUpdate, Period(Year(1)))
         param["periodStartUpdate"] = periodStartUpdate
-    end
-    if periodEndUpdate != ""
         param["periodEndUpdate"] = periodEndUpdate
     end
     if registeredResource != ""
@@ -1542,9 +1978,37 @@ function query_unavailability_generation_units(biddingZone_Domain, periodStart, 
     return response
 end
 
-function query_unavailability_production_units(biddingZone_Domain, periodStart, periodEnd, businessType = "", docStatus = "", periodStartUpdate = "", periodEndUpdate = "", registeredResource = "", mRID = "", offset::Int = 0)
+"""
+    query_unavailability_production_units(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), registeredResource::String = "", mRID::String = "", offset::Int = 0])
+
+Constructs the HTTP request for the data about the unavailability of production units in a certain area (article 15.1 C&D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/outage-domain/Data-view%20Unavailability%20of%20Production%20and%20Generation%20Units.html).
+Returns the received HTTP response.
+Minimum time interval in query response depends on duration of matching outages!
+
+# Arguments
+- `biddingZone_Domain::Union{mappings.Area, String}`: Area for which the outages data is needed, can be represented as an Area object or a string with country code or direct code 
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `businessType::String = ""`: The identification of the nature of the data
+- `docStatus::String = ""`: Identification of the condition or position of the document with regard to its standing
+- `periodStartUpdate::DateTime = DatetTime(0)`:
+- `periodEndUpdate::DateTime = DateTime(0)`: 
+- `registeredResource::String = ""`: The unique identification of a resource
+- `mrRID::String = ""`: Unique identification of the document being exchanged within a business process flow
+- `offset::Int = 0`: allows downloading more than 200 documents. The offset ∈ [0,4800] so that paging is restricted to query for 4900 documents max., offset=n returns files in sequence between n+1 and n+200
+
+! One year range limit applies !
+! 200 documents limit applies !
+"""
+function query_unavailability_production_units(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), registeredResource::String = "", mRID::String = "", offset::Int = 0)
+    if periodStartUpdate == DateTime(0) || periodEndUpdate == DateTime(0)
+        argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    end
     if !(businessType in argumentLimitations.outageBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A53 (planned maintenance) and A54 (forced unavailability)"))
+    end
+    if !(docStatus in keys(mappings.DOCSTATUS)) && docStatus != ""
+        throw(DomainError(docStatus, "Incorrect value for docStatus, check mappings.DOCSTATUS for the possible values."))
     end
     if !(offset in argumentLimitations.offset)
         throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
@@ -1558,10 +2022,9 @@ function query_unavailability_production_units(biddingZone_Domain, periodStart, 
     if docStatus != ""
         param["docStatus"] = docStatus
     end
-    if periodStartUpdate != ""
+    if periodStartUpdate != DateTime(0) && periodEndUpdate != DateTime(0)
+        argumentLimitations.check_range_limit(periodStartUpdate, periodEndUpdate, Period(Year(1)))
         param["periodStartUpdate"] = periodStartUpdate
-    end
-    if periodEndUpdate != ""
         param["periodEndUpdate"] = periodEndUpdate
     end
     if registeredResource != ""
@@ -1578,7 +2041,34 @@ function query_unavailability_production_units(biddingZone_Domain, periodStart, 
     return response
 end
 
-function query_unavailability_offshore_grid(biddingZone_Domain, periodStart, periodEnd, docStatus = "", periodStartUpdate = "", periodEndUpdate = "", mRID = "", offset::Int = 0)
+"""
+    query_unavailability_offshore_grid(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), mRID::String = "", offset::Int = 0])
+
+Constructs the HTTP request for the data about the unavailability of the offshore grid infrastructure in a certain area (article 10.1 C: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/outage-domain/Data-view%20Unavailability%20of%20off-shore%20grid.html).
+Returns the received HTTP response.
+Minimum time interval in query response depends on duration of matching outages!
+
+# Arguments
+- `biddingZone_Domain::Union{mappings.Area, String}`: Area for which the outages data is needed, can be represented as an Area object or a string with country code or direct code 
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `docStatus::String = ""`: Identification of the condition or position of the document with regard to its standing
+- `periodStartUpdate::DateTime = DatetTime(0)`:
+- `periodEndUpdate::DateTime = DateTime(0)`: 
+- `registeredResource::String = ""`: The unique identification of a resource
+- `mrRID::String = ""`: Unique identification of the document being exchanged within a business process flow
+- `offset::Int = 0`: allows downloading more than 200 documents. The offset ∈ [0,4800] so that paging is restricted to query for 4900 documents max., offset=n returns files in sequence between n+1 and n+200
+
+! One year range limit applies !
+! 200 documents limit applies !
+"""
+function query_unavailability_offshore_grid(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), mRID::String = "", offset::Int = 0)
+    if periodStartUpdate == DateTime(0) || periodEndUpdate == DateTime(0)
+        argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    end
+    if !(docStatus in keys(mappings.DOCSTATUS)) && docStatus != ""
+        throw(DomainError(docStatus, "Incorrect value for docStatus, check mappings.DOCSTATUS for the possible values."))
+    end
     if !(offset in argumentLimitations.offset)
         throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
     end
@@ -1588,10 +2078,9 @@ function query_unavailability_offshore_grid(biddingZone_Domain, periodStart, per
     if docStatus != ""
         param["docStatus"] = docStatus
     end
-    if periodStartUpdate != ""
+    if periodStartUpdate != DateTime(0) && periodEndUpdate != DateTime(0)
+        argumentLimitations.check_range_limit(periodStartUpdate, periodEndUpdate, Period(Year(1)))
         param["periodStartUpdate"] = periodStartUpdate
-    end
-    if periodEndUpdate != ""
         param["periodEndUpdate"] = periodEndUpdate
     end
     if mRID != ""
@@ -1605,15 +2094,45 @@ function query_unavailability_offshore_grid(biddingZone_Domain, periodStart, per
     return response
 end
 
-function query_unavailability_transmission_infrastructure(in_Domain, out_Domain, periodStart, periodEnd, businessType = "", docStatus = "", periodStartUpdate = "", periodEndUpdate = "", mRID = "", offset::Int = 0)
+"""
+    query_unavailability_transmission_infrastructure(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), mRID::String = "", offset::Int = 0])
+
+Constructs the HTTP request for the data about the unavailability of the transmission infrastructure in a certain area (article 10.1 A&B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/outage-domain/Data-view%20Unavailability%20in%20Transmission%20Grid.html).
+Returns the received HTTP response.
+Minimum time interval in query response depends on duration of matching outages!
+
+# Arguments
+- `in_Domain::Union{mappings.Area, String}`: The area where energy is going, can be represented as an Area object or a string with country code or direct code 
+- `out_Domain::Union{mappings.Area, String}`: The area where energy is coming from, can be represented as an Area object or a string with country code or direct code
+- `periodStart::DateTime`: Start date and time of the needed data
+- `periodEnd::DateTime`: End date and time of the needed data 
+- `businessType::String = ""`: The identification of the nature of the data
+- `docStatus::String = ""`: Identification of the condition or position of the document with regard to its standing
+- `periodStartUpdate::DateTime = DatetTime(0)`: 
+- `periodEndUpdate::DateTime = DateTime(0)`: 
+- `registeredResource::String = ""`: The unique identification of a resource
+- `mrRID::String = ""`: Unique identification of the document being exchanged within a business process flow
+- `offset::Int = 0`: allows downloading more than 200 documents. The offset ∈ [0,4800] so that paging is restricted to query for 4900 documents max., offset=n returns files in sequence between n+1 and n+200
+
+! One year range limit applies !
+! 200 documents limit applies !
+"""
+function query_unavailability_transmission_infrastructure(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), mRID::String = "", offset::Int = 0)
+    if periodStartUpdate == DateTime(0) || periodEndUpdate == DateTime(0)
+        argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
+    end
     if !(businessType in argumentLimitations.outageBusinessType)
         throw(DomainError(businessType, "Incorrect value for businessType, choose between A53 (planned maintenance) and A54 (forced unavailability)"))
     end
-    
+    if !(docStatus in keys(mappings.DOCSTATUS)) && docStatus != ""
+        throw(DomainError(docStatus, "Incorrect value for docStatus, check mappings.DOCSTATUS for the possible values."))
+    end
     if !(offset in argumentLimitations.offset)
         throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
     end
 
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
     in_Domain = mappings.lookup_area(in_Domain)
     out_Domain = mappings.lookup_area(out_Domain)
 
@@ -1625,10 +2144,9 @@ function query_unavailability_transmission_infrastructure(in_Domain, out_Domain,
     if docStatus != ""
         param["docStatus"] = docStatus
     end
-    if periodStartUpdate != ""
+    if periodStartUpdate != DateTime(0) && periodEndUpdate != DateTime(0)
+        argumentLimitations.check_range_limit(periodStartUpdate, periodEndUpdate, Period(Year(1)))
         param["periodStartUpdate"] = periodStartUpdate
-    end
-    if periodEndUpdate != ""
         param["periodEndUpdate"] = periodEndUpdate
     end
     if mRID != ""
