@@ -10,6 +10,7 @@ using Dates
 
 APIkey = "6e9d0b18-9bde-41cf-938f-c8ad9b35d97d"
 
+
 #= 
 @testset verbose = true "GETconstructor.jl" begin
     @testset "initialize_key" begin
@@ -50,7 +51,7 @@ end
 GETconstructor.initialize_key(APIkey)
 
 
-
+#=
 open("data/load_actual_test.txt", "w") do f
     write(f, GETconstructor.query_actual_total_load("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end
@@ -263,12 +264,12 @@ end
 open("data/prices_activated_balancing_energy.txt", "w") do f
     write(f, GETconstructor.query_prices_activated_balancing_energy("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00), "A96"))
 end 
-
+=#
 open("data/imbalance_prices.txt", "w") do f
     write(f, GETconstructor.query_imbalance_prices("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end 
 # ZIP-FILE!!!!!!!!
-
+#=
 open("data/total_imbalance_volumes.txt", "w") do f
     write(f, GETconstructor.query_total_imbalance_volumes("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end 
@@ -338,7 +339,7 @@ open("data/unavailability_transmission_infrastructure.txt", "w") do f
     write(f, GETconstructor.query_unavailability_transmission_infrastructure("10YCZ-CEPS-----N", "10YSK-SEPS-----K", DateTime(2015,12,31,23,00), DateTime(2016,01,31,23,00)))
 end 
 # example in API documentation geives wrong results
-
+=#
 #= 
 open("data/balancing_border_capacity_limitations.txt", "w") do f
     write(f, GETconstructor.query_balancing_border_capacity_limitations())

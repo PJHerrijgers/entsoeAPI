@@ -25,8 +25,9 @@ function initialize_key(APIkey::String)
 end
 
 
-function ZIPhandler(HTTPresponse)
-
+function ZIPhandler(body)
+    response = body
+    return response
 end
 
 """
@@ -38,15 +39,20 @@ Returns the received HTTP response.
 # Arugments 
 - `param::Dict`: Dictionary with additional parameters, the key represents the name and the value represents the value of the parameter
 - `key::String`: Security key to access the transparency platform
-- `url::String`: base url (=https://transparency.entsoe.eu/api?), optional
+- `url::String`: base url (= https://transparency.entsoe.eu/api?), optional
 """
 function base_query(param::Dict, key::String, url::String = URL)
     length(key) > 0 ?  base_param = Dict{String, String}("securityToken" => key) : throw(DomainError("API-key not initialized! Call 'initialize_key(API-key)' to initialize."))
     param = merge(base_param, param)
+    
     response = HTTP.get(url, query = param)
+    body = HTTP.body(response)
 
-    if false # ZIP-file
-        response = ZIPhandler(response)
+    println(HTTP.headers(response, Content-Type))
+    if HTTP.headers(response, Content-Type) == "application/zip" # ZIP-file
+        response = ZIPhandler(body)
+    else
+        response = body
     end
 
     return response
