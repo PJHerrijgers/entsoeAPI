@@ -47,6 +47,7 @@ function ZIPhandler(body::Vector{UInt8})
         response = response*read(f, String)
         close(f)
     end
+    close(zip)
 
     return response
 end
@@ -68,7 +69,6 @@ function base_query(param::Dict, key::String, url::String = URL)
     
     response = HTTP.get(url, query = param)
     body = HTTP.body(response)
-    print(typeof(body))
 
     if HTTP.hasheader(response, "Content-Type", "application/zip") # ZIP-file
         response = ZIPhandler(body)

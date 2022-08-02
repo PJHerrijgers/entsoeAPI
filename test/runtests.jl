@@ -11,7 +11,6 @@ using Dates
 APIkey = "6e9d0b18-9bde-41cf-938f-c8ad9b35d97d"
 
 
-#= 
 @testset verbose = true "GETconstructor.jl" begin
     @testset "initialize_key" begin
         @test GETconstructor.key == ""
@@ -45,13 +44,13 @@ end
         @test mappings.DateTimeTranslator(DateTime(2017,12,25,23,45)) == "201712252345"
     end
 end
-=#
+
 
 
 GETconstructor.initialize_key(APIkey)
 
 
-#=
+
 open("data/load_actual_test.txt", "w") do f
     write(f, GETconstructor.query_actual_total_load("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end
@@ -319,7 +318,7 @@ open("data/unavailability_consumption_units.txt", "w") do f
     write(f, GETconstructor.query_unavailability_consumption_units("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end 
 # example in API documentation gives wrong results
-=#
+
 open("data/unavailability_generation_units.txt", "w") do f
     write(f, GETconstructor.query_unavailability_generation_units("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,01,05,23,00)))
 end 
@@ -334,12 +333,12 @@ open("data/unavailability_offshore_grid.txt", "w") do f
     write(f, GETconstructor.query_unavailability_offshore_grid("10YDE-EON------1", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end 
 # ZIP-FILE!!!!!!!!!!!!
-#=
+
 open("data/unavailability_transmission_infrastructure.txt", "w") do f
     write(f, GETconstructor.query_unavailability_transmission_infrastructure("10YCZ-CEPS-----N", "10YSK-SEPS-----K", DateTime(2015,12,31,23,00), DateTime(2016,01,31,23,00)))
 end 
 # example in API documentation geives wrong results
-=#
+
 #= 
 open("data/balancing_border_capacity_limitations.txt", "w") do f
     write(f, GETconstructor.query_balancing_border_capacity_limitations())

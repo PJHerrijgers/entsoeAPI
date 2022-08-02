@@ -1,18 +1,10 @@
-HTTP/1.1 200 OK
-Date: Fri, 29 Jul 2022 14:15:31 GMT
-Server: Apache
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Powered-By: Undertow/1
-Transfer-Encoding: chunked
-Content-Type: text/xml
-
 <?xml version="1.0" encoding="UTF-8"?>
 <TransmissionNetwork_MarketDocument  xmlns="urn:iec62325.351:tc57wg16:451-6:transmissionnetworkdocument:3:0">
-	<mRID>27c22513a76c405a82187c9b952e58e6</mRID>
+	<mRID>35a84360f1a241a691ca3051e5cce3ba</mRID>
 	<revisionNumber>1</revisionNumber>
 	<type>A92</type>
 	<process.processType>A16</process.processType>
-	<createdDateTime>2022-07-29T14:15:32Z</createdDateTime>
+	<createdDateTime>2022-08-02T08:47:28Z</createdDateTime>
 	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
 	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
