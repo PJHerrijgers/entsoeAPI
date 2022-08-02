@@ -264,12 +264,12 @@ end
 open("data/prices_activated_balancing_energy.txt", "w") do f
     write(f, GETconstructor.query_prices_activated_balancing_energy("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00), "A96"))
 end 
-=#
+
 open("data/imbalance_prices.txt", "w") do f
     write(f, GETconstructor.query_imbalance_prices("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end 
 # ZIP-FILE!!!!!!!!
-#=
+
 open("data/total_imbalance_volumes.txt", "w") do f
     write(f, GETconstructor.query_total_imbalance_volumes("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end 
@@ -319,7 +319,7 @@ open("data/unavailability_consumption_units.txt", "w") do f
     write(f, GETconstructor.query_unavailability_consumption_units("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end 
 # example in API documentation gives wrong results
-
+=#
 open("data/unavailability_generation_units.txt", "w") do f
     write(f, GETconstructor.query_unavailability_generation_units("10YCZ-CEPS-----N", DateTime(2015,12,31,23,00), DateTime(2016,01,05,23,00)))
 end 
@@ -334,7 +334,7 @@ open("data/unavailability_offshore_grid.txt", "w") do f
     write(f, GETconstructor.query_unavailability_offshore_grid("10YDE-EON------1", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 end 
 # ZIP-FILE!!!!!!!!!!!!
-
+#=
 open("data/unavailability_transmission_infrastructure.txt", "w") do f
     write(f, GETconstructor.query_unavailability_transmission_infrastructure("10YCZ-CEPS-----N", "10YSK-SEPS-----K", DateTime(2015,12,31,23,00), DateTime(2016,01,31,23,00)))
 end 

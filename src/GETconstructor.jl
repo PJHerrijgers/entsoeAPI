@@ -7,6 +7,7 @@ using .argumentLimitations
 using HTTP
 using Markdown
 using Dates
+using ZipFile
 
 ############# general functions ######################
 
@@ -18,15 +19,35 @@ global key = ""                             # your personal key to get access to
 
 Initialize the global variable 'key' as 'APIkey' so that it can be used in other functions. 
 Returns the value of 'key'.
+
+# Arguments
+- `APIkey::String: Your personal security token to access the transparancy platform`
 """
 function initialize_key(APIkey::String)
     global key = APIkey
     return key
 end
 
+"""
+    ZIPhandler(body::Vector{UInt8})
 
-function ZIPhandler(body)
-    response = body
+Unzips the body of a HTTP request and stores the unzipped content in a local variable.
+
+# Arguments 
+- `body::Vector{UInt8}: the zipped body of a HTTP request`
+"""
+function ZIPhandler(body::Vector{UInt8})
+    open("data/temp.zip", "w") do f
+        write(f, body)
+    end 
+
+    response = ""
+    zip = ZipFile.Reader("data/temp.zip")
+    for f in zip.files
+        response = response*read(f, String)
+        close(f)
+    end
+
     return response
 end
 
@@ -39,7 +60,7 @@ Returns the received HTTP response.
 # Arugments 
 - `param::Dict`: Dictionary with additional parameters, the key represents the name and the value represents the value of the parameter
 - `key::String`: Security key to access the transparency platform
-- `url::String`: base url (= https://transparency.entsoe.eu/api?), optional
+- `url::String`: base url (= https://transparency.entsoe.eu/api?)
 """
 function base_query(param::Dict, key::String, url::String = URL)
     length(key) > 0 ?  base_param = Dict{String, String}("securityToken" => key) : throw(DomainError("API-key not initialized! Call 'initialize_key(API-key)' to initialize."))
@@ -47,9 +68,9 @@ function base_query(param::Dict, key::String, url::String = URL)
     
     response = HTTP.get(url, query = param)
     body = HTTP.body(response)
+    print(typeof(body))
 
-    println(HTTP.headers(response, Content-Type))
-    if HTTP.headers(response, Content-Type) == "application/zip" # ZIP-file
+    if HTTP.hasheader(response, "Content-Type", "application/zip") # ZIP-file
         response = ZIPhandler(body)
     else
         response = body
