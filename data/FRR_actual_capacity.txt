@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Balancing_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:balancingdocument:4:1">
-	<mRID>70ae3dd18eb041ea9d42159494219a7b</mRID>
+	<mRID>a6a09af3759b47bd807f6e02e6de6f1b</mRID>
 	<revisionNumber>1</revisionNumber>
     <type>A26</type>
 	<process.processType>A56</process.processType>
@@ -8,7 +8,7 @@
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
 	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
 	<receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
-	<createdDateTime>2022-08-02T08:48:34Z</createdDateTime>
+	<createdDateTime>2022-08-05T13:26:30Z</createdDateTime>
 	<area_Domain.mRID codingScheme="A01">10YAT-APG------L</area_Domain.mRID>
 	<period.timeInterval>
 		<start>2019-12-31T23:00Z</start>

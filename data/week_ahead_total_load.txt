@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GL_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:generationloaddocument:3:0">
-	<mRID>a99ecef2a51940118f918dba011028e1</mRID>
+	<mRID>b8663ef793984e1bb48b48d052ec9087</mRID>
 	<revisionNumber>1</revisionNumber>
 	<type>A65</type>
 	<process.processType>A31</process.processType>
@@ -8,7 +8,7 @@
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
 	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
 	<receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
-	<createdDateTime>2022-08-02T08:44:59Z</createdDateTime>
+	<createdDateTime>2022-08-02T11:14:05Z</createdDateTime>
 	<time_Period.timeInterval>
 		<start>2015-12-27T23:00Z</start>
 		<end>2017-01-01T23:00Z</end>

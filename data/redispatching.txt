@@ -1,23 +1,216 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Acknowledgement_MarketDocument
-	xmlns="urn:iec62325.351:tc57wg16:451-1:acknowledgementdocument:7:0">
-	<mRID>cf9fade5-6198-4</mRID>
-	<createdDateTime>2022-08-02T08:47:28Z</createdDateTime>
-
+<TransmissionNetwork_MarketDocument  xmlns="urn:iec62325.351:tc57wg16:451-6:transmissionnetworkdocument:3:0">
+	<mRID>eee293a4429c4a7a8c0b28488164d5cd</mRID>
+	<revisionNumber>1</revisionNumber>
+	<type>A63</type>
+	<process.processType>A16</process.processType>
+	<createdDateTime>2022-08-04T12:15:09Z</createdDateTime>
 	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
-
 	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
-	<receiver_MarketParticipant.marketRole.type>A39</receiver_MarketParticipant.marketRole.type>
-
-	
-	<received_MarketDocument.createdDateTime>2022-08-02T08:47:28Z</received_MarketDocument.createdDateTime>
-
-
-	<Reason>
-		<code>999</code>
-		<text>No matching data found for Data item Redispatching Cross Border [13.1.A] (10YCZ-CEPS-----N, 10YSK-SEPS-----K) and interval 2015-12-31T23:00:00.000Z/2016-12-31T23:00:00.000Z.</text>
-	</Reason>
-
-
-</Acknowledgement_MarketDocument>
+	<receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+	<period.timeInterval>
+		<start>2016-12-31T13:00Z</start>
+		<end>2016-12-31T23:00Z</end>
+	</period.timeInterval>
+	<TimeSeries>
+		<mRID>1</mRID>
+		<businessType>A46</businessType>
+		<in_Domain.mRID codingScheme="A01">10YNL----------L</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YBE----------2</out_Domain.mRID>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<mktPSRType.psrType>B21</mktPSRType.psrType>
+		<curveType>A01</curveType>
+		<flowDirection.direction>A02</flowDirection.direction>
+		<Asset_RegisteredResource>
+			<mRID codingScheme="A01">10T-BE-NL-00001I</mRID>
+			<pSRType.psrType>B21</pSRType.psrType>
+			<location.name>Van Eyck 28 - Maasbracht</location.name>
+		</Asset_RegisteredResource>
+		<Asset_RegisteredResource>
+			<mRID codingScheme="A01">10T-BE-NL-00002G</mRID>
+			<pSRType.psrType>B21</pSRType.psrType>
+			<location.name>Van Eyck 27 - Maasbracht</location.name>
+		</Asset_RegisteredResource>
+		<Asset_RegisteredResource>
+			<mRID codingScheme="A01">10T-BE-NL-00003E</mRID>
+			<pSRType.psrType>B21</pSRType.psrType>
+			<location.name>Zandvliet - Borssele</location.name>
+		</Asset_RegisteredResource>
+		<Asset_RegisteredResource>
+			<mRID codingScheme="A01">10T-BE-NL-00004C</mRID>
+			<pSRType.psrType>B21</pSRType.psrType>
+			<location.name>Zandvliet - Geertruidenberg</location.name>
+		</Asset_RegisteredResource>
+		<Period>
+			<timeInterval>
+				<start>2016-12-31T13:00Z</start>
+				<end>2016-12-31T23:00Z</end>
+			</timeInterval>
+			<resolution>PT15M</resolution>
+			<Point>
+				<position>1</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>2</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>3</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>4</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>5</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>6</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>7</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>8</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>9</position>
+				<quantity>200</quantity>
+			</Point>
+			<Point>
+				<position>10</position>
+				<quantity>240</quantity>
+			</Point>
+			<Point>
+				<position>11</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>12</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>13</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>14</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>15</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>16</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>17</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>18</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>19</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>20</position>
+				<quantity>280</quantity>
+			</Point>
+			<Point>
+				<position>21</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>22</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>23</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>24</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>25</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>26</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>27</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>28</position>
+				<quantity>260</quantity>
+			</Point>
+			<Point>
+				<position>29</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>30</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>31</position>
+				<quantity>300</quantity>
+			</Point>
+			<Point>
+				<position>32</position>
+				<quantity>280</quantity>
+			</Point>
+			<Point>
+				<position>33</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>34</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>35</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>36</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>37</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>38</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>39</position>
+				<quantity>290</quantity>
+			</Point>
+			<Point>
+				<position>40</position>
+				<quantity>250</quantity>
+			</Point>
+		</Period>
+            <Reason>
+                <code>B24</code>
+            </Reason>
+	</TimeSeries>
+</TransmissionNetwork_MarketDocument>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Acknowledgement_MarketDocument
 	xmlns="urn:iec62325.351:tc57wg16:451-1:acknowledgementdocument:7:0">
-	<mRID>39887d53-6aba-4</mRID>
-	<createdDateTime>2022-08-02T08:48:00Z</createdDateTime>
+	<mRID>ec58f745-9552-4</mRID>
+	<createdDateTime>2022-08-05T13:25:51Z</createdDateTime>
 
 	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
@@ -11,7 +11,7 @@
 	<receiver_MarketParticipant.marketRole.type>A39</receiver_MarketParticipant.marketRole.type>
 
 	
-	<received_MarketDocument.createdDateTime>2022-08-02T08:48:00Z</received_MarketDocument.createdDateTime>
+	<received_MarketDocument.createdDateTime>2022-08-05T13:25:51Z</received_MarketDocument.createdDateTime>
 
 
 	<Reason>

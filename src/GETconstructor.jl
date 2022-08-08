@@ -1,3 +1,7 @@
+"""
+Module that handles queries to retrieve data from the ENTSO-E transparancy platform.
+This data is returned in xml format and can be parsed with the xmlParser.jl file.
+"""
 module GETconstructor
 
 include("mappings.jl")
@@ -11,7 +15,7 @@ using ZipFile
 
 ############# general functions ######################
 
-URL = "https://transparency.entsoe.eu/api?" 
+URL = "https://web-api.tp.entsoe.eu/api?" 
 global key = ""                             # your personal key to get access to the transparency platform (go to 'my account settings' and then to 'Web Api Security Token' to generate one)
 
 """
@@ -908,7 +912,7 @@ Minimum time interval in query response is one year!
 - `in_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
 - `periodStart::DateTime`: Start date and time of the needed data
 - `periodEnd::DateTime`: End date and time of the needed data 
-- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset. If not used all resources are included.
 
 ! One year range limit applies !
 """
@@ -963,7 +967,7 @@ Minimum time interval in query response is one day!
 - `in_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
 - `periodStart::DateTime`: Start date and time of the needed data
 - `periodEnd::DateTime`: End date and time of the needed data 
-- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset. If not used all resources are included.
 
 ! One year range limit applies !
 """
@@ -971,7 +975,7 @@ function query_day_ahead_generation_forecasts_wind_solar(in_Domain::Union{mappin
     argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
-        throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
+        throw(DomainError(psrType, "Incorrect value for psrType, choose between B16 (solar) and B18 (wind offshore) and B19 (wind onshore)."))
     end
     
     param = Dict{String, String}("documentType" => "A69", "processType" => "A01")
@@ -995,7 +999,7 @@ Minimum time interval in query response is one day!
 - `in_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
 - `periodStart::DateTime`: Start date and time of the needed data
 - `periodEnd::DateTime`: End date and time of the needed data 
-- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset. If not used all resources are included.
 
 ! One year range limit applies !
 """
@@ -1003,7 +1007,7 @@ function query_current_generation_forecasts_wind_solar(in_Domain::Union{mappings
     argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
-        throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
+        throw(DomainError(psrType, "Incorrect value for psrType, choose between B16 (solar) and B18 (wind offshore) and B19 (wind onshore)."))
     end
     
     param = Dict{String, String}("documentType" => "A69", "processType" => "A18")
@@ -1027,7 +1031,7 @@ Minimum time interval in query response is one MTU period!
 - `in_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
 - `periodStart::DateTime`: Start date and time of the needed data
 - `periodEnd::DateTime`: End date and time of the needed data 
-- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset. If not used all resources are included.
 
 ! One year range limit applies !
 """
@@ -1035,7 +1039,7 @@ function query_intraday_generation_forecasts_wind_solar(in_Domain::Union{mapping
     argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
     if !(psrType in keys(mappings.PSRTYPE)) && psrType != ""
-        throw(DomainError(psrType, "Incorrect value for psrType, check mappings.PSRTYPE for the possible values."))
+        throw(DomainError(psrType, "Incorrect value for psrType, choose between B16 (solar) and B18 (wind offshore) and B19 (wind onshore)."))
     end
     
     param = Dict{String, String}("documentType" => "A69", "processType" => "A40")
@@ -1060,7 +1064,7 @@ Minimum time interval in query response is one MTU period!
 - `in_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
 - `periodStart::DateTime`: Start date and time of the needed data
 - `periodEnd::DateTime`: End date and time of the needed data 
-- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset. If not used all resources are included.
 - `registeredResource = ""`: The unique identification of a resource
 
 ! One day range limit applies !
@@ -1097,7 +1101,7 @@ Minimum time interval in query response is one MTU period!
 - `in_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
 - `periodStart::DateTime`: Start date and time of the needed data
 - `periodEnd::DateTime`: End date and time of the needed data 
-- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset.
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset. If not used all resources are included.
 
 ! One year range limit applies !
 """

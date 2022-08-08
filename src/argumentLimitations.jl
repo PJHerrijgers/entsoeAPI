@@ -11,6 +11,8 @@ ExpansionBusinessType = Set(["B01", "B02", ""])
 redispatchingBusinessType = Set(["A46", "A85", ""])
 congestionBusinessType = Set(["A46", "B03", "B04", ""])
 
+windSolarPsrType = Set(["B16", "B18", "B19", ""])
+
 bidsProcessType = Set(["A51", "A47", "A46"])
 volPricProcessType = Set(["A52", "A51", "A47", "A46"])
 sharingProcessType = Set(["A46", "A56"])

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CriticalNetworkElement_MarketDocument  xmlns="urn:iec62325.351:tc57wg16:451-n:criticalnetworkelementdocument:1:1">
-	<mRID>55dda3f549d54be1bdebe3a5ff3a02d6</mRID>
+	<mRID>b55a579652c74a6eaa90695d8c0846b1</mRID>
 	<revisionNumber>1</revisionNumber>
 	<type>B11</type>
 	<process.processType>A01</process.processType>
@@ -8,7 +8,7 @@
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
 	<receiver_MarketParticipant.mRID>10X1001A1001A450</receiver_MarketParticipant.mRID>
 	<receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
-	<createdDateTime>2022-08-02T08:45:19Z</createdDateTime>
+	<createdDateTime>2022-08-02T11:14:19Z</createdDateTime>
 	<time_Period.timeInterval>
 		<start>2015-12-31T23:00Z</start>
 		<end>2016-01-02T23:00Z</end>

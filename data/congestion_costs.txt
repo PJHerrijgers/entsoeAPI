@@ -1,219 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TransmissionNetwork_MarketDocument  xmlns="urn:iec62325.351:tc57wg16:451-6:transmissionnetworkdocument:3:0">
-	<mRID>35a84360f1a241a691ca3051e5cce3ba</mRID>
+	<mRID>b5e3841714fa483eb0eb886262e061dc</mRID>
 	<revisionNumber>1</revisionNumber>
 	<type>A92</type>
 	<process.processType>A16</process.processType>
-	<createdDateTime>2022-08-02T08:47:28Z</createdDateTime>
+	<createdDateTime>2022-08-03T13:50:29Z</createdDateTime>
 	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
 	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
 	<receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
 	<period.timeInterval>
-		<start>2016-01-01T00:00Z</start>
-		<end>2017-01-01T00:00Z</end>
+		<start>2015-12-31T23:00Z</start>
+		<end>2016-12-31T23:00Z</end>
 	</period.timeInterval>
 	<TimeSeries>
 		<mRID>1</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-01-01T00:00Z</start>
-				<end>2016-02-01T00:00Z</end>
+				<start>2015-12-31T23:00Z</start>
+				<end>2016-01-31T23:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>1891453.49</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>2</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-02-01T00:00Z</start>
-				<end>2016-03-01T00:00Z</end>
+				<start>2016-01-31T23:00Z</start>
+				<end>2016-02-29T23:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>1169811.31</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>3</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-03-01T00:00Z</start>
-				<end>2016-04-01T00:00Z</end>
+				<start>2016-02-29T23:00Z</start>
+				<end>2016-03-31T22:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>348156.55</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>4</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-04-01T00:00Z</start>
-				<end>2016-05-01T00:00Z</end>
+				<start>2016-03-31T22:00Z</start>
+				<end>2016-04-30T22:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>358235.16</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>5</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-05-01T00:00Z</start>
-				<end>2016-06-01T00:00Z</end>
+				<start>2016-04-30T22:00Z</start>
+				<end>2016-05-31T22:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>353235.94</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>6</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-06-01T00:00Z</start>
-				<end>2016-07-01T00:00Z</end>
+				<start>2016-05-31T22:00Z</start>
+				<end>2016-06-30T22:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>169.60</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>7</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-07-01T00:00Z</start>
-				<end>2016-08-01T00:00Z</end>
+				<start>2016-06-30T22:00Z</start>
+				<end>2016-07-31T22:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>54968.82</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>8</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-08-01T00:00Z</start>
-				<end>2016-09-01T00:00Z</end>
+				<start>2016-07-31T22:00Z</start>
+				<end>2016-08-31T22:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>59591.52</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>9</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-09-01T00:00Z</start>
-				<end>2016-10-01T00:00Z</end>
+				<start>2016-08-31T22:00Z</start>
+				<end>2016-09-30T22:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>196132.66</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>10</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-10-01T00:00Z</start>
-				<end>2016-11-01T00:00Z</end>
+				<start>2016-09-30T22:00Z</start>
+				<end>2016-10-31T23:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>429724.81</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>11</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-11-01T00:00Z</start>
-				<end>2016-12-01T00:00Z</end>
+				<start>2016-10-31T23:00Z</start>
+				<end>2016-11-30T23:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>326420.61</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>
 	<TimeSeries>
 		<mRID>12</mRID>
 		<businessType>B03</businessType>
-		<in_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</in_Domain.mRID>
-		<out_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</out_Domain.mRID>
+		<in_Domain.mRID codingScheme="A01">10YDE-VE-------2</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YDE-VE-------2</out_Domain.mRID>
+		<currency_Unit.name>EUR</currency_Unit.name>
 		<curveType>A01</curveType>
 		<Period>
 			<timeInterval>
-				<start>2016-12-01T00:00Z</start>
-				<end>2017-01-01T00:00Z</end>
+				<start>2016-11-30T23:00Z</start>
+				<end>2016-12-31T23:00Z</end>
 			</timeInterval>
 			<resolution>P1M</resolution>
 			<Point>
 				<position>1</position>
+				<congestionCost_Price.amount>2430770.25</congestionCost_Price.amount>
 			</Point>
 		</Period>
 	</TimeSeries>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:0">
-	<mRID>c9c49577dec34945b66a47bbff05d0f3</mRID>
+	<mRID>3273a668d46d4338a7dac2e9f05be18d</mRID>
 	<revisionNumber>1</revisionNumber>
 	<type>A94</type>
 	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
 	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
 	<receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
-	<createdDateTime>2022-08-02T08:47:26Z</createdDateTime>
+	<createdDateTime>2022-08-02T11:16:16Z</createdDateTime>
 	<period.timeInterval>
 		<start>2016-01-01T23:00Z</start>
 		<end>2016-01-02T23:00Z</end>
