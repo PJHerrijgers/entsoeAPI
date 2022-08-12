@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Acknowledgement_MarketDocument
 	xmlns="urn:iec62325.351:tc57wg16:451-1:acknowledgementdocument:7:0">
-	<mRID>d33c5cfe-d65c-4</mRID>
-	<createdDateTime>2022-08-05T13:26:28Z</createdDateTime>
+	<mRID>99426169-ea59-4</mRID>
+	<createdDateTime>2022-08-08T15:29:55Z</createdDateTime>
 
 	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
 	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
@@ -11,12 +11,12 @@
 	<receiver_MarketParticipant.marketRole.type>A39</receiver_MarketParticipant.marketRole.type>
 
 	
-	<received_MarketDocument.createdDateTime>2022-08-05T13:26:28Z</received_MarketDocument.createdDateTime>
+	<received_MarketDocument.createdDateTime>2022-08-08T15:29:55Z</received_MarketDocument.createdDateTime>
 
 
 	<Reason>
 		<code>999</code>
-		<text>No matching data found for Data item FCR total capacity [SO GL 187.2] (10YEU-CONT-SYNC0) and interval 2018-12-31T23:00:00.000Z/2019-12-31T23:00:00.000Z.</text>
+		<text>No matching data found for Data item FCR total capacity [SO GL 187.2] (10YEU-CONT-SYNC0) and interval 2018-12-31T22:00:00.000Z/2019-12-31T22:00:00.000Z.</text>
 	</Reason>
 
 

@@ -1,4 +1,4 @@
-include("testsGET.jl")
-# include("testsXML.jl")
+# include("testsGET.jl")
+include("testsXML.jl")
 
 

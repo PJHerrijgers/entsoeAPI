@@ -11,11 +11,12 @@ using .argumentLimitations
 using HTTP
 using Markdown
 using Dates
+using TimeZones
 using ZipFile
 
 ############# general functions ######################
 
-URL = "https://web-api.tp.entsoe.eu/api?" 
+const URL = "https://web-api.tp.entsoe.eu/api?" 
 global key = ""                             # your personal key to get access to the transparency platform (go to 'my account settings' and then to 'Web Api Security Token' to generate one)
 
 """
@@ -83,9 +84,6 @@ function base_query(param::Dict, key::String, url::String = URL)
     return response
 end
 
-docStatusDict = Dict{String, String}("Intermediate" => "A01", "Final" => "A02", "Active" => "A05", "Cancelled" => "A09", "Withdrawn" => "A13", "Estimated" => "X01")
-contractDict = Dict{String, String}("Daily" => "A01", "Weekly" => "A02", "Monthly" => "A03", "Yearly" => "A04", "Total" => "A05", "LT" => "A06", "Intraday" => "A07", "Hourly" => "A13")
-
 
 ################## load functions ########################
 
@@ -102,15 +100,19 @@ Returns the received HTTP response.
 - `periodEnd::DateTime`: End date and time of the needed data 
 """
 function base_query_load(param::Dict, outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    periodStart = mappings.DateTimeTranslator(periodStart)
-    periodEnd = mappings.DateTimeTranslator(periodEnd)
     outBiddingZone_Domain = mappings.lookup_area(outBiddingZone_Domain)
     
+    periodStart = ZonedDateTime(periodStart, outBiddingZone_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, outBiddingZone_Domain.tz)
+
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
+
     base_param = Dict{String, String}("documentType" => "A65", "periodStart" => periodStart, "periodEnd" => periodEnd, "outBiddingZone_Domain" => outBiddingZone_Domain.value)
     param = merge(param, base_param)
 
     response = base_query(param, key)
-    return response
+    return response, outBiddingZone_Domain.tz
 end
 
 """
@@ -132,8 +134,8 @@ function query_actual_total_load(outBiddingZone_Domain::Union{mappings.Area, Str
 
     process = Dict{String, String}("processType" => "A16")
 
-    response = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
-    return response
+    response, tz = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
+    return response, tz
 end
 
 """
@@ -155,8 +157,8 @@ function query_day_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, 
 
     process = Dict{String, String}("processType" => "A01")
 
-    response = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
-    return response
+    response, tz = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
+    return response, tz
 end
 
 """
@@ -178,8 +180,8 @@ function query_week_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area,
 
     process = Dict{String, String}("processType" => "A31")
 
-    response = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
-    return response
+    response, tz = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
+    return response, tz
 end
 
 """
@@ -201,8 +203,8 @@ function query_month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area
 
     process = Dict{String, String}("processType" => "A32")
 
-    response = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
-    return response
+    response, tz = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
+    return response, tz
 end
 
 """
@@ -224,8 +226,8 @@ function query_year_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area,
 
     process = Dict{String, String}("processType" => "A33")
 
-    response = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
-    return response
+    response, tz = base_query_load(process, outBiddingZone_Domain, periodStart, periodEnd)
+    return response, tz
 end
 
 """
@@ -245,14 +247,19 @@ Minimum time interval in query response is one year!
 function query_year_ahead_margin(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
     argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
 
+    outBiddingZone_Domain = mappings.lookup_area(outBiddingZone_Domain)
+
+    periodStart = ZonedDateTime(periodStart, outBiddingZone_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, outBiddingZone_Domain.tz)
+
     periodStart = mappings.DateTimeTranslator(periodStart)
     periodEnd = mappings.DateTimeTranslator(periodEnd)
-    outBiddingZone_Domain = mappings.lookup_area(outBiddingZone_Domain)
+
 
     param = Dict{String, String}("documentType" => "A70", "periodStart" => periodStart, "periodEnd" => periodEnd, "outBiddingZone_Domain" => outBiddingZone_Domain.value, "processType" => "A33")
     
     response = base_query(param, key)
-    return response
+    return response, outBiddingZone_Domain.tz
 end
 
 #########################################################
@@ -299,6 +306,10 @@ Returns the received HTTP response.
 function base_query_transmission_and_network_congestion(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
     in_Domain = mappings.lookup_area(in_Domain)
     out_Domain = mappings.lookup_area(out_Domain)
+
+    periodStart = ZonedDateTime(periodStart, in_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, in_Domain.tz) 
+
     periodStart = mappings.DateTimeTranslator(periodStart)
     periodEnd = mappings.DateTimeTranslator(periodEnd)
 
@@ -306,7 +317,7 @@ function base_query_transmission_and_network_congestion(in_Domain::Union{mapping
     param = merge(param, base_param)
 
     response = base_query(param, key)
-    return response
+    return response, in_Domain.tz
 end
 
 """
@@ -334,8 +345,8 @@ function query_forecasted_capacity(contract_MarketAgreementType::String, in_Doma
     
     param = Dict{String, String}("documentType" => "A61", "contract_MarketAgreement.Type" => contract_MarketAgreementType)
 
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -382,8 +393,8 @@ function query_offered_capacity(auctionType::String, contract_MarketAgreementTyp
         param["classificationSequence_AttributeInstanceComponent.Position"] = classificationSequence_AttributeInstanceComponentPosition
     end
 
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -408,8 +419,8 @@ function query_flowbased(processType::String, domain::Union{mappings.Area, Strin
 
     param = Dict{String, String}("documentType" => "B11", "processType" => processType)
 
-    response = base_query_transmission_and_network_congestion(domain, domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(domain, domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -432,8 +443,8 @@ function query_intraday_transfer_limits(in_Domain::Union{mappings.Area, String},
     
     param = Dict{String, String}("documentType" => "A93")
 
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -475,8 +486,8 @@ function query_explicit_allocation_information_capacity(businessType::String, co
         param["classificationSequence_AttributeInstanceComponent.Position"] = classificationSequence_AttributeInstanceComponentPosition
     end
 
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -502,8 +513,8 @@ function query_explicit_allocation_information_revenue(contract_MarketAgreementT
     
     param = Dict{String, String}("documentType" => "A25", "businessType" => "B07", "contract_MarketAgreement.Type" => contract_MarketAgreementType)
     
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -526,8 +537,8 @@ function query_total_capacity_nominated(in_Domain::Union{mappings.Area, String},
 
     param = Dict{String, String}("documentType" => "A26", "businessType" => "B08")
     
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -561,8 +572,8 @@ function query_total_capacity_already_allocated(contract_MarketAgreementType::St
         param["acution.Category"] = auctionCategory
     end
 
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -584,8 +595,8 @@ function query_day_ahead_prices(domain::Union{mappings.Area, String}, periodStar
 
     param = Dict{String, String}("documentType" => "A44")
     
-    response = base_query_transmission_and_network_congestion(domain, domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(domain, domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -618,8 +629,8 @@ function query_implicit_auction_net_positions_and_congestion_income(businessType
 
     param = Dict{String, String}("documentType" => "A25", "businessType" => businessType, "contract_MarketAgreement.Type" => contract_MarketAgreementType)
     
-    response = base_query_transmission_and_network_congestion(domain, domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(domain, domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -647,8 +658,8 @@ function query_total_commercial_schedules(contract_MarketAgreementType::String, 
 
     param = Dict{String, String}("documentType" => "A09", "contract_MarketAgreement.Type" => contract_MarketAgreementType)
     
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -671,8 +682,8 @@ function query_phyiscal_flows(in_Domain::Union{mappings.Area, String}, out_Domai
     
     param = Dict{String, String}("documentType" => "A11")
     
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -714,8 +725,8 @@ function query_capacity_allocated_outside_EU(auctionType::String, contract_Marke
         param["classificationSequence_AttributeInstanceComponent.Position"] = classificationSequence_AttributeInstanceComponentPosition
     end
 
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 
@@ -755,8 +766,8 @@ function query_expansion_and_dismantling(in_Domain::Union{mappings.Area, String}
         param["docStatus"] = docStatusDict[docStatus]
     end
 
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -786,8 +797,8 @@ function query_redispatching(in_Domain::Union{mappings.Area, String}, out_Domain
         param["businessType"] = businessType
     end
 
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -809,8 +820,8 @@ Time interval in query response depends on duration of matching counter trades!
 function query_countertrading(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
     param = Dict{String, String}("documentType" => "A91")
     
-    response = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(in_Domain, out_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -839,8 +850,8 @@ function query_congestion_costs(domain::Union{mappings.Area, String}, periodStar
         param["businessType"] = businessType
     end
 
-    response = base_query_transmission_and_network_congestion(domain, domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_transmission_and_network_congestion(domain, domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 ##################### generation functions #######################
@@ -858,15 +869,19 @@ Returns the received HTTP response.
 - `param::Dict`: Dictionary with load query specific parameters, the key represents the name and the value represents the value of the parameter
 """
 function base_query_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
-    periodStart = mappings.DateTimeTranslator(periodStart)
-    periodEnd = mappings.DateTimeTranslator(periodEnd)
     in_Domain = mappings.lookup_area(in_Domain)
 
+    periodStart = ZonedDateTime(periodStart, in_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, in_Domain.tz)
+
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
+    
     base_param = Dict{String, String}("in_Domain" => in_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
     param = merge(param, base_param)
 
     response = base_query(param, key)
-    return response
+    return response, in_Domain.tz
 end
 
 """
@@ -897,8 +912,8 @@ function query_installed_generation_capacity_aggregated(in_Domain::Union{mapping
         param["psrType"] = psrType
     end
 
-    response = base_query_generation(in_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_generation(in_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -929,8 +944,8 @@ function query_installed_generation_capacity_per_unit(in_Domain::Union{mappings.
         param["psrType"] = psrType
     end
 
-    response = base_query_generation(in_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_generation(in_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -952,8 +967,8 @@ function query_day_ahead_aggregated_generation(in_Domain::Union{mappings.Area, S
 
     param = Dict{String, String}("documentType" => "A71", "processType" => "A01")
 
-    response = base_query_generation(in_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_generation(in_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -984,8 +999,8 @@ function query_day_ahead_generation_forecasts_wind_solar(in_Domain::Union{mappin
         param["psrType"] = psrType
     end
 
-    response = base_query_generation(in_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_generation(in_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1016,8 +1031,8 @@ function query_current_generation_forecasts_wind_solar(in_Domain::Union{mappings
         param["psrType"] = psrType
     end
 
-    response = base_query_generation(in_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_generation(in_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1048,8 +1063,8 @@ function query_intraday_generation_forecasts_wind_solar(in_Domain::Union{mapping
         param["psrType"] = psrType
     end
 
-    response = base_query_generation(in_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_generation(in_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 
@@ -1086,8 +1101,8 @@ function query_actual_generation_per_generation_unit(in_Domain::Union{mappings.A
         param["registeredResource"] = registeredResource
     end
 
-    response = base_query_generation(in_Domain, periodStart, periodEnd, param)
-    return response   
+    response, tz = base_query_generation(in_Domain, periodStart, periodEnd, param)
+    return response, tz   
 end
 
 """
@@ -1118,8 +1133,8 @@ function query_aggregated_generation_per_type(in_Domain::Union{mappings.Area, St
         param["psrType"] = psrType
     end
 
-    response = base_query_generation(in_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_generation(in_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1141,8 +1156,8 @@ function query_aggregated_filling_rate(in_Domain::Union{mappings.Area, String}, 
 
     param = Dict{String, String}("documentType" => "A72", "processType" => "A16")
 
-    response = base_query_generation(in_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_generation(in_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 #################### master data ###########################
@@ -1162,9 +1177,12 @@ Response contains commissioned production units for given day!
 ! One day range limit applies !
 """
 function query_production_generation_units(biddingZone_Domain::Union{mappings.Area, String}, implementation_DateAndOrTime::DateTime, psrType::String = "")
-    implementation_DateAndOrTime = mappings.DateTimeTranslator(implementation_DateAndOrTime, 2)
     biddingZone_Domain = mappings.lookup_area(biddingZone_Domain)
 
+    implementation_DateAndOrTime = ZonedDateTime(implementation_DateAndOrTime, biddingZone_Domain.tz)
+
+    implementation_DateAndOrTime = mappings.DateTimeTranslator(implementation_DateAndOrTime, 2)
+    
     param = Dict{String, String}("documentType" => "A95", "businessType" => "B11", "biddingZone_Domain" => biddingZone_Domain.value, "implementation_DateAndOrTime" => implementation_DateAndOrTime)
 
     if psrType != ""
@@ -1172,7 +1190,7 @@ function query_production_generation_units(biddingZone_Domain::Union{mappings.Ar
     end
 
     response = base_query(param, key)
-    return response
+    return response, biddingZone_Domain.tz
 end
 
 #################### balancing domain data ####################
@@ -1191,15 +1209,19 @@ Use when area_Domain is needed in the request!
 - `param::Dict`: Dictionary with balancing query specific parameters, the key represents the name and the value represents the value of the parameter
 """
 function base_query_balancing1(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
-    periodStart = mappings.DateTimeTranslator(periodStart)
-    periodEnd = mappings.DateTimeTranslator(periodEnd)
     area_Domain = mappings.lookup_area(area_Domain)
 
+    periodStart = ZonedDateTime(periodStart, area_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, area_Domain.tz)
+
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
+    
     base_param = Dict{String, String}("area_Domain" => area_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
     param = merge(param, base_param)
     
     response = base_query(param, key)
-    return response
+    return response, area_Domain.tz
 end
 
 """
@@ -1216,15 +1238,19 @@ Use when controlArea_Domain is needed in the request!
 - `param::Dict`: Dictionary with balancing query specific parameters, the key represents the name and the value represents the value of the parameter
 """
 function base_query_balancing2(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
+    controlArea_Domain = mappings.lookup_area(controlArea_Domain)
+    
+    periodStart = ZonedDateTime(periodStart, controlArea_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, controlArea_Domain.tz)
+
     periodStart = mappings.DateTimeTranslator(periodStart)
     periodEnd = mappings.DateTimeTranslator(periodEnd)
-    controlArea_Domain = mappings.lookup_area(controlArea_Domain)
 
     base_param = Dict{String, String}("controlArea_Domain" => controlArea_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
     param = merge(param, base_param)
     
     response = base_query(param, key)
-    return response
+    return response, controlArea_Domain.tz
 end
 
 """
@@ -1242,16 +1268,20 @@ Use when acquiring_Domain and connecting_Domain are needed in the request!
 - `param::Dict`: Dictionary with balancing query specific parameters, the key represents the name and the value represents the value of the parameter
 """
 function base_query_balancing3(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
-    periodStart = mappings.DateTimeTranslator(periodStart)
-    periodEnd = mappings.DateTimeTranslator(periodEnd)
     acquiring_Domain = mappings.lookup_area(acquiring_Domain)
     connecting_Domain = mappings.lookup_area(connecting_Domain)
+
+    periodStart = ZonedDateTime(periodStart, acquiring_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, acquiring_Domain.tz)
+
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
 
     base_param = Dict{String, String}("acquiring_Domain" => acquiring_Domain.value, "connecting_Domain" => connecting_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
     param = merge(param, base_param)
     
     response = base_query(param, key)
-    return response
+    return response, acquiring_Domain.tz
 end
 
 """
@@ -1272,8 +1302,8 @@ function query_current_balancing_state(area_Domain::Union{mappings.Area, String}
 
     param = Dict{String, String}("documentType" => "A86", "businessType" => "B33")
 
-    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1299,8 +1329,8 @@ function query_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, 
 
     param = Dict{String, String}("documentType" => "A37", "processType" => processType)
 
-    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1310,10 +1340,10 @@ Constructs the HTTP request for the data about the aggregated balancing energy b
 Returns the received HTTP response.
 
 # Arguments
-- `processType::String`:  identifies the type of processing to be carried out on the information
 - `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
 - `periodStart::DateTime`: Start date and time of the needed data
 - `periodEnd::DateTime`: End date and time of the needed data 
+- `processType::String`:  identifies the type of processing to be carried out on the information
 
 ! One year range limit applies !
 """
@@ -1326,8 +1356,8 @@ function query_aggregated_balancing_energy_bids(area_Domain::Union{mappings.Area
 
     param = Dict{String, String}("documentType" => "A24", "processType" => processType)
 
-    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1355,8 +1385,8 @@ function query_procured_balancing_capacity(area_Domain::Union{mappings.Area, Str
         param["type_MarketAgreement.Type"] = type_MarketAgreementType
     end
 
-    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
     
 """
@@ -1374,14 +1404,18 @@ Returns the received HTTP response.
 
 """
 function query_crossZonal_balancing_capacity(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    acquiring_Domain = mappings.lookup_area(acquiring_Domain)
+
+    periodStart = ZonedDateTime(periodStart, acquiring_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, acquiring_Domain.tz)
+
     periodStart = mappings.DateTimeTranslator(periodStart)
     periodEnd = mappings.DateTimeTranslator(periodEnd)
-    acquiring_Domain = mappings.lookup_area(acquiring_Domain)
 
     param = Dict{String, String}("documentType" => "A38", "processType" => "A46", "acquiring_Domain" => acquiring_Domain.value, "connecting_Domain" => connecting_Domain, "periodStart" => periodStart, "periodEnd" => periodEnd) 
 
     response = base_query(param, key)
-    return response
+    return response, acquiring_Domain.tz
 end
 
 """
@@ -1425,8 +1459,8 @@ function query_volumes_and_prices_contracted_reserves(type_MarketAgreementType::
         param["offset"] = string(offset)
     end
 
-    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1474,8 +1508,8 @@ function query_volumes_contracted_reserves(type_MarketAgreementType::String, con
         param["offset"] = string(offset)
     end
 
-    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1522,8 +1556,8 @@ function query_prices_contracted_reserves(type_MarketAgreementType::String, cont
         param["offset"] = string(offset)
     end
 
-    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1561,8 +1595,8 @@ function query_accepted_aggregated_offers(controlArea_Domain::Union{mappings.Are
         param["psrType"] = psrType
     end
 
-    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1600,8 +1634,8 @@ function query_activated_balancing_energy(controlArea_Domain::Union{mappings.Are
         param["psrType"] = psrType
     end
 
-    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1639,8 +1673,8 @@ function query_prices_activated_balancing_energy(controlArea_Domain::Union{mappi
         param["psrType"] = psrType
     end
 
-    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1662,8 +1696,8 @@ function query_imbalance_prices(controlArea_Domain::Union{mappings.Area, String}
 
     param = Dict{String, String}("documentType" => "A85") 
 
-    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1685,8 +1719,8 @@ function query_total_imbalance_volumes(controlArea_Domain::Union{mappings.Area, 
     
     param = Dict{String, String}("documentType" => "A86") 
 
-    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1708,8 +1742,8 @@ function query_financial_expenses(controlArea_Domain::Union{mappings.Area, Strin
     
     param = Dict{String, String}("documentType" => "A87") 
 
-    response = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1732,8 +1766,8 @@ function query_crossBorder_balancing(acquiring_Domain::Union{mappings.Area, Stri
     
     param = Dict{String, String}("documentType" => "A88") 
 
-    response = base_query_balancing3(acquiring_Domain, connecting_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing3(acquiring_Domain, connecting_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1754,8 +1788,8 @@ function query_FCR_total_capacity(area_Domain::Union{mappings.Area, String}, per
     
     param = Dict{String, String}("documentType" => "A26", "businessType" => "A25") 
 
-    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1776,8 +1810,8 @@ function query_share_capacity_FCR(area_Domain::Union{mappings.Area, String}, per
 
     param = Dict{String, String}("documentType" => "A26", "businessType" => "C23") 
 
-    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1798,8 +1832,8 @@ function query_contracted_reserve_capacity_FCR(area_Domain::Union{mappings.Area,
 
     param = Dict{String, String}("documentType" => "A26", "businessType" => "B95") 
 
-    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1820,8 +1854,8 @@ function query_FRR_actual_capacity(area_Domain::Union{mappings.Area, String}, pe
 
     param = Dict{String, String}("documentType" => "A26", "processType" => "A56", "businessType" => "C24") 
 
-    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1842,8 +1876,8 @@ function query_RR_actual_capacity(area_Domain::Union{mappings.Area, String}, per
 
     param = Dict{String, String}("documentType" => "A26", "processType" => "A46", "businessType" => "C24") 
 
-    response = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing1(area_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -1870,8 +1904,8 @@ function query_sharing_of_reserves(processType::String, acquiring_Domain::Union{
 
     param = Dict{String, String}("documentType" => "A26", "processType" => processType, "businessType" => "C22") 
 
-    response = base_query_balancing3(acquiring_Domain, connecting_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_balancing3(acquiring_Domain, connecting_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 function query_balancing_border_capacity_limitations()
@@ -1903,15 +1937,19 @@ Use when area_Domain is needed in the request!
 - `param::Dict`: Dictionary with outages query specific parameters, the key represents the name and the value represents the value of the parameter
 """
 function base_query_outages(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
+    biddingZone_Domain = mappings.lookup_area(biddingZone_Domain)
+
+    periodStart = ZonedDateTime(periodStart, biddingZone_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, biddingZone_Domain.tz)
+
     periodStart = mappings.DateTimeTranslator(periodStart)
     periodEnd = mappings.DateTimeTranslator(periodEnd)
-    biddingZone_Domain = mappings.lookup_area(biddingZone_Domain)
 
     base_param = Dict{String, String}("biddingZone_Domain" => biddingZone_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
     param = merge(param, base_param)
     
     response = base_query(param, key)
-    return response
+    return response, biddingZone_Domain.tz
 end
 
 """
@@ -1942,8 +1980,8 @@ function query_unavailability_consumption_units(biddingZone_Domain::Union{mappin
         param["businessType"] = businessType
     end
 
-    response = base_query_outages(biddingZone_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_outages(biddingZone_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -2005,8 +2043,8 @@ function query_unavailability_generation_units(biddingZone_Domain::Union{mapping
         param["offset"] = string(offset)
     end
 
-    response = base_query_outages(biddingZone_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_outages(biddingZone_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -2068,8 +2106,8 @@ function query_unavailability_production_units(biddingZone_Domain::Union{mapping
         param["offset"] = string(offset)
     end
 
-    response = base_query_outages(biddingZone_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_outages(biddingZone_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -2121,8 +2159,8 @@ function query_unavailability_offshore_grid(biddingZone_Domain::Union{mappings.A
         param["offset"] = string(offset)
     end
 
-    response = base_query_outages(biddingZone_Domain, periodStart, periodEnd, param)
-    return response
+    response, tz = base_query_outages(biddingZone_Domain, periodStart, periodEnd, param)
+    return response, tz
 end
 
 """
@@ -2162,10 +2200,14 @@ function query_unavailability_transmission_infrastructure(in_Domain::Union{mappi
         throw(DomainError(offset, "Incorrect value for offset, choose a value between 0 en 4800"))
     end
 
-    periodStart = mappings.DateTimeTranslator(periodStart)
-    periodEnd = mappings.DateTimeTranslator(periodEnd)
     in_Domain = mappings.lookup_area(in_Domain)
     out_Domain = mappings.lookup_area(out_Domain)
+
+    periodStart = ZonedDateTime(periodStart, in_Domain.tz)
+    periodEnd = ZonedDateTime(periodEnd, in_Domain.tz)
+    
+    periodStart = mappings.DateTimeTranslator(periodStart)
+    periodEnd = mappings.DateTimeTranslator(periodEnd)
 
     param = Dict{String, String}("documentType" => "A78", "in_Domain" => in_Domain.value, "out_Domain" => out_Domain.value, "periodStart" => periodStart, "periodEnd" => periodEnd)
     
@@ -2188,7 +2230,7 @@ function query_unavailability_transmission_infrastructure(in_Domain::Union{mappi
     end
 
     response = base_query(param, key)
-    return response
+    return response, in_Domain.tz
 end
 
 function query_fallBacks()

@@ -14,4 +14,15 @@ RESOLUTION = Dict{String, Dates.Period}("P1Y" => Year(1),
                                         "PT1S" => Second(1)
                                         )
 
+FLOWDIRECTION = Dict{String, String}("A01" => "Up",
+                                     "A02" => "Down",
+                                     "A03" => "symmetric"
+                                     )
+
+PRICETYPE = Dict{String, String}("A04" => "Excess balance",
+                                 "A05" => "Insufficient balance",
+                                 "A06" => "Average bid price",
+                                 "A07" => "Single marginal bid price",
+                                 "A08" => "Cross border marginal price")
+
 end
