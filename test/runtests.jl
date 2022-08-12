@@ -1,6 +1,4 @@
-using entsoeAPI
-using Test
+# include("testsGET.jl")
+include("testsXML.jl")
 
-@testset "entsoeAPI.jl" begin
-    # Write your tests here.
-end
+

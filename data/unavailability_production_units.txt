@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>xk3Pn0g76A9Nc-QWwEnT5g</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-06T16:21:18Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2015-12-30T23:00Z</start>
+        <end>2015-12-31T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2015-12-30</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2015-12-31</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2015-12-30T23:00Z</start>
+                    <end>2015-12-31T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>165</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>jhuSNd5Sbc_LBE82OONehg</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-08T19:53:11Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2015-12-30T23:00Z</start>
+        <end>2015-12-31T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2015-12-30</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2015-12-31</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2015-12-30T23:00Z</start>
+                    <end>2015-12-31T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>314</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>LgC2XWSwuXt9gXQ-d_8scg</mRID>
+    <revisionNumber>3</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-06-11T16:21:57Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2015-12-31T23:00Z</start>
+        <end>2016-01-01T05:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+	    <docStatus>
+	        <value>A09</value>
+	    </docStatus>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2015-12-31</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-01</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>05:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EPR1----3</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EPR1_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Prunéřov 1</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">393</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2015-12-31T23:00Z</start>
+                    <end>2016-01-01T05:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>292.4</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+                <text>Maintenance</text>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>DXJb57MBGKxElLJ5KqEsxw</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T09:39:55Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2015-12-31T23:00Z</start>
+        <end>2016-01-01T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2015-12-31</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-01</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2015-12-31T23:00Z</start>
+                    <end>2016-01-01T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>163</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>G3ZjivrP906v4KFA__VWpw</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T13:32:16Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2015-12-31T23:00Z</start>
+        <end>2016-01-01T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2015-12-31</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-01</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2015-12-31T23:00Z</start>
+                    <end>2016-01-01T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>133</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>rw_6HWCwCYfuDckzhDK_SQ</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-06T16:26:31Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2015-12-31T23:00Z</start>
+        <end>2016-01-01T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2015-12-31</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-01</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2015-12-31T23:00Z</start>
+                    <end>2016-01-01T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>167</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>UGpndIMm_mk-oPyL3JRhRw</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-08T19:56:24Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2015-12-31T23:00Z</start>
+        <end>2016-01-01T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2015-12-31</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-01</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2015-12-31T23:00Z</start>
+                    <end>2016-01-01T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>247</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>dnaZFFSfFZugkwZm3LCadQ</mRID>
+    <revisionNumber>3</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-06-11T16:21:56Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-01T23:00Z</start>
+        <end>2016-01-02T05:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+	    <docStatus>
+	        <value>A09</value>
+	    </docStatus>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-01</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-02</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>05:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EPR1----3</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EPR1_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Prunéřov 1</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">393</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-01T23:00Z</start>
+                    <end>2016-01-02T05:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>292.4</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+                <text>Maintenance</text>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>cQgvRU32pnp1JEUUQvdWWQ</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T09:39:55Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-01T23:00Z</start>
+        <end>2016-01-02T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-01</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-02</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-01T23:00Z</start>
+                    <end>2016-01-02T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>163</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>Zq7YFakoAczceqeaiMih-g</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T13:32:17Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-01T23:00Z</start>
+        <end>2016-01-02T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-01</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-02</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-01T23:00Z</start>
+                    <end>2016-01-02T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>133</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>lbgeVhT3u1HNNtNlZoIJLg</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-06T16:26:26Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-01T23:00Z</start>
+        <end>2016-01-02T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-01</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-02</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-01T23:00Z</start>
+                    <end>2016-01-02T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>167</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>kM30gxDkYKc3V9TckvWrTg</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-08T19:56:20Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-01T23:00Z</start>
+        <end>2016-01-02T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-01</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-02</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-01T23:00Z</start>
+                    <end>2016-01-02T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>247</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>su1IpbHufnR1_cTc-2QnkA</mRID>
+    <revisionNumber>3</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-06-11T16:22:00Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-02T23:00Z</start>
+        <end>2016-01-03T05:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+	    <docStatus>
+	        <value>A09</value>
+	    </docStatus>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-02</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-03</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>05:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EPR1----3</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EPR1_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Prunéřov 1</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">393</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-02T23:00Z</start>
+                    <end>2016-01-03T05:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>292.4</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+                <text>Maintenance</text>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>6WjAEltRy0dQ7sWmcutWkg</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T09:39:55Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-02T23:00Z</start>
+        <end>2016-01-03T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-02</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-03</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-02T23:00Z</start>
+                    <end>2016-01-03T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>163</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>FT6vk_J0VdYEKoS4VeOxPA</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T13:32:15Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-02T23:00Z</start>
+        <end>2016-01-03T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-02</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-03</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-02T23:00Z</start>
+                    <end>2016-01-03T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>133</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>yUfwEZnJQDVEKF0WXrO-JQ</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-06T16:26:37Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-02T23:00Z</start>
+        <end>2016-01-03T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-02</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-03</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-02T23:00Z</start>
+                    <end>2016-01-03T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>167</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>Z4zBVXvTdzFXcuLOhzEcnQ</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-08T19:56:19Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-02T23:00Z</start>
+        <end>2016-01-03T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-02</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-03</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-02T23:00Z</start>
+                    <end>2016-01-03T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>247</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>xAjdp4xUsoBogw74bY2DQw</mRID>
+    <revisionNumber>3</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-06-11T16:21:52Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-03T23:00Z</start>
+        <end>2016-01-04T05:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+	    <docStatus>
+	        <value>A09</value>
+	    </docStatus>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-03</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-04</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>05:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EPR1----3</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EPR1_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Prunéřov 1</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">393</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-03T23:00Z</start>
+                    <end>2016-01-04T05:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>292.4</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+                <text>Maintenance</text>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>xOYDOxiU05F8kSqn8rSsTg</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T09:39:54Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-03T23:00Z</start>
+        <end>2016-01-04T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-03</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-04</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-03T23:00Z</start>
+                    <end>2016-01-04T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>163</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>hcUX17XVt391_QZbYHBXpQ</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T13:31:54Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-03T23:00Z</start>
+        <end>2016-01-04T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-03</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-04</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-03T23:00Z</start>
+                    <end>2016-01-04T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>263</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>UX0vvq4oJzpq_Lx4jXsB7Q</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-06T16:26:32Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-03T23:00Z</start>
+        <end>2016-01-04T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-03</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-04</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-03T23:00Z</start>
+                    <end>2016-01-04T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>167</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>MQz7KelTROtC_Nbse5dIVg</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-08T19:56:18Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-03T23:00Z</start>
+        <end>2016-01-04T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-03</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-04</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-03T23:00Z</start>
+                    <end>2016-01-04T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>302</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>Mjq3HetotYthUuQpJC5CMA</mRID>
+    <revisionNumber>5</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T19:52:47Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-04T21:00Z</start>
+        <end>2016-01-05T20:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-04</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>21:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-05</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>20:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EPR1----3</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EPR1_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Prunéřov 1</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">393</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-04T21:00Z</start>
+                    <end>2016-01-05T20:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>196.7</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B18</code>
+                <text>Outage</text>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>MAMIAyxOSfoStBdrIfua7w</mRID>
+    <revisionNumber>3</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-06-11T16:21:51Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-04T23:00Z</start>
+        <end>2016-01-05T05:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+	    <docStatus>
+	        <value>A09</value>
+	    </docStatus>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-04</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-05</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>05:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EPR1----3</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EPR1_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Prunéřov 1</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">393</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-04T23:00Z</start>
+                    <end>2016-01-05T05:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>292.4</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+                <text>Maintenance</text>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>bLe01DS9AcKMAc7AnXj0iQ</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T09:39:54Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-04T23:00Z</start>
+        <end>2016-01-05T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-04</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-05</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-04T23:00Z</start>
+                    <end>2016-01-05T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>163</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>DyLEAwCZbDkcozXP2re0jQ</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T13:31:57Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-04T23:00Z</start>
+        <end>2016-01-05T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-04</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-05</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-04T23:00Z</start>
+                    <end>2016-01-05T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>263</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>mowIxoYALGQXCItgBFO1RQ</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-06T16:26:27Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-04T23:00Z</start>
+        <end>2016-01-05T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-04</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-05</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EKOM----C</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EKOM_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Komořany</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">192</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-04T23:00Z</start>
+                    <end>2016-01-05T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>167</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>cVxLg2lTEUjf1NNdVAO5EA</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2015-01-08T19:56:20Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-04T23:00Z</start>
+        <end>2016-01-05T23:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-04</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>23:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-05</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>23:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EOPA----8</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EOPA_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Opatovice</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">348</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-04T23:00Z</start>
+                    <end>2016-01-05T23:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>302</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B19</code>
+    </Reason>
+</Unavailability_MarketDocument><?xml version="1.0" encoding="UTF-8"?>
+<Unavailability_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-6:outagedocument:3:0" >
+    <mRID>r9-5cAzODJjC4ROxdFryDQ</mRID>
+    <revisionNumber>1</revisionNumber>
+    <type>A77</type>
+    <process.processType>A26</process.processType>
+    <createdDateTime>2016-01-05T19:52:47Z</createdDateTime>
+    <sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+    <sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+    <receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+    <receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+    <unavailability_Time_Period.timeInterval>
+        <start>2016-01-05T20:00Z</start>
+        <end>2016-01-05T22:00Z</end>
+    </unavailability_Time_Period.timeInterval>
+    <TimeSeries>
+        <mRID>1</mRID>
+            <businessType>A53</businessType>
+            <biddingZone_Domain.mRID codingScheme="A01">10YCZ-CEPS-----N</biddingZone_Domain.mRID>
+            <start_DateAndOrTime.date>2016-01-05</start_DateAndOrTime.date>
+            <start_DateAndOrTime.time>20:00:00Z</start_DateAndOrTime.time>
+            <end_DateAndOrTime.date>2016-01-05</end_DateAndOrTime.date>
+            <end_DateAndOrTime.time>22:00:00Z</end_DateAndOrTime.time>
+        <quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+        <curveType>A03</curveType>
+		    <production_RegisteredResource.mRID codingScheme="A01">27W-PU-EPR1----3</production_RegisteredResource.mRID>
+		        <production_RegisteredResource.name>EPR1_______</production_RegisteredResource.name>
+		        <production_RegisteredResource.location.name>Prunéřov 1</production_RegisteredResource.location.name>
+		        <production_RegisteredResource.pSRType.psrType>B02</production_RegisteredResource.pSRType.psrType>
+		    <production_RegisteredResource.pSRType.powerSystemResources.nominalP unit="MAW">393</production_RegisteredResource.pSRType.powerSystemResources.nominalP>
+            <Available_Period>
+                <timeInterval>
+                    <start>2016-01-05T20:00Z</start>
+                    <end>2016-01-05T22:00Z</end>
+                </timeInterval>
+                <resolution>PT1M</resolution>
+                    <Point>
+                        <position>1</position>
+                        <quantity>182.3</quantity>
+                    </Point>
+            </Available_Period>
+    </TimeSeries>
+    <Reason>
+        <code>B20</code>
+                <text>Outage</text>
+    </Reason>
+</Unavailability_MarketDocument>

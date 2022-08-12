@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TransmissionNetwork_MarketDocument  xmlns="urn:iec62325.351:tc57wg16:451-6:transmissionnetworkdocument:3:0">
+	<mRID>a463c6944448406ca1042735aae71b61</mRID>
+	<revisionNumber>1</revisionNumber>
+	<type>A90</type>
+	<process.processType>A35</process.processType>
+	<createdDateTime>2022-08-10T08:29:50Z</createdDateTime>
+	<sender_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</sender_MarketParticipant.mRID>
+	<sender_MarketParticipant.marketRole.type>A32</sender_MarketParticipant.marketRole.type>
+	<receiver_MarketParticipant.mRID codingScheme="A01">10X1001A1001A450</receiver_MarketParticipant.mRID>
+	<receiver_MarketParticipant.marketRole.type>A33</receiver_MarketParticipant.marketRole.type>
+	<period.timeInterval>
+		<start>2018-12-31T23:00Z</start>
+		<end>2021-12-31T23:00Z</end>
+	</period.timeInterval>
+	<TimeSeries>
+		<mRID>1</mRID>
+		<businessType>B01</businessType>
+		<in_Domain.mRID codingScheme="A01">10YHU-MAVIR----U</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YRO-TEL------P</out_Domain.mRID>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+		<end_DateAndOrTime.date>2021-12-31</end_DateAndOrTime.date>
+		<Asset_RegisteredResource>
+			<mRID codingScheme="A01">30TORAD400NADAB7</mRID>
+			<pSRType.psrType>B21</pSRType.psrType>
+			<location.name>Oradea-Nadab</location.name>
+		</Asset_RegisteredResource>
+		<Period>
+			<timeInterval>
+				<start>2018-12-31T23:00Z</start>
+				<end>2021-12-31T23:00Z</end>
+			</timeInterval>
+			<resolution>P1Y</resolution>
+			<Point>
+				<position>1</position>
+				<quantity>100</quantity>
+			</Point>
+			<Point>
+				<position>2</position>
+				<quantity>100</quantity>
+			</Point>
+			<Point>
+				<position>3</position>
+				<quantity>100</quantity>
+			</Point>
+		</Period>
+	</TimeSeries>
+	<TimeSeries>
+		<mRID>2</mRID>
+		<businessType>B01</businessType>
+		<in_Domain.mRID codingScheme="A01">10YHU-MAVIR----U</in_Domain.mRID>
+		<out_Domain.mRID codingScheme="A01">10YRO-TEL------P</out_Domain.mRID>
+		<quantity_Measure_Unit.name>MAW</quantity_Measure_Unit.name>
+		<curveType>A01</curveType>
+		<end_DateAndOrTime.date>2021-12-31</end_DateAndOrTime.date>
+		<Asset_RegisteredResource>
+			<mRID codingScheme="A01">30TORAD400NADAB7</mRID>
+			<pSRType.psrType>B21</pSRType.psrType>
+			<location.name>Oradea-Nadab</location.name>
+		</Asset_RegisteredResource>
+		<Period>
+			<timeInterval>
+				<start>2019-12-31T23:00Z</start>
+				<end>2021-12-31T23:00Z</end>
+			</timeInterval>
+			<resolution>P1Y</resolution>
+			<Point>
+				<position>1</position>
+				<quantity>100</quantity>
+			</Point>
+			<Point>
+				<position>2</position>
+				<quantity>100</quantity>
+			</Point>
+		</Period>
+	</TimeSeries>
+</TransmissionNetwork_MarketDocument>
