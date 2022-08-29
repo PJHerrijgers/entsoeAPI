@@ -210,7 +210,7 @@ end
 """
     query_year_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
-Constructs the HTTP request for the data of the month ahaed total load forecast (article 6.1 E: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/load-domain/Data-view%20Total%20Load%20Forecast%20-%20Year%20Ahead.html). 
+Constructs the HTTP request for the data of the year ahaed total load forecast (article 6.1 E: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/load-domain/Data-view%20Total%20Load%20Forecast%20-%20Year%20Ahead.html). 
 Returns the received HTTP response.
 Minimum time interval in query response is one year!
 
@@ -729,7 +729,6 @@ function query_capacity_allocated_outside_EU(auctionType::String, contract_Marke
     return response, tz
 end
 
-
 ####################### network and congestion management functions ########################
 
 """
@@ -1163,16 +1162,16 @@ end
 #################### master data ###########################
 
 """
-query_aggregated_generation_per_type(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])
+    query_production_generation_units(biddingZone_Domain::Union{mappings.Area, String}, implementation_DateAndOrTime::DateTime[, psrType::String = ""])
 
 Constructs the HTTP request for the data about existing generation and production units on a certain day in a certain area.
 Returns the received HTTP response.
 Response contains commissioned production units for given day!
 
 # Arguments
-- `in_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
-- `periodStart::DateTime`: Start date and time of the needed data
-- `periodEnd::DateTime`: End date and time of the needed data 
+- `biddingZone_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
+- `implementation_DateAndOrTime::DateTime`: Date for which the data is needed
+- `psrType::String = ""`: The coded type of a power system resource. The classification for the asset. If not used all resources are included.
 
 ! One day range limit applies !
 """
@@ -1334,7 +1333,7 @@ function query_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, 
 end
 
 """
-query_aggregated_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
+    query_aggregated_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
 
 Constructs the HTTP request for the data about the aggregated balancing energy bids in a certain area (article GL EB 12.3 E: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Aggregated%20Bids.html).
 Returns the received HTTP response.
@@ -1401,7 +1400,6 @@ Returns the received HTTP response.
 - `periodStart::DateTime`: Start date and time of the needed data
 - `periodEnd::DateTime`: End date and time of the needed data 
 - `type_MarketAgreementType::String = ""`: Indicates the time horizon for which balancing capacity was procured
-
 """
 function query_crossZonal_balancing_capacity(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
     acquiring_Domain = mappings.lookup_area(acquiring_Domain)
@@ -1793,7 +1791,7 @@ function query_FCR_total_capacity(area_Domain::Union{mappings.Area, String}, per
 end
 
 """
-    query_FCR_total_capacity(area_Domain::Union{mappings.Area, String}, periodStart::Datetime, periodEnd::DateTime)
+    query_share_capacity_FCR(area_Domain::Union{mappings.Area, String}, periodStart::Datetime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about the share of FCR capacity in a certain area (article SO GL 187.2).
 Returns the received HTTP response.
@@ -1919,7 +1917,6 @@ end
 function query_netted_and_exchanged_volumes()
     # NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
 end
-
 
 ######################### Outages data ################################
 

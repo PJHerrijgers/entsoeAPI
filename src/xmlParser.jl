@@ -1,5 +1,5 @@
 """
-Parses xml file into FORMAT
+Parses xml file into dataframe or dictionary of dataframes
 """
 module xmlParser
 
@@ -9,6 +9,8 @@ using DataFrames
 using Dates
 using TimeZones
 using LightXML
+
+############# general functions ######################
 
 function prepare_file(xml)
     open("data/temp.xml", "w") do f
@@ -159,6 +161,8 @@ function base_parse_price(xml, tz)
     end
 end
 
+################## load functions ########################
+
 function parse_actual_total_load(xml, tz)
     root = prepare_file(xml)
 
@@ -256,6 +260,8 @@ function parse_year_ahead_margin(xml, tz)
         return df
     end
 end
+
+################ transmission functions #######################
 
 function parse_transmission(xml, tz)
     root = prepare_file(xml)
@@ -463,6 +469,8 @@ function parse_capacity_allocated_outside_EU(xml, tz)
     return parse_transmission(xml, tz)
 end
 
+####################### network and congestion management functions ########################
+
 function parse_expansion_and_dismantling(xml, tz)
     root = prepare_file(xml)
 
@@ -470,7 +478,7 @@ function parse_expansion_and_dismantling(xml, tz)
     if a != true
         return b
     else
-        df = DataFrame("estimated completion date" => Date[], "new NTC" => DataFrame[], "Transmission assets" => DataFrame[])
+        df = DataFrame("estimated completion date" => Date[], "new NTC" => DataFrame[], "transmission assets" => DataFrame[])
 
         for child in child_elements(root)
             if name(child) == "TimeSeries"
@@ -633,6 +641,8 @@ function parse_congestion_costs(xml, tz)
         return df
     end
 end
+
+##################### generation functions #######################
 
 function parse_installed_generation_capacity_aggregated(xml, tz)
     root = prepare_file(xml)
@@ -844,8 +854,14 @@ function parse_current_generation_forecasts_wind_solar(xml, tz)
     return parse_generation_forecasts_wind_solar(xml, tz)
 end
 
-function parse_day_intraday_generation_forecasts_wind_solar(xml, tz)
+function parse_intraday_generation_forecasts_wind_solar(xml, tz)
     return parse_generation_forecasts_wind_solar(xml, tz)
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_actual_generation_per_generation_unit(xml, tz)
+    return DataFrame()
 end
 
 function parse_aggregated_generation_per_type(xml, tz)
@@ -948,6 +964,16 @@ function parse_aggregated_filling_rate(xml, tz)
     end
 end
 
+#################### master data ###########################
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_production_generation_units(xml, tz)
+    return DataFrame()
+end
+
+#################### balancing domain data ####################
+
 function parse_current_balancing_state(xml, tz)
     root = prepare_file(xml)
 
@@ -987,6 +1013,12 @@ function parse_current_balancing_state(xml, tz)
         rename!(df, "open loop ace" => "open loop ace ["*unit*"]")
         return df
     end
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_balancing_energy_bids(xml, tz)
+    return DataFrame()
 end
 
 function parse_aggregated_balancing_energy_bids(xml, tz)
@@ -1053,6 +1085,24 @@ function parse_aggregated_balancing_energy_bids(xml, tz)
         rename!(df, "offered" => "offered ["*unit*"]", "activated" => "activated ["*unit*"]", "unavailable" => "unavailable ["*unit*"]")
         return df
     end
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_procured_balancing_capcity(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_crossZonal_balancing_capacity(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_volumes_and_prices_contracted_reserves(xml, tz)
+    return DataFrame()
 end
 
 function parse_volumes_contracted_reserves(xml, tz)
@@ -1301,6 +1351,12 @@ function parse_prices_activated_balancing_energy(xml, tz)
     end
 end
 
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_imbalance_prices(xml, tz)
+    return DataFrame()
+end
+
 function parse_total_imbalance_volumes(xml, tz)
     root = prepare_file(xml)
 
@@ -1403,6 +1459,8 @@ function parse_financial_expenses(xml, tz)
     end
 end
 
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
 function parse_crossBorder_balancing(xml, tz)
     root = prepare_file(xml)
 
@@ -1459,6 +1517,98 @@ function parse_crossBorder_balancing(xml, tz)
         rename!(df, "income" => "income ["*unit*"]", "expenses" => "expenses ["*unit*"]")
         return df
     end
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_FCR_total_capacity(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_share_capacity_FCR(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parser_contracted_reserver_capacity_FCR(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_FRR_actual_capacity(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_RR_actual_capacity(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_sharing_of_reserves(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_balancing_border_capacity_limitation(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_permanent_allocation_limitations_HVDC(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_netted_and_exchanged_volumes(xml, tz)
+    return DataFrame()
+end
+
+######################### Outages data ################################
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_unavailability_consumption_units(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_unavailability_generation_units(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_unavailability_production_units(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_unavailability_offshore_grid(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_unavailability_transmission_infrastructure(xml, tz)
+    return DataFrame()
+end
+
+############ STILL NEEDS TO BE IMPLEMENTED ################
+
+function parse_fallBacks(xml, tz)
+    return DataFrame()
 end
 
 end

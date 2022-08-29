@@ -3,6 +3,7 @@ include("../src/xmlMappings.jl")
 using .xmlParser
 using .xmlMappings
 using DataFrames
+using TimeZones
 
 #= 
 open("data/actual_total_load.txt", "r") do f
@@ -52,13 +53,13 @@ open("data/offered_capacity.txt", "r") do f
     df = xmlParser.parse_offered_capacity(file, TimeZone("Europe/Bratislava"))
     print(df)
 end
-
+=#
 open("data/flowbased.txt", "r") do f
     file = read(f)
     df = xmlParser.parse_flowbased(file, TimeZone("Europe/Brussels"))
     print(df)
 end
-
+#=
 open("data/intraday_transfer_limits.txt", "r") do f
     file = read(f)
     df = xmlParser.parse_intraday_transfer_limits(file, TimeZone("Europe/Paris"))
