@@ -1,5 +1,4 @@
 using Documenter
-using entsoeAPI
 include("../src/entsoeAPI.jl")
 
 makedocs(
