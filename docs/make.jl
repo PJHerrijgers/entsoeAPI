@@ -1,8 +1,9 @@
 using Documenter
+using entsoeAPI
 include("../src/entsoeAPI.jl")
 
 makedocs(
-    modules     = [PowerModelsDistributionStateEstimation],
+    modules     = [entsoeAPI],
     format      = Documenter.HTML(mathengine = Documenter.MathJax()),
     sitename    = "entsoeAPI",
     authors     = "Pieter-Jan Herrijgers",

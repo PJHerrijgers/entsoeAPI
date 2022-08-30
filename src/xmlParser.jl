@@ -457,7 +457,7 @@ function parse_total_commercial_schedules(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 
-function parse_day_ahead_commercial_schedules(xml::Vector{UInt8}, tz::Timezone)
+function parse_day_ahead_commercial_schedules(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 

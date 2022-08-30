@@ -7,10 +7,12 @@ module entsoeAPI
 
 include("GETconstructor.jl")
 include("xmlParser.jl")
+include("mappings.jl")
 using .GETconstructor
 using .xmlParser
 using DataFrames
 using Dates
+using TimeZones
 
 ################## key set-up ########################
 
