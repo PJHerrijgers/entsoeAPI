@@ -91,7 +91,7 @@ end
     base_query_load(param::Dict, outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Covers the parameters which are the same for all the load queries: outBiddingZone_Domain, periodStart and periodEnd are added to the param dictionary.
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 
 # Arugments
 - `param::Dict`: Dictionary with load query specific parameters, the key represents the name and the value represents the value of the parameter
@@ -119,7 +119,7 @@ end
     query_actual_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for actual total load data (article 6.1 A: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/load-domain/Data-view%20Total%20Load%20-%20Day%20Ahead%20-%20Actual.html). 
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one MTU period!
 
 # Arguments
@@ -142,7 +142,7 @@ end
     query_day_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the day ahaed total load forecast (article 6.1 B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/load-domain/Data-view%20Total%20Load%20-%20Day%20Ahead%20-%20Actual.html). 
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one day!
 
 # Arguments
@@ -165,7 +165,7 @@ end
     query_week_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the week ahaed total load forecast (article 6.1 C: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/load-domain/Data-view%20Total%20Load%20Forecast%20-%20Week%20Ahead.html). 
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one week!
 
 # Arguments
@@ -188,7 +188,7 @@ end
     query_month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the month ahaed total load forecast (article 6.1 D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/load-domain/Data-view%20Total%20Load%20Forecast%20-%20Month%20Ahead.html). 
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one month!
 
 # Arguments
@@ -211,7 +211,7 @@ end
     query_year_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the year ahaed total load forecast (article 6.1 E: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/load-domain/Data-view%20Total%20Load%20Forecast%20-%20Year%20Ahead.html). 
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one year!
 
 # Arguments
@@ -234,7 +234,7 @@ end
     query_year_ahead_margin(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the year ahead forecast margin (article 8.1: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/load-domain/Data-view%20Forecast%20Margin%20-%20Year%20Ahead.html). 
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one year!
 
 # Arguments
@@ -294,7 +294,7 @@ end =#
     base_query_transmission_and_network_congestion(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
 
 Covers the parameters which are the same for all the transmission and network congestion queries: in_Domain, out_Domain, periodStart and periodEnd are added to the param dictionary.
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 
 # Arugments
 - `in_Domain::Union{mappings.Area, String}`: The area where energy is going, can be represented as an Area object or a string with country code or direct code 
@@ -324,7 +324,7 @@ end
     query_forecasted_capacity(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the forecasted capacity over a certain border (article 11.1 A: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Forecasted%20Transfer%20Capacities%20-%20Day%20Ahead.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from day to year, depending on selected Contract_MarketAgreementType!
 
 # Arguments
@@ -353,7 +353,7 @@ end
     query_offered_capacity(auctionType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = "", update_DateAndOrTime::DateTime = DateTime(0), classificationSequence_AttributeInstanceComponentPosition::String = ""])
 
 Constructs the HTTP request for the data of the offered capacity over a certain border (article 11.1 A: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission/Data-view%20Explicit%20Allocations%20-%20Intraday.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from day to year, depending on selected Contract_MarketAgreementType!
 
 # Arguments
@@ -401,7 +401,7 @@ end
     query_flowbased(processType::String, domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the flow-based parameters of a certain area (article 11.1 B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Day%20Ahead%20Flow%20Based%20Allocations.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one day for day-ahead allocations!
 
 # Arguments
@@ -427,7 +427,7 @@ end
     query_intraday_transfer_limits(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the intraday transfer limits over a certain border (article 11.3: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Cross%20Border%20Capacity%20of%20DC%20Links%20-%20Intraday%20Transfer%20Limits.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from part of day up to one day!
 
 # Arguments
@@ -451,7 +451,7 @@ end
     query_explicit_allocation_information_capacity(businessType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = "", classificationSequence_AttributeInstanceComponentPosition::String = ""])
 
 Constructs the HTTP request for the data of the capacity explicitly allocated to the market over a certain border and its revenue (article 12.1 A: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission/Data-view%20Explicit%20Allocations%20-%20Day%20ahead.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from part of day to year, depending on selected Contract_MarketAgreementType!
 
 # Arguments
@@ -494,7 +494,7 @@ end
     query_explicit_allocation_information_revenue(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the revenue of the capacity explicitly allocated to the market over a certain border (article 12.1 A: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Explicit%20Allocations%20Revenue.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from part of day to year, depending on selected Contract_MarketAgreementType!
 
 # Arguments
@@ -521,7 +521,7 @@ end
     query_total_capacity_nominated(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the total nominated capacity over a certain border (article 12.1 B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Total%20Nominated%20Capacity.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one day!
 
 # Arguments
@@ -545,7 +545,7 @@ end
     query_total_capacity_already_allocated(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = ""])
 
 Constructs the HTTP request for the data of the total capacity already allocated over a certain border (article 12.1 C: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission/Data-view%20Explicit%20Allocations%20-%20AAC.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from part of day to year, depending on selected Contract_MarketAgreement.Type!
 
 # Arguments
@@ -580,7 +580,7 @@ end
     query_day_ahead_prices(domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the day ahead prices in a certain area (article 12.1 D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Day-ahead%20prices.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one day!
 
 # Arguments
@@ -603,7 +603,7 @@ end
     query_implicit_auction_net_positions_and_congestion_income(businessType::String, contract_MarketAgreementType::String, domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the net positions and congestion income of implictly allocated capacity over a certain border (article 12.1 E: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Intraday%20Flow%20Based%20Implicit%20Allocations%20-%20Congestion%20Income.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one day!
 
 # Arguments
@@ -637,7 +637,7 @@ end
     query_total_commercial_schedules(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the total or day ahead commercial schedules over a certain border (article 12.1 F: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Scheduled%20Commercial%20Exchanges%20-%20Day%20Ahead.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one day!
 
 # Arguments
@@ -666,7 +666,7 @@ end
     query_phyiscal_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the physical flows over a certain border (article 12.1 G: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Cross%20Border%20Physical%20Flows.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is MTU period!
 
 # Arguments
@@ -690,7 +690,7 @@ end
     query_capacity_allocated_outside_EU(auctionType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = "", classificationSequence_AttributeInstanceComponentPosition::String = ""])
 
 Constructs the HTTP request for the data of the capacity allocated outside the EU over a certain border (article 12.1 H: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission/Data-view%20Transfer%20Capacities%20Allocated%20with%20Third%20Countries.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from part of day to year, depending on selected Contract_MarketAgreementType!
 
 # Arguments
@@ -735,7 +735,7 @@ end
     query_expansion_and_dismantling(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", docStatus::String = ""])
 
 Constructs the HTTP request for the data about expansion and dismantling projects over a certain border (article 9.1: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission/Data-view%20Expansion%20and%20dismantling%20projects.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Time interval in query response depends on duration of matching projects!
 
 # Arguments
@@ -773,7 +773,7 @@ end
     query_redispatching(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = ""])
 
 Constructs the HTTP request for the data about redispatching over a certain border (article 13.1 A: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/congestion-management/Data-view%20Redispatching.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Time interval in query response depends on duration of matching redispatches!
 
 # Arguments
@@ -804,7 +804,7 @@ end
     query_countertrading(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about countertrading over a certain border (article 13.1 B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/congestion-management/Data-view%20Countertrading.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Time interval in query response depends on duration of matching counter trades!
 
 # Arguments
@@ -827,7 +827,7 @@ end
     query_congestion_costs(domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = ""])
 
 Constructs the HTTP request for the data about the congestion management costs over a certain border (article 13.1 C: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/congestion-management/Data-view%20Costs.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one month!
 
 # Arguments
@@ -859,7 +859,7 @@ end
     base_query_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
 
 Covers the parameters which are the same for all the generation queries: in_Domain, periodStart and periodEnd are added to the param dictionary.
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 
 # Arugments
 - `in_Domain::Union{mappings.Area, String}`: Area for which the generation data is needed, can be represented as an Area object or a string with country code or direct code 
@@ -887,7 +887,7 @@ end
     query_installed_generation_capacity_aggregated(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])
 
 Constructs the HTTP request for the data about the aggregated installed generation capacity in a certain area (article 14.1 A: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Installed%20Capacity%20per%20Production%20Type.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one year!
 
 # Arguments
@@ -919,7 +919,7 @@ end
     query_installed_generation_capacity_per_unit(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])
 
 Constructs the HTTP request for the data about the installed generation capacity per unit in a certain area (article 14.1 B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Installed%20Capacity%20per%20Production%20Unit.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one year!
 
 # Arguments
@@ -951,7 +951,7 @@ end
     query_day_ahead_aggregated_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about the day ahead forecast of aggregated generation in a certain area (article 14.1 C: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Generation%20Forecast%20-%20Day%20Ahead.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one day!
 
 # Arguments
@@ -974,7 +974,7 @@ end
     query_day_ahead_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])
 
 Constructs the HTTP request for the data about the day ahead forecast of wind and solar generation in a certain area (article 14.1 D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Generation%20Forecasts%20-%20Day%20Ahead%20for%20Wind%20and%20Solar.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one day!
 
 # Arguments
@@ -1006,7 +1006,7 @@ end
     query_current_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])
 
 Constructs the HTTP request for the data about the current forecast of wind and solar generation in a certain area (article 14.1 D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Generation%20Forecast%20-%20Day%20Ahead.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one day!
 
 # Arguments
@@ -1038,7 +1038,7 @@ end
     query_intraday_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])
 
 Constructs the HTTP request for the data about the intraday forecast of wind and solar generation in a certain area (article 14.1 D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Generation%20Forecast%20-%20Day%20Ahead.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one MTU period!
 
 # Arguments
@@ -1071,7 +1071,7 @@ end
     query_actual_generation_per_generation_unit(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = "", registeredResource::String = ""])
 
 Constructs the HTTP request for the data about the actual generation per generation unit in a certain area (article 16.1 A: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Actual%20Generation%20per%20Generation%20Unit.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one MTU period!
 
 # Arguments
@@ -1108,7 +1108,7 @@ end
     query_aggregated_generation_per_type(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])
 
 Constructs the HTTP request for the data about the actual aggregated generation per plant type in a certain area (article 16.1 B&C: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Actual%20Generation%20per%20Production%20Unit.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one MTU period!
 
 # Arguments
@@ -1140,7 +1140,7 @@ end
     query_aggregated_filling_rate(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about the aggregated filling rate of water reservoirs and hydro storage plants in a certain area (article 16.1 D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/generation/Data-view%20Water%20Reservoirs%20and%20Hydro%20Storage%20Plants.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time inteval in query response is one week!
 
 # Arguments
@@ -1165,7 +1165,7 @@ end
     query_production_generation_units(biddingZone_Domain::Union{mappings.Area, String}, implementation_DateAndOrTime::DateTime[, psrType::String = ""])
 
 Constructs the HTTP request for the data about existing generation and production units on a certain day in a certain area.
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Response contains commissioned production units for given day!
 
 # Arguments
@@ -1198,7 +1198,7 @@ end
     base_query_balancing1(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
 
 Covers the parameters which are the same for some of the balancing queries: area_Domain, periodStart and periodEnd are added to the param dictionary.
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Use when area_Domain is needed in the request!
 
 # Arugments
@@ -1227,7 +1227,7 @@ end
     base_query_balancing2(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
 
 Covers the parameters which are the same for some of the balancing queries: controlArea_Domain, periodStart and periodEnd are added to the param dictionary.
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Use when controlArea_Domain is needed in the request!
 
 # Arugments
@@ -1256,7 +1256,7 @@ end
     base_query_balancing3(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, param::Dict)
 
 Covers the parameters which are the same for some of the balancing queries: acquiring_Domain, connecting_Domain, periodStart and periodEnd are added to the param dictionary.
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Use when acquiring_Domain and connecting_Domain are needed in the request!
 
 # Arugments
@@ -1287,7 +1287,7 @@ end
     query_current_balancing_state(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about the current balancing state in a certain area (article GL EB 12.3 A).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 
 # Arguments
 - `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
@@ -1309,7 +1309,7 @@ end
     query_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
 
 Constructs the HTTP request for the data about the balancing energy bids in a certain area (article GL EB 12.3 B-D).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 
 # Arguments
 - `processType::String`:  identifies the type of processing to be carried out on the information
@@ -1336,7 +1336,7 @@ end
     query_aggregated_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
 
 Constructs the HTTP request for the data about the aggregated balancing energy bids in a certain area (article GL EB 12.3 E: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Aggregated%20Bids.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 
 # Arguments
 - `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
@@ -1363,7 +1363,7 @@ end
     query_procured_balancing_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, type_MarketAgreementType::String = ""])
 
 Constructs the HTTP request for the data about the produced balancing capacity in a certain area (article GL EB 12.3 F: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Procured%20Capacity.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 
 # Arguments
 - `area_Domain::Union{mappings.Area, String}`: The area for which the data is needed, can be represented as an Area object or a string with country code or direct code
@@ -1392,7 +1392,7 @@ end
     query_crossZonal_balancing_capacity(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about the use of the allocated cross-zonal balancing capacity over a certain border (article GL EB 12.3 H&I: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Use%20of%20allocated%20cross-zonal%20balancing%20capacity.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 
 # Arguments
 - `acquiring_Domain::Union{mappings.Area, String}`: 
@@ -1420,7 +1420,7 @@ end
     query_volumes_and_prices_contracted_reserves(type_MarketAgreementType::String, processType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = "", offset::Int = 0])
 
 Constructs the HTTP request for the data about the prices and the volumes of the contracted reserves in a certain area (article 17.1 B&C).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from part of day to year, depending on selected Type_MarketAgreement.Type!
 
 # Arguments
@@ -1465,7 +1465,7 @@ end
     query_volumes_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = "", offset::Int = 0])
 
 Constructs the HTTP request for the data about the volumes of the contracted reserves in a certain area (article 17.1 B: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Volumes%20of%20Contracted%20Balancing%20Reserves.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from part of day to year, depending on selected Type_MarketAgreement.Type!
 
 # Arguments
@@ -1514,7 +1514,7 @@ end
     query_prices_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = "", offset::Int = 0])
 
 Constructs the HTTP request for the data about the prices of the contracted reserves in a certain area (article 17.1 C: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Price%20of%20Reserved%20Balancing%20Reserves.html).
-Returns the received HTTP response.
+    Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response ranges from part of day to year, depending on selected Type_MarketAgreement.Type!
 
 # Arguments
@@ -1562,7 +1562,7 @@ end
     query_accepted_aggregated_offers(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])
 
 Constructs the HTTP request for the data about the accepted aggregated offers in a certain area (article 17.1 D: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Accepted%20Offers%20and%20Activated%20Balancing%20Reserves.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one BTU period!
 
 # Arguments
@@ -1601,7 +1601,7 @@ end
     query_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])
 
 Constructs the HTTP request for the data about the activated balancing energy in a certain area (article 17.1 E: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Accepted%20Offers%20and%20Activated%20Balancing%20Reserves.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one BTU period!
 
 # Arguments
@@ -1640,7 +1640,7 @@ end
     query_prices_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])
 
 Constructs the HTTP request for the data about the prices of the activated balancing energy in a certain area (article 17.1 F: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Accepted%20Offers%20and%20Activated%20Balancing%20Reserves.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one BTU period!
 
 # Arguments
@@ -1679,7 +1679,7 @@ end
     query_imbalance_prices(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about the imbalance prices in a certain area (article 17.1 G: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Imbalance.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one BTU period!
 
 # Arguments
@@ -1702,7 +1702,7 @@ end
     query_total_imbalance_volumes(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about the imbalance volumes in a certain area (article 17.1 H: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Imbalance.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one BTU period!
 
 # Arguments
@@ -1725,7 +1725,7 @@ end
     query_financial_expenses(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about the financial expenses and income for balancing in a certain area (article 17.1 I: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Financial%20Expenses%20and%20Income.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one month!
 
 # Arguments
@@ -1748,7 +1748,7 @@ end
     query_crossBorder_balancing(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data about the cross-border balancing over a certain border (article 17.1 J: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/balancing/Data-view%20Cross-Border%20Balancing.html).
-Returns the received HTTP response.
+Returns the received HTTP response, together with the used timezone.
 Minimum time interval in query response is one BTU period!
 
 # Arguments

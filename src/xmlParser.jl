@@ -12,7 +12,7 @@ using LightXML
 
 ############# general functions ######################
 
-function prepare_file(xml)
+function prepare_file(xml::Vector{UInt8})
     open("data/temp.xml", "w") do f
         write(f, xml)
     end
@@ -21,7 +21,7 @@ function prepare_file(xml)
     return root
 end
 
-function check_if_file_contains_data(root)
+function check_if_file_contains_data(root::XMLElement)
     reason = find_element(root, "Reason")
     if reason !== nothing
         if content(find_element(reason, "code")) == "999"
@@ -35,7 +35,7 @@ function check_if_file_contains_data(root)
     return true, true
 end
 
-function start_end_resolution(period, tz)
+function start_end_resolution(period::XMLElement, tz::TimeZone)
     timeInterval = find_element(period, "timeInterval")
             
     resolution = content(find_element(period, "resolution"))
@@ -51,7 +51,7 @@ function start_end_resolution(period, tz)
     return start, ennd, resolution
 end
 
-function base_parse_amount(df, root, tz)
+function base_parse_amount(df::DataFrame, root::XMLElement, tz::TimeZone)
     unit = ""
 
     for child in child_elements(root)
@@ -74,7 +74,7 @@ function base_parse_amount(df, root, tz)
     return df, unit
 end
 
-function base_parse_min_max_load(xml, tz)
+function base_parse_min_max_load(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -119,7 +119,7 @@ function base_parse_min_max_load(xml, tz)
     end
 end
 
-function base_parse_price(xml, tz)
+function base_parse_price(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -163,7 +163,7 @@ end
 
 ################## load functions ########################
 
-function parse_actual_total_load(xml, tz)
+function parse_actual_total_load(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -178,7 +178,7 @@ function parse_actual_total_load(xml, tz)
     end
 end
 
-function parse_day_ahead_total_load(xml, tz)
+function parse_day_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -193,11 +193,11 @@ function parse_day_ahead_total_load(xml, tz)
     end
 end
 
-function parse_week_ahead_total_load(xml, tz)
+function parse_week_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
     return base_parse_min_max_load(xml, tz)
 end
 
-function parse_load_monthYear_ahead(xml, tz)
+function parse_load_monthYear_ahead(xml::Vector{UInt8}, tz::TimeZone)
     df = base_parse_min_max_load(xml, tz)
     dff = df["min total load"] 
     dfff = df["max total load"]
@@ -219,15 +219,15 @@ function parse_load_monthYear_ahead(xml, tz)
     return df
 end
 
-function parse_month_ahead_total_load(xml, tz)
+function parse_month_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
     return parse_load_monthYear_ahead(xml, tz)
 end
 
-function parse_year_ahead_total_load(xml, tz)
+function parse_year_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
     return parse_load_monthYear_ahead(xml, tz)
 end
 
-function parse_year_ahead_margin(xml, tz)
+function parse_year_ahead_margin(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -263,7 +263,7 @@ end
 
 ################ transmission functions #######################
 
-function parse_transmission(xml, tz)
+function parse_transmission(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -278,15 +278,15 @@ function parse_transmission(xml, tz)
     end
 end
 
-function parse_forecasted_capacity(xml, tz)
+function parse_forecasted_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 
-function parse_offered_capacity(xml, tz)
+function parse_offered_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 
-function parse_flowbased(xml, tz)
+function parse_flowbased(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -341,11 +341,11 @@ function parse_flowbased(xml, tz)
     end
 end
 
-function parse_intraday_transfer_limits(xml, tz)
+function parse_intraday_transfer_limits(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 
-function parse_explicit_allocation_information_capacity(xml, tz)
+function parse_explicit_allocation_information_capacity(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -396,23 +396,23 @@ function parse_explicit_allocation_information_capacity(xml, tz)
     end
 end
 
-function parse_explicit_allocation_information_revenue(xml, tz)
+function parse_explicit_allocation_information_revenue(xml::Vector{UInt8}, tz::TimeZone)
     return base_parse_price(xml, tz)
 end
 
-function parse_total_capacity_nominated(xml, tz)
+function parse_total_capacity_nominated(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 
-function parse_total_capacity_already_allocated(xml, tz)
+function parse_total_capacity_already_allocated(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 
-function parse_day_ahead_prices(xml, tz)
+function parse_day_ahead_prices(xml::Vector{UInt8}, tz::TimeZone)
     return base_parse_price(xml, tz)
 end
 
-function parse_implicit_auction_net_positions(xml, tz)
+function parse_implicit_auction_net_positions(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -449,29 +449,29 @@ function parse_implicit_auction_net_positions(xml, tz)
     end
 end
 
-function parse_implicit_auction_congestion_income(xml, tz)
+function parse_implicit_auction_congestion_income(xml::Vector{UInt8}, tz::TimeZone)
     return base_parse_price(xml, tz)
 end
 
-function parse_total_commercial_schedules(xml, tz)
+function parse_total_commercial_schedules(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 
-function parse_day_ahead_commercial_schedules(xml, tz)
+function parse_day_ahead_commercial_schedules(xml::Vector{UInt8}, tz::Timezone)
     return parse_transmission(xml, tz)
 end
 
-function parse_physical_flows(xml, tz)
+function parse_physical_flows(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 
-function parse_capacity_allocated_outside_EU(xml, tz)
+function parse_capacity_allocated_outside_EU(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
 end
 
 ####################### network and congestion management functions ########################
 
-function parse_expansion_and_dismantling(xml, tz)
+function parse_expansion_and_dismantling(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -516,7 +516,7 @@ function parse_expansion_and_dismantling(xml, tz)
     end
 end
 
-function parse_redispatching(xml, tz)
+function parse_redispatching(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -565,7 +565,7 @@ function parse_redispatching(xml, tz)
     end
 end
 
-function parse_countertrading(xml, tz)
+function parse_countertrading(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -609,7 +609,7 @@ function parse_countertrading(xml, tz)
     end
 end
 
-function parse_congestion_costs(xml, tz)
+function parse_congestion_costs(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -644,7 +644,7 @@ end
 
 ##################### generation functions #######################
 
-function parse_installed_generation_capacity_aggregated(xml, tz)
+function parse_installed_generation_capacity_aggregated(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -679,7 +679,7 @@ function parse_installed_generation_capacity_aggregated(xml, tz)
     end
 end
 
-function parse_installed_generation_capacity_per_unit(xml)
+function parse_installed_generation_capacity_per_unit(xml::Vector{UInt8})
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -711,7 +711,7 @@ function parse_installed_generation_capacity_per_unit(xml)
     end
 end
 
-function parse_day_ahead_aggregated_generation(xml, tz)
+function parse_day_ahead_aggregated_generation(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -768,7 +768,7 @@ function parse_day_ahead_aggregated_generation(xml, tz)
     end
 end
 
-function parse_generation_forecasts_wind_solar(xml, tz)
+function parse_generation_forecasts_wind_solar(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -846,25 +846,25 @@ function parse_generation_forecasts_wind_solar(xml, tz)
     end
 end
 
-function parse_day_ahead_generation_forecasts_wind_solar(xml, tz)
+function parse_day_ahead_generation_forecasts_wind_solar(xml::Vector{UInt8}, tz::TimeZone)
     return parse_generation_forecasts_wind_solar(xml, tz)
 end
 
-function parse_current_generation_forecasts_wind_solar(xml, tz)
+function parse_current_generation_forecasts_wind_solar(xml::Vector{UInt8}, tz::TimeZone)
     return parse_generation_forecasts_wind_solar(xml, tz)
 end
 
-function parse_intraday_generation_forecasts_wind_solar(xml, tz)
+function parse_intraday_generation_forecasts_wind_solar(xml::Vector{UInt8}, tz::TimeZone)
     return parse_generation_forecasts_wind_solar(xml, tz)
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_actual_generation_per_generation_unit(xml, tz)
+function parse_actual_generation_per_generation_unit(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
-function parse_aggregated_generation_per_type(xml, tz)
+function parse_aggregated_generation_per_type(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -931,7 +931,7 @@ function parse_aggregated_generation_per_type(xml, tz)
     end
 end
 
-function parse_aggregated_filling_rate(xml, tz)
+function parse_aggregated_filling_rate(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -968,13 +968,13 @@ end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_production_generation_units(xml, tz)
+function parse_production_generation_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 #################### balancing domain data ####################
 
-function parse_current_balancing_state(xml, tz)
+function parse_current_balancing_state(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -1017,11 +1017,11 @@ end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_balancing_energy_bids(xml, tz)
+function parse_balancing_energy_bids(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
-function parse_aggregated_balancing_energy_bids(xml, tz)
+function parse_aggregated_balancing_energy_bids(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -1089,23 +1089,23 @@ end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_procured_balancing_capcity(xml, tz)
+function parse_procured_balancing_capcity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_crossZonal_balancing_capacity(xml, tz)
+function parse_crossZonal_balancing_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_volumes_and_prices_contracted_reserves(xml, tz)
+function parse_volumes_and_prices_contracted_reserves(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
-function parse_volumes_contracted_reserves(xml, tz)
+function parse_volumes_contracted_reserves(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -1153,7 +1153,7 @@ function parse_volumes_contracted_reserves(xml, tz)
     end
 end
 
-function parse_prices_contracted_reserves(xml, tz)
+function parse_prices_contracted_reserves(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -1204,7 +1204,7 @@ function parse_prices_contracted_reserves(xml, tz)
     end
 end
 
-function parse_accepted_aggregated_offers(xml, tz)
+function parse_accepted_aggregated_offers(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -1252,7 +1252,7 @@ function parse_accepted_aggregated_offers(xml, tz)
     end
 end
 
-function parse_activated_balancing_energy(xml, tz)
+function parse_activated_balancing_energy(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -1300,7 +1300,7 @@ function parse_activated_balancing_energy(xml, tz)
     end
 end
 
-function parse_prices_activated_balancing_energy(xml, tz)
+function parse_prices_activated_balancing_energy(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -1353,7 +1353,7 @@ end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_imbalance_prices(xml, tz)
+function parse_imbalance_prices(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
@@ -1410,7 +1410,7 @@ function parse_total_imbalance_volumes(xml, tz)
     end
 end
 
-function parse_financial_expenses(xml, tz)
+function parse_financial_expenses(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -1461,7 +1461,7 @@ end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_crossBorder_balancing(xml, tz)
+function parse_crossBorder_balancing(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
 
     a, b = check_if_file_contains_data(root)
@@ -1521,55 +1521,55 @@ end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_FCR_total_capacity(xml, tz)
+function parse_FCR_total_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_share_capacity_FCR(xml, tz)
+function parse_share_capacity_FCR(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parser_contracted_reserver_capacity_FCR(xml, tz)
+function parser_contracted_reserver_capacity_FCR(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_FRR_actual_capacity(xml, tz)
+function parse_FRR_actual_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_RR_actual_capacity(xml, tz)
+function parse_RR_actual_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_sharing_of_reserves(xml, tz)
+function parse_sharing_of_reserves(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_balancing_border_capacity_limitation(xml, tz)
+function parse_balancing_border_capacity_limitation(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_permanent_allocation_limitations_HVDC(xml, tz)
+function parse_permanent_allocation_limitations_HVDC(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_netted_and_exchanged_volumes(xml, tz)
+function parse_netted_and_exchanged_volumes(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
@@ -1577,37 +1577,37 @@ end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_unavailability_consumption_units(xml, tz)
+function parse_unavailability_consumption_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_unavailability_generation_units(xml, tz)
+function parse_unavailability_generation_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_unavailability_production_units(xml, tz)
+function parse_unavailability_production_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_unavailability_offshore_grid(xml, tz)
+function parse_unavailability_offshore_grid(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_unavailability_transmission_infrastructure(xml, tz)
+function parse_unavailability_transmission_infrastructure(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
-function parse_fallBacks(xml, tz)
+function parse_fallBacks(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 

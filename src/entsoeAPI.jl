@@ -12,6 +12,22 @@ using .xmlParser
 using DataFrames
 using Dates
 
+################## key set-up ########################
+
+"""
+    initialize_key(APIkey::String)
+
+Initialize the global variable 'key' as 'APIkey' in the GETconstructor.jl file, so that it can be used in other functions. 
+Returns the value of 'key'.
+
+# Arguments
+- `APIkey::String: Your personal security token to access the transparancy platform`
+"""
+function initialize_key(APIkey::String)
+    key = GETconstructor.initialize_key(APIkey)
+    return key
+end
+
 ################## load functions ########################
 
 """
