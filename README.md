@@ -2,12 +2,12 @@
 Julia API to retreive data from the ENTSO-E transparancy platform using the ENTSOE-E API.
 Documentation for the ENTSO-E can be found on https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html
 
-# Prerequisites
+## Prerequisites
 1. Download and install the Julia API for the ENTSO-E transparency platform first using [the following link](https://github.com/Electa-Git/etsoe-julia-api)
 2. Create an account in the [ENTSO-E transparency platform](https://transparency.entsoe.eu/)
 3. Request an API key by sending an email to transparency@entsoe.eu with “Restful API access” in the subject line. In the email body state your registered email address. You will receive an email when you have been provided with the API key. The key is then visible in your ENTSO-E account under “Web API Security Token”.
 
-# Usage
+## Usage
 `entsoeAPI.jl` is the main file which contains the following functions:
 ```julia
 function initialize_key(APIkey::String)
@@ -90,8 +90,8 @@ All the other functions retreive a specific set of data from the transparancy pl
 1. A HTTP-request is formed with the functions in the `GETconstructor.jl` file. This request is sent to the ENTSO-E API which returns the requested data in XML format.
 2. The XML data is parsed with the functions in the `XMLparser.jl` file. The return format is not exactly the same for each function. But it's always a combination of dataframes and dicitionaries (The exact format can be found in the documentation per function).
 
-# Arguments
-## Domains
+## Arguments
+### Domains
 Domains can be entered in the following formats:
 1. Area object as defined in `mappings.jl`
 2. EIC-code ad defined on https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/
@@ -106,10 +106,10 @@ Example for Belgium:
 BE = Area("BE", "10YBE----------2", "Belgium, Elia BZ / CA / MBA", TimeZone("Europe/Brussels"))
 ```
 
-## Dates and Times
+### Dates and Times
 Dates and TImes need to be entered as a `DateTime()` object. The correct timezone is choosen automatically based on the entered domain. More information on the `DateTime()`object and the `Dates` packages can be found on https://docs.julialang.org/en/v1/stdlib/Dates/
 
-# Example
+## Example
 Hereafter an example will be discussed to clarify how to use the API.
 We want to get the actual load data from the Czech Republic between 31/12/2015 23:00 and 31/12/2016 23:00. First we have to initialize our personal security token:
 ```julia
