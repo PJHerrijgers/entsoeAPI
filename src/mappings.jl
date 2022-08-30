@@ -1,8 +1,18 @@
+"""
+Module used to map area's and entso-e specific terms to their correct code. Those have to be used when creating an HTTP request
+"""
 module mappings
 
 using Dates
 using TimeZones
 
+"""
+Area object which consists of 4 elements: 
+    name: common abbreviation used for the area ('display name')
+    value: EIC-code of the area
+    meaning: short description of the area
+    tz: Timezone of the area
+"""
 struct Area
     name::String
     value::String
@@ -414,6 +424,16 @@ NEIGHBOURS = Dict(
     "HR"=> ["BA", "HU", "RS", "SI"]
     )
 
+"""
+    lookup_area(s::Union{Area, AbstractString})
+
+Turns the entered area in a correct Area object. Areas can be entered as Area object already or with their IEC-code or 'display name'.
+If one of those last 2 options is used a lookup has to be done to find the matching Area object.
+Returns the correct Area object.
+
+# Arguments
+- `s::Union{Area, AbstractString}`: area as Area object, IEC-code, 'display name'
+"""
 function lookup_area(s::Union{Area, AbstractString})
     if isa(s, Area)
         # If it already is an Area object, we're happy
@@ -434,6 +454,16 @@ function lookup_area(s::Union{Area, AbstractString})
     return area
 end
 
+"""
+    DateTimeTranslator(dateTime::ZonedDateTime, standard::Int = 0)
+
+Transforms a date and/or time into the correct format that has to be used in the GET request used in the ENTSO-E API.
+Returns the date and/or time in the requested format.
+
+# Arguments
+- `dateTime::ZonedDateTime`: dateTime object with the date and/or time that has to be transformed
+- `standard::Int = 0`: variable to indicate the format that is needed
+"""
 function DateTimeTranslator(dateTime::ZonedDateTime, standard::Int = 0)
     dateTime = DateTime(dateTime, UTC)
     if standard == 0
