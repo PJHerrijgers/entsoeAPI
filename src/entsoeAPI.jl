@@ -297,7 +297,7 @@ Minimum time interval in query response ranges from part of day to year, dependi
 ! 100 document limit applies !
 """
 function explicit_allocation_information_capacity(businessType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, auctionCategory::String = "", classificationSequence_AttributeInstanceComponentPosition::String = "")
-    xml, tz = GETconstructor.query_exlplicit_allocation_information_capacity(businessType, contract_MarketAgreementType, in_Domain, out_Domain, periodStart, periodEnd, auctionCategory, classificationSequence_AttributeInstanceComponentPosition)
+    xml, tz = GETconstructor.query_explicit_allocation_information_capacity(businessType, contract_MarketAgreementType, in_Domain, out_Domain, periodStart, periodEnd, auctionCategory, classificationSequence_AttributeInstanceComponentPosition)
     df = xmlParser.parse_explicit_allocation_information_capacity(xml, tz)
     return df
 end
@@ -372,7 +372,7 @@ Minimum time interval in query response ranges from part of day to year, dependi
 ! 100 documents limit applies !
 """
 function total_capacity_already_allocated(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, auctionCategory::String = "")
-    xml, tz = GETconstructor.query_total_capaciyt_already_allocated(contract_MarketAgreementType, in_Domain, out_Domain, periodStart, periodEnd, auctionCategory)
+    xml, tz = GETconstructor.query_total_capacity_already_allocated(contract_MarketAgreementType, in_Domain, out_Domain, periodStart, periodEnd, auctionCategory)
     df = xmlParser.parse_total_capacity_already_allocated(xml, tz)
     return df
 end
@@ -628,7 +628,7 @@ Minimum time interval in query response is one month!
 ! 100 document limit applies !
 """
 function congestion_costs(domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "")
-    xml, tz = GETconstructor(domain, periodStart, periodEnd, businessType)
+    xml, tz = GETconstructor.query_congestion_costs(domain, periodStart, periodEnd, businessType)
     df = xmlParser.parse_congestion_costs(xml, tz)
     return df
 end
@@ -654,7 +654,7 @@ Minimum time interval in query response is one year!
 ! One year range limit applies !
 """
 function installed_generation_capacity_aggregated(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    xml, tz = query_installed_generation_capacity_aggregated(in_Domain, periodStart, periodEnd, psrType)
+    xml, tz = GETconstructor.query_installed_generation_capacity_aggregated(in_Domain, periodStart, periodEnd, psrType)
     df = xmlParser.parse_installed_generation_capacity_aggregated(xml, tz)
     return df
 end
@@ -678,7 +678,7 @@ Minimum time interval in query response is one year!
 ! One year range limit applies !
 """
 function installed_generation_capacity_per_unit(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    xml, tz = query_installed_generation_capacity_per_unit(in_Domain, periodStart, periodEnd, psrType)
+    xml, tz = GETconstructor.query_installed_generation_capacity_per_unit(in_Domain, periodStart, periodEnd, psrType)
     df = xmlParser.parse_installed_generation_capacity_per_unit(xml)
     return df
 end
@@ -701,7 +701,7 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function day_ahead_aggregated_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_day_ahead_aggregated_generation(in_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_day_ahead_aggregated_generation(in_Domain, periodStart, periodEnd)
     df = xmlParser.parse_day_ahead_aggregated_generation(xml, tz)
     return df
 end
@@ -725,7 +725,7 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function day_ahead_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    xml, tz = query_day_ahead_generation_forecasts_wind_solar(in_Domain, periodStart, periodEnd, psrType)
+    xml, tz = GETconstructor.query_day_ahead_generation_forecasts_wind_solar(in_Domain, periodStart, periodEnd, psrType)
     df = xmlParser.parse_day_ahead_generation_forecasts_wind_solar(xml, tz)
     return df
 end
@@ -749,7 +749,7 @@ Minimum time interval in query response is one day!
 ! One year range limit applies !
 """
 function current_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    xml, tz = query_current_generation_forecasts_wind_solar(in_Domain, periodStart, periodEnd, psrType)
+    xml, tz = GETconstructor.query_current_generation_forecasts_wind_solar(in_Domain, periodStart, periodEnd, psrType)
     df = xmlParser.parse_current_generation_forecasts_wind_solar(xml, tz)
     return df
 end
@@ -773,7 +773,7 @@ Minimum time interval in query response is one MTU period!
 ! One year range limit applies !
 """
 function intraday_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    xml, tz = query_intraday_generation_forecasts_wind_solar(in_Domain, periodStart, periodEnd, psrType)
+    xml, tz = GETconstructor.query_intraday_generation_forecasts_wind_solar(in_Domain, periodStart, periodEnd, psrType)
     df = xmlParser.parse_intraday_generation_forecasts_wind_solar(xml, tz)
     return df
 end
@@ -798,7 +798,7 @@ Minimum time interval in query response is one MTU period!
 ! One day range limit applies !
 """
 function actual_generation_per_generation_unit(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "", registeredResource::String = "")
-    xml, tz = query_actual_generation_per_generation_unit(in_Domain, periodStart, periodEnd, psrType, registeredResource)
+    xml, tz = GETconstructor.query_actual_generation_per_generation_unit(in_Domain, periodStart, periodEnd, psrType, registeredResource)
     df = xmlParser.parse_actual_generation_per_generation_unit(xml, tz)
     return df
 end
@@ -822,7 +822,7 @@ Minimum time interval in query response is one MTU period!
 ! One year range limit applies !
 """
 function aggregated_generation_per_type(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")
-    xml, tz = query_aggregated_generation_per_type(in_Domain, periodStart, periodEnd, psrType)
+    xml, tz = GETconstructor.query_aggregated_generation_per_type(in_Domain, periodStart, periodEnd, psrType)
     df = xmlParser.parse_aggregated_generation_per_type(xml, tz)
     return df
 end
@@ -845,7 +845,7 @@ Minimum time inteval in query response is one week!
 ! One year range limit applies !
 """
 function aggregated_filling_rate(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_aggregated_filling_rate(in_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_aggregated_filling_rate(in_Domain, periodStart, periodEnd)
     df = xmlParser.parse_aggregated_filling_rate(xml, tz)
     return df
 end
@@ -870,7 +870,7 @@ Response contains commissioned production units for given day!
 ! One day range limit applies !
 """
 function production_generation_units(biddingZone_Domain::Union{mappings.Area, String}, implementation_DateAndOrTime::DateTime, psrType::String = "")
-    xml, tz = query_production_generation_units(biddingZone_Domain, implementation_DateAndOrTime, psrType)
+    xml, tz = GETconstructor.query_production_generation_units(biddingZone_Domain, implementation_DateAndOrTime, psrType)
     df = xmlParser.parse_production_generation_units(xml, tz)
     return df
 end
@@ -893,7 +893,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! 100 day range limit applies !
 """
 function current_balancing_state(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_current_balancing_state(area_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_current_balancing_state(area_Domain, periodStart, periodEnd)
     df = xmlParser.parse_current_balancing_state(xml, tz)
     return df
 end
@@ -915,7 +915,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! 1 day range limit applies !
 """
 function balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
-    xml, tz = query_balancing_energy_bids(area_Domain, periodStart, periodEnd, processType)
+    xml, tz = GETconstructor.query_balancing_energy_bids(area_Domain, periodStart, periodEnd, processType)
     df = xmlParser.parse_balancing_energy_bids(xml, tz)
     return df
 end
@@ -937,7 +937,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! One year range limit applies !
 """
 function aggregated_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)
-    xml, tz = query_aggregated_balancing_energy_bids(area_Domain, periodStart, periodEnd, processType)
+    xml, tz = GETconstructor.query_aggregated_balancing_energy_bids(area_Domain, periodStart, periodEnd, processType)
     df = xmlParser.parse_aggregated_balancing_energy_bids(xml, tz)
     return df
 end
@@ -959,7 +959,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! 100 document limit applies !
 """
 function procured_balancing_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, type_MarketAgreementType::String = "")
-    xml, tz = query_procured_balancing_capacity(area_Domain, periodStart, periodEnd, type_MarketAgreementType)
+    xml, tz = GETconstructor.query_procured_balancing_capacity(area_Domain, periodStart, periodEnd, type_MarketAgreementType)
     df = xmlParser.parse_procured_balancing_capacity(xml, tz)
     return df
 end
@@ -980,7 +980,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 - `type_MarketAgreementType::String = ""`: Indicates the time horizon for which balancing capacity was procured
 """
 function crossZonal_balancing_capacity(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_crossZonal_balancing_capacity(acquiring_Domain, connecting_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_crossZonal_balancing_capacity(acquiring_Domain, connecting_Domain, periodStart, periodEnd)
     df = xmlParser.parse_crossZonal_balancing_capacity(xml, tz)
     return df
 end
@@ -1007,7 +1007,7 @@ Minimum time interval in query response ranges from part of day to year, dependi
 ! 100 document limit applies !
 """
 function volumes_and_prices_contracted_reserves(type_MarketAgreementType::String, processType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "", offset::Int = 0)
-    xml, tz = query_volumes_and_prices_contracted_reserves(type_MarketAgreementType, processType, controlArea_Domain, periodStart, periodEnd, psrType, offset)
+    xml, tz = GETconstructor.query_volumes_and_prices_contracted_reserves(type_MarketAgreementType, processType, controlArea_Domain, periodStart, periodEnd, psrType, offset)
     df = xmlParser.parse_volumes_and_prices_contracted_reserves(xml, tz)
     return df
 end
@@ -1035,7 +1035,7 @@ Minimum time interval in query response ranges from part of day to year, dependi
 ! Doesn't work for hourly data due to some unclear reason... !
 """
 function volumes_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "", offset::Int = 0)
-    xml, tz = query_volumes_contracted_reserves(type_MarketAgreementType, controlArea_Domain, periodStart, periodEnd, businessType, psrType, offset)
+    xml, tz = GETconstructor.query_volumes_contracted_reserves(type_MarketAgreementType, controlArea_Domain, periodStart, periodEnd, businessType, psrType, offset)
     df = xmlParser.parse_volumes_contracted_reserves(xml, tz)
     return df
 end
@@ -1062,7 +1062,7 @@ Minimum time interval in query response ranges from part of day to year, dependi
 ! 100 document limit applies !
 """
 function prices_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "", offset::Int = 0)
-    xml, tz = query_prices_contracted_reserves(type_MarketAgreementType, controlArea_Domain, periodStart, periodEnd, businessType, psrType, offset)
+    xml, tz = GETconstructor.query_prices_contracted_reserves(type_MarketAgreementType, controlArea_Domain, periodStart, periodEnd, businessType, psrType, offset)
     df = xmlParser.parse_prices_contracted_reserves(xml, tz)
     return df
 end
@@ -1087,7 +1087,7 @@ Minimum time interval in query response is one BTU period!
 ! One year range limit applies !
 """
 function accepted_aggregated_offers(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "")
-    xml, tz = query_accepted_aggregated_offers(controlArea_Domain, periodStart, periodEnd, businessType, psrType)
+    xml, tz = GETconstructor.query_accepted_aggregated_offers(controlArea_Domain, periodStart, periodEnd, businessType, psrType)
     df = xmlParser.parse_accepted_aggregated_offers(xml, tz)
     return df
 end
@@ -1112,7 +1112,7 @@ Minimum time interval in query response is one BTU period!
 ! One year range limit applies !
 """
 function activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "")
-    xml, tz = query_activated_balancing_energy(controlArea_Domain, periodStart, periodEnd, businessType, psrType)
+    xml, tz = GETconstructor.query_activated_balancing_energy(controlArea_Domain, periodStart, periodEnd, businessType, psrType)
     df = xmlParser.parse_activated_balancing_energy(xml, tz)
     return df
 end
@@ -1137,7 +1137,7 @@ Minimum time interval in query response is one BTU period!
 ! One year range limit applies !
 """
 function prices_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", psrType::String = "")
-    xml, tz = query_prices_activated_balancing_energy(controlArea_Domain, periodStart, periodEnd, businessType, psrType)
+    xml, tz = GETconstructor.query_prices_activated_balancing_energy(controlArea_Domain, periodStart, periodEnd, businessType, psrType)
     df = xmlParser.parse_prices_activated_balancing_energy(xml, tz)
     return df
 end
@@ -1160,7 +1160,7 @@ Minimum time interval in query response is one BTU period!
 ! One year range limit applies !
 """
 function imbalance_prices(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_imbalance_prices(controlArea_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_imbalance_prices(controlArea_Domain, periodStart, periodEnd)
     df = xmlParser.parse_imbalance_prices(xml, tz)
     return df
 end
@@ -1183,7 +1183,7 @@ Minimum time interval in query response is one BTU period!
 ! One year range limit applies !
 """
 function total_imbalance_volumes(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_total_imbalance_volumes(controlArea_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_total_imbalance_volumes(controlArea_Domain, periodStart, periodEnd)
     df = xmlParser.parse_total_imbalance_volumes(xml, tz)
     return df
 end
@@ -1206,7 +1206,7 @@ Minimum time interval in query response is one month!
 ! One year range limit applies !
 """
 function financial_expenses(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_financial_expenses(controlArea_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_financial_expenses(controlArea_Domain, periodStart, periodEnd)
     df = xmlParser.parse_financial_expenses(xml, tz)
     return df
 end
@@ -1230,7 +1230,7 @@ Minimum time interval in query response is one BTU period!
 ! One year range limit applies !
 """
 function crossBorder_balancing(acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_crossBorder_balancing(acquiring_Domain, connecting_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_crossBorder_balancing(acquiring_Domain, connecting_Domain, periodStart, periodEnd)
     df = xmlParser.parse_crossBorder_balancing(xml, tz)
     return df
 end
@@ -1251,7 +1251,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! One year range limit applies !
 """
 function FCR_total_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_FCR_total_capacity(area_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_FCR_total_capacity(area_Domain, periodStart, periodEnd)
     df = xmlParser.parse_FCR_total_capacity(xml, tz)
     return df
 end
@@ -1272,7 +1272,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! One year range limit applies !
 """
 function share_capacity_FCR(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_share_capacity_FCR(area_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_share_capacity_FCR(area_Domain, periodStart, periodEnd)
     df = xmlParser.parse_share_capacity_FCR(xml, tz)
     return df
 end
@@ -1293,7 +1293,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! One year range limit applies !
 """
 function contracted_reserve_capacity_FCR(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_contracted_reserve_capacity_FCR(area_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_contracted_reserve_capacity_FCR(area_Domain, periodStart, periodEnd)
     df = xmlParser.parse_contracted_reserve_capacity_FCR(xml, tz)
     return df
 end
@@ -1314,7 +1314,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! One quarter range limit applies !
 """
 function FRR_actual_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_FRR_actual_capacity(area_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_FRR_actual_capacity(area_Domain, periodStart, periodEnd)
     df = xmlParser.parse_FRR_actual_capacity(xml, tz)
     return df
 end
@@ -1335,7 +1335,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! One quarter range limit applies !
 """
 function RR_actual_capacity(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_RR_actual_capacity(area_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_RR_actual_capacity(area_Domain, periodStart, periodEnd)
     df = xmlParser.parse_RR_actual_capacity(xml, tz)
     return df
 end
@@ -1358,7 +1358,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 ! One year range limit applies !
 """
 function query_sharing_of_reserves(processType::String, acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-    xml, tz = query_sharing_of_reserves(processType, acquiring_Domain, connecting_Domain, periodStart, periodEnd)
+    xml, tz = GETconstructor.query_sharing_of_reserves(processType, acquiring_Domain, connecting_Domain, periodStart, periodEnd)
     df = xmlParser.parse_sharing_of_reserves(xml, tz)
     return df
 end
@@ -1366,7 +1366,7 @@ end
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
 function balancing_border_capacity_limitations()
-    xml, tz = query_balancing_border_capacity_limitations()
+    xml, tz = GETconstructor.query_balancing_border_capacity_limitations()
     df = xmlParser.parse_balancing_border_capacity_limitation(xml, tz)
     return df
 end
@@ -1374,7 +1374,7 @@ end
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
 function permanent_allocation_limitations_HVDC()
-    xml, tz = query_permanent_allocation_limitations_HVDC()
+    xml, tz = GETconstructor.query_permanent_allocation_limitations_HVDC()
     df = xmlParser.parse_permanent_allocation_limitations_HVDC(xml, tz)
     return df
 end
@@ -1382,7 +1382,7 @@ end
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
 function netted_and_exchanged_volumes()
-    xml, tz = query_netted_and_exchanged_volumes()
+    xml, tz = GETconstructor.query_netted_and_exchanged_volumes()
     df = xmlParser.parse_netted_and_exchanged_volumes(xml, tz)
     return df
 end
@@ -1408,7 +1408,7 @@ Minimum time interval in query response is one MTU period!
 ! One year range limit applies !
 """
 function unavailability_consumption_units(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "")
-    xml, tz = query_unavailability_consumption_units(biddingZone_Domain, periodStart, periodEnd, businessType)
+    xml, tz = GETconstructor.query_unavailability_consumption_units(biddingZone_Domain, periodStart, periodEnd, businessType)
     df = xmlParser.parse_unavailability_consumption_units(xml, tz)
     return df
 end
@@ -1439,7 +1439,7 @@ Minimum time interval in query response depends on duration of matching outages!
 ! 200 documents limit applies !
 """
 function unavailability_generation_units(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), registeredResource::String = "", mRID::String = "", offset::Int = 0)
-    xml, tz = query_unavailability_generation_units(biddingZone_Domain, periodStart, periodEnd, businessType, docStatus, periodStartUpdate, periodEndUpdate, registeredResource, mRID, offset)
+    xml, tz = GETconstructor.query_unavailability_generation_units(biddingZone_Domain, periodStart, periodEnd, businessType, docStatus, periodStartUpdate, periodEndUpdate, registeredResource, mRID, offset)
     df = xmlParser.parse_unavailability_generation_units(xml, tz)
     return df
 end
@@ -1470,7 +1470,7 @@ Minimum time interval in query response depends on duration of matching outages!
 ! 200 documents limit applies !
 """
 function unavailability_production_units(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), registeredResource::String = "", mRID::String = "", offset::Int = 0)
-    xml, tz = query_unavailability_production_units(biddingZone_Domain, periodStart, periodEnd, businessType, docStatus, periodStartUpdate, periodEndUpdate, registeredResource, mRID, offset)
+    xml, tz = GETconstructor.query_unavailability_production_units(biddingZone_Domain, periodStart, periodEnd, businessType, docStatus, periodStartUpdate, periodEndUpdate, registeredResource, mRID, offset)
     df = xmlParser.parse_unavailability_production_units(xml, tz)
     return df
 end
@@ -1500,7 +1500,7 @@ Minimum time interval in query response depends on duration of matching outages!
 ! 200 documents limit applies !
 """
 function unavailability_offshore_grid(biddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), mRID::String = "", offset::Int = 0)
-    xml, tz = query_unavailability_offshore_grid(biddingZone_Domain, periodStart, periodEnd, docStatus, periodStartUpdate, periodEndUpdate, mRID, offset)
+    xml, tz = GETconstructor.query_unavailability_offshore_grid(biddingZone_Domain, periodStart, periodEnd, docStatus, periodStartUpdate, periodEndUpdate, mRID, offset)
     df = xmlParser.parse_unavailability_offshore_grid(xml, tz)
     return df
 end
@@ -1532,7 +1532,7 @@ Minimum time interval in query response depends on duration of matching outages!
 ! 200 documents limit applies !
 """
 function unavailability_transmission_infrastructure(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, businessType::String = "", docStatus::String = "", periodStartUpdate::DateTime = DateTime(0), periodEndUpdate::DateTime = DateTime(0), mRID::String = "", offset::Int = 0)
-    xml, tz = query_unavailability_transmission_infrastructure(in_Domain, out_Domain, periodStart, periodEnd, businessType, docStatus, periodStartUpdate, periodEndUpdate, mRID, offset)
+    xml, tz = GETconstructor.query_unavailability_transmission_infrastructure(in_Domain, out_Domain, periodStart, periodEnd, businessType, docStatus, periodStartUpdate, periodEndUpdate, mRID, offset)
     df = xmlParser.parse_unavailability_transmission_infrastructure(xml, tz)
     return df
 end
@@ -1540,7 +1540,7 @@ end
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 
 function fallBacks()
-    xml, tz = query_fallBacks()
+    xml, tz = GETconstructor.query_fallBacks()
     df = xmlParser.parse_fallBacks(xml, tz)
     return df
 end

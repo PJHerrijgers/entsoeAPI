@@ -46,10 +46,10 @@ function ZIPhandler(body::Vector{UInt8})
         write(f, body)
     end 
 
-    response = ""
+    response = Vector{UInt8}()
     zip = ZipFile.Reader("data/temp.zip")
     for f in zip.files
-        response = response*read(f, String)
+        response = append!(response,read(f))
         close(f)
     end
     close(zip)
@@ -1718,6 +1718,7 @@ function query_total_imbalance_volumes(controlArea_Domain::Union{mappings.Area, 
     param = Dict{String, String}("documentType" => "A86") 
 
     response, tz = base_query_balancing2(controlArea_Domain, periodStart, periodEnd, param)
+    print(typeof(response))
     return response, tz
 end
 
