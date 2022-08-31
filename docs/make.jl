@@ -1,5 +1,6 @@
-using Documenter
 include("../src/entsoeAPI.jl")
+using Documenter
+using .entsoeAPI
 
 makedocs(
     modules     = [entsoeAPI],
