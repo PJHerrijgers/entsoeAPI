@@ -1,8 +1,5 @@
 # Load functions
 
-```@contents
-```
-
 This file describes the usage of all the functions under the load tab in the ENTSOE-E transparancy platform.
 
 ## User functions

@@ -1,4 +1,12 @@
 # entsoeAPI
+
+```@autodocs
+Modules = [entsoeAPI, GETconstructor, xmlParser]
+```
+
+```@contents
+```
+
 Julia API to retreive data from the ENTSO-E transparancy platform using the ENTSOE-E API.
 Documentation for the ENTSO-E can be found on https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html
 
