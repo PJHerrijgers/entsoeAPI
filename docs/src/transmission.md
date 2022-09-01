@@ -1,0 +1,60 @@
+# Transmission functions
+
+This file describes the usage of all the functions under the load tab in the ENTSOE-E transparancy platform.
+
+## User functions
+
+```@docs
+entsoeAPI.forecasted_capacity
+entsoeAPI.offered_capacity
+entsoeAPI.flowbased
+entsoeAPI.intraday_transfer_limits
+entsoeAPI.explicit_allocation_information_capacity
+entsoeAPI.explicit_allocation_information_revenue
+entsoeAPI.total_capacity_nominated
+entsoeAPI.total_capacity_already_allocated
+entsoeAPI.day_ahead_prices
+entsoeAPI.implicit_auction_net_positions
+entsoeAPI.implicit_auction_congestion_income
+entsoeAPI.total_commercial_schedules
+entsoeAPI.physical_flows
+entsoeAPI.capacity_allocated_outside_EU
+```
+
+## GET functions
+
+```@docs
+entsoeAPI.GETconstructor.query_forecasted_capacity
+entsoeAPI.GETconstructor.query_offered_capacity
+entsoeAPI.GETconstructor.query_flowbased
+entsoeAPI.GETconstructor.query_intraday_transfer_limits
+entsoeAPI.GETconstructor.query_explicit_allocation_information_capacity
+entsoeAPI.GETconstructor.query_explicit_allocation_information_revenue
+entsoeAPI.GETconstructor.query_total_capacity_nominated
+entsoeAPI.GETconstructor.query_total_capacity_already_allocated
+entsoeAPI.GETconstructor.query_day_ahead_prices
+entsoeAPI.GETconstructor.query_implicit_auction_net_positions
+entsoeAPI.GETconstructor.query_implicit_auction_congestion_income
+entsoeAPI.GETconstructor.query_total_commercial_schedules
+entsoeAPI.GETconstructor.query_physical_flows
+entsoeAPI.GETconstructor.query_capacity_allocated_outside_EU
+```
+
+## Parse functions
+
+```@docs
+entsoeAPI.xmlParser.parse_forecasted_capacity
+entsoeAPI.xmlParser.parse_offered_capacity
+entsoeAPI.xmlParser.parse_flowbased
+entsoeAPI.xmlParser.parse_intraday_transfer_limits
+entsoeAPI.xmlParser.parse_explicit_allocation_information_capacity
+entsoeAPI.xmlParser.parse_explicit_allocation_information_revenue
+entsoeAPI.xmlParser.parse_total_capacity_nominated
+entsoeAPI.xmlParser.parse_total_capacity_already_allocated
+entsoeAPI.xmlParser.parse_day_ahead_prices
+entsoeAPI.xmlParser.parse_implicit_auction_net_positions
+entsoeAPI.xmlParser.parse_implicit_auction_congestion_income
+entsoeAPI.xmlParser.parse_total_commercial_schedules
+entsoeAPI.xmlParser.parse_physical_flows
+entsoeAPI.xmlParser.parse_capacity_allocated_outside_EU
+```

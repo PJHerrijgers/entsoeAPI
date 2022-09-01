@@ -4,7 +4,7 @@
 ```
 
 Julia API to retreive data from the ENTSO-E transparancy platform using the ENTSOE-E API.
-Documentation for the ENTSO-E can be found on https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html
+Documentation for the ENTSO-E can be found on [https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html](https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html)
 
 ## Prerequisites
 1. Download and install the Julia API for the ENTSO-E transparency platform first using [the following link](https://github.com/Electa-Git/etsoe-julia-api)
