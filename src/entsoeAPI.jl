@@ -497,7 +497,7 @@ Minimum time interval in query response is MTU period!
 
 ! One year range limit applies !
 """
-function phyiscal_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+function physical_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
     xml, tz = GETconstructor.query_physical_flows(in_Domain, out_Domain, periodStart, periodEnd)
     df = xmlParser.parse_physical_flows(xml, tz)
     return df
