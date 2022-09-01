@@ -1,9 +1,5 @@
 # entsoeAPI
 
-```@autodocs
-Modules = [entsoeAPI, GETconstructor, xmlParser]
-```
-
 ```@contents
 ```
 

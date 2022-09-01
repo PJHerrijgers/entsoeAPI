@@ -237,8 +237,8 @@ Returns the data in a dataframe.
     [time, load]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_actual_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_actual_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_actual_total_load(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -264,8 +264,8 @@ Returns the data in a dataframe.
     [time, load]
     
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_day_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -291,8 +291,8 @@ Returns the data in a dictionary.
     ("min total load" => [time, load], "max total load" => [time, load])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_week_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_week_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_week_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
     return base_parse_min_max_load(xml, tz)
@@ -307,8 +307,8 @@ Returns the data in a dictionary.
     ("min total load" => [week, load], "max total load" => [week, load])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the module GETconstructor
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the module GETconstructor
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_load_monthYear_ahead(xml::Vector{UInt8}, tz::TimeZone)
     df = base_parse_min_max_load(xml, tz)
@@ -341,8 +341,8 @@ Returns the data in a dictionary.
     ("min total load" => [week, load], "max total load" => [week, load])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_month_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
     return parse_load_monthYear_ahead(xml, tz)
@@ -357,8 +357,8 @@ Returns the data in a dictionary.
     ("min total load" => [week, load], "max total load" => [week, load]) 
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_year_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
     return parse_load_monthYear_ahead(xml, tz)
@@ -373,8 +373,8 @@ Returns the data in dataframe.
     [year, margin]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_year_ahead_margin(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_year_ahead_margin(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_year_ahead_margin(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -421,8 +421,8 @@ Returns the data in a dataframe.
     [time, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by a function that returned transmission data
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by a function that returned transmission data
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_transmission(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -448,8 +448,8 @@ Returns the data in a dataframe.
     [time, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_forecasted_capacity(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_forecasted_capacity(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_forecasted_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
@@ -464,8 +464,8 @@ Returns the data in a dataframe.
     [time, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_offered_capacity(auctionType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = "", update_DateAndOrTime::DateTime = DateTime(0), classificationSequence_AttributeInstanceComponentPosition::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_offered_capacity(auctionType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = "", update_DateAndOrTime::DateTime = DateTime(0), classificationSequence_AttributeInstanceComponentPosition::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_offered_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
@@ -480,8 +480,8 @@ Returns the data in dictionary.
     ("time" => [cb/co, RAM, domain, ..., domain])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_flowbased(processType::String, domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_flowbased(processType::String, domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_flowbased(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -547,8 +547,8 @@ Returns the data in a dataframe.
     [time, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_intraday_transfer_limits(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_intraday_transfer_limits(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_intraday_transfer_limits(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
@@ -563,8 +563,8 @@ Returns the data in a dataframe.
     [time, capacity [, price]]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_explicit_allocation_information_capacity(businessType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = "", classificationSequence_AttributeInstanceComponentPosition::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_explicit_allocation_information_capacity(businessType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = "", classificationSequence_AttributeInstanceComponentPosition::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_explicit_allocation_information_capacity(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -626,8 +626,8 @@ Returns the data in a dataframe.
     [time, price]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_explicit_allocation_information_revenue(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_explicit_allocation_information_revenue(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_explicit_allocation_information_revenue(xml::Vector{UInt8}, tz::TimeZone)
     return base_parse_price(xml, tz)
@@ -658,8 +658,8 @@ Returns the data in a dataframe.
     [time, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_total_capacity_already_allocated(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_total_capacity_already_allocated(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_total_capacity_already_allocated(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
@@ -674,8 +674,8 @@ Returns the data in a dataframe.
     [time, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_prices(domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_prices(domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_day_ahead_prices(xml::Vector{UInt8}, tz::TimeZone)
     return base_parse_price(xml, tz)
@@ -690,8 +690,8 @@ Returns the data in a dataframe.
     [time, import/export, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_implicit_auction_net_positions_and_congestion_income(businessType::String, contract_MarketAgreementType::String, domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_implicit_auction_net_positions_and_congestion_income(businessType::String, contract_MarketAgreementType::String, domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_implicit_auction_net_positions(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -739,8 +739,8 @@ Returns the data in a dataframe.
     [time, price]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_implicit_auction_net_positions_and_congestion_income(businessType::String, contract_MarketAgreementType::String, domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_implicit_auction_net_positions_and_congestion_income(businessType::String, contract_MarketAgreementType::String, domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_implicit_auction_congestion_income(xml::Vector{UInt8}, tz::TimeZone)
     return base_parse_price(xml, tz)
@@ -755,8 +755,8 @@ Returns the data in a dataframe.
     [time, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_total_commercial_schedules(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_total_commercial_schedules(contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_total_commercial_schedules(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
@@ -776,8 +776,8 @@ Returns the data in a dataframe.
     [time, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_phyiscal_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_phyiscal_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_physical_flows(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
@@ -792,8 +792,8 @@ Returns the data in a dataframe.
     [time, capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_capacity_allocated_outside_EU(auctionType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = "", classificationSequence_AttributeInstanceComponentPosition::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_capacity_allocated_outside_EU(auctionType::String, contract_MarketAgreementType::String, in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, auctionCategory::String = "", classificationSequence_AttributeInstanceComponentPosition::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_capacity_allocated_outside_EU(xml::Vector{UInt8}, tz::TimeZone)
     return parse_transmission(xml, tz)
@@ -810,8 +810,8 @@ Returns the data in a dataframe.
     [estimated completion date, new NTC => [start, end, new NTC], transmission assets => [code, location, type]]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_expansion_and_dismantling(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", docStatus::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_expansion_and_dismantling(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", docStatus::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_expansion_and_dismantling(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -867,8 +867,8 @@ Returns the data in a dataframe.
     [start, end, reason, impact => [start, end , impact], affected assets => [code, location, type]]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_redispatching(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_redispatching(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_redispatching(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -928,8 +928,8 @@ Returns the data in a dataframe.
     [start, end, reason, change in cross-border exchange => [start, end, change in cross-border exchange]]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_countertrading(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_countertrading(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_countertrading(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -984,8 +984,8 @@ Returns the data in a dataframe.
     [start, end, costs]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_congestion_costs(domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_congestion_costs(domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_congestion_costs(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1031,8 +1031,8 @@ Returns the data in a dataframe.
     [year, type, installed capacity]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_installed_generation_capacity_aggregated(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_installed_generation_capacity_aggregated(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_installed_generation_capacity_aggregated(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1078,8 +1078,8 @@ Returns the data in a dataframe.
     [production type, code, name, installed capacity at the beginnen of the year, voltage connection level]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_installed_generation_capacity_per_unit(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_installed_generation_capacity_per_unit(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_installed_generation_capacity_per_unit(xml::Vector{UInt8})
     root = prepare_file(xml)
@@ -1122,8 +1122,8 @@ Returns the data in a dictionary.
     ("generation" => [start, end, scheduled generation], "consumption" => [start, end, scheduled consumption])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_aggregated_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_aggregated_generation(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_day_ahead_aggregated_generation(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1191,8 +1191,8 @@ Returns the data in a dictionary.
     ("solar" => [start, end, solar], "wind offshore" => [start, end, wind offshore], "wind onshore" => [start, end, wind onshore])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_generation_forecasts_wind_solar(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1281,8 +1281,8 @@ Returns the data in a dictionary.
     ("solar" => [start, end, solar], "wind offshore" => [start, end, wind offshore], "wind onshore" => [start, end, wind onshore])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_day_ahead_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "")`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_day_ahead_generation_forecasts_wind_solar(xml::Vector{UInt8}, tz::TimeZone)
     return parse_generation_forecasts_wind_solar(xml, tz)
@@ -1297,8 +1297,8 @@ Returns the data in a dictionary.
     ("solar" => [start, end, solar], "wind offshore" => [start, end, wind offshore], "wind onshore" => [start, end, wind onshore])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_current_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_current_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_current_generation_forecasts_wind_solar(xml::Vector{UInt8}, tz::TimeZone)
     return parse_generation_forecasts_wind_solar(xml, tz)
@@ -1313,8 +1313,8 @@ Returns the data in a dictionary.
     ("solar" => [start, end, solar], "wind offshore" => [start, end, wind offshore], "wind onshore" => [start, end, wind onshore])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_intraday_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_intraday_generation_forecasts_wind_solar(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_intraday_generation_forecasts_wind_solar(xml::Vector{UInt8}, tz::TimeZone)
     return parse_generation_forecasts_wind_solar(xml, tz)
@@ -1335,8 +1335,8 @@ Returns the data in a dictionary.
     ("type" => [start, end, aggregated generation])
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_aggregated_generation_per_type(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_aggregated_generation_per_type(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, psrType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_aggregated_generation_per_type(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1414,8 +1414,8 @@ Returns the data in a dataframe.
     [year, week, stored energy value]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_aggregated_filling_rate(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_aggregated_filling_rate(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_aggregated_filling_rate(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1469,8 +1469,8 @@ Returns the data in a dataframe.
     [start, end, situation, open loop ace]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_current_balancing_state(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_current_balancing_state(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_current_balancing_state(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1528,8 +1528,8 @@ Returns the data in a dataframe.
     [start, end, type of product, direction, offered, activated, unavailable]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_aggregated_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_aggregated_balancing_energy_bids(area_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, processType::String)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_aggregated_balancing_energy_bids(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1624,8 +1624,8 @@ Returns the data in a dataframe.
     [start, end, reserve type, source, regulation volume, direction]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_volumes_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = "", offset::Int = 0])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_volumes_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = "", offset::Int = 0])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_volumes_contracted_reserves(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1684,8 +1684,8 @@ Returns the data in a dataframe.
     [start, end, reserve type, source, regulation price, direction, price type]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_prices_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = "", offset::Int = 0])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_prices_contracted_reserves(type_MarketAgreementType::String, controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = "", offset::Int = 0])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_prices_contracted_reserves(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1747,8 +1747,8 @@ Returns the data in a dataframe.
     [start, end, reserve type, source, accepted reserves, direction]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_accepted_aggregated_offers(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_accepted_aggregated_offers(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_accepted_aggregated_offers(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1807,8 +1807,8 @@ Returns the data in a dataframe.
     [start, end, reserve type, source, activated energy, direction]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_activated_balancing_energy(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1867,8 +1867,8 @@ Returns the data in a dataframe.
     [start, end, reserve type, source, price type, price, direction]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_prices_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_prices_activated_balancing_energy(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime[, businessType::String = "", psrType::String = ""])`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_prices_activated_balancing_energy(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)
@@ -1936,8 +1936,8 @@ Returns the data in a dataframe.
     [start, end, volume, difference, situation, status]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_total_imbalance_volumes(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_total_imbalance_volumes(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_total_imbalance_volumes(xml, tz)
     root = prepare_file(xml)
@@ -2001,8 +2001,8 @@ Returns the data in a dataframe.
     [start, end, income, expenses, status]
 
 # Arguments
-    - `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_financial_expenses(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
-    - `tz::TimeZone`: Timezone in which the dates and times have to be represented
+- `xml::Vector{UInt8}`: xml data in the format as returned by the function `GETconstructor.query_financial_expenses(controlArea_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)`
+- `tz::TimeZone`: Timezone in which the dates and times have to be represented
 """
 function parse_financial_expenses(xml::Vector{UInt8}, tz::TimeZone)
     root = prepare_file(xml)

@@ -5,32 +5,32 @@ This file describes the usage of all the functions under the load tab in the ENT
 ## User functions
 
 ```@docs
-actual_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-day_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-week_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-year_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-year_ahead_margin(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+entsoeAPI.actual_total_load
+entsoeAPI.day_ahead_total_load
+entsoeAPI.week_ahead_total_load
+entsoeAPI.month_ahead_total_load
+entsoeAPI.year_ahead_total_load
+entsoeAPI.year_ahead_margin
 ```
 
 ## GET functions
 
 ```@docs
-query_actual_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-query_day_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-query_week_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-query_month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-query_year_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-query_year_ahead_margin(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+entsoeAPI.GETconstructor.query_actual_total_load
+entsoeAPI.GETconstructor.query_day_ahead_total_load
+entsoeAPI.GETconstructor.query_week_ahead_total_load
+entsoeAPI.GETconstructor.query_month_ahead_total_load
+entsoeAPI.GETconstructor.query_year_ahead_total_load
+entsoeAPI.GETconstructor.query_year_ahead_margin
 ```
 
-## Parse function
+## Parse functions
 
 ```@docs
-parse_actual_total_load(xml::Vector{UInt8}, tz::TimeZone)
-parse_day_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
-parse_week_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
-parse_month_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
-parse_year_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
-parse_year_ahead_margin(xml::Vector{UInt8}, tz::TimeZone)
+entsoeAPI.xmlParser.parse_actual_total_load
+entsoeAPI.xmlParser.parse_day_ahead_total_load
+entsoeAPI.xmlParser.parse_week_ahead_total_load
+entsoeAPI.xmlParser.parse_month_ahead_total_load
+entsoeAPI.xmlParser.parse_year_ahead_total_load
+entsoeAPI.xmlParser.parse_year_ahead_margin
 ```

@@ -39,7 +39,7 @@ end
 Unzips the body of a HTTP request and stores the unzipped content in a local variable.
 
 # Arguments 
-- `body::Vector{UInt8}: the zipped body of a HTTP request`
+- `body::Vector{UInt8}`: the zipped body of a HTTP request
 """
 function ZIPhandler(body::Vector{UInt8})
     open("data/temp.zip", "w") do f
