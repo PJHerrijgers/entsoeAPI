@@ -6,6 +6,8 @@ using .entsoeAPI
 using .GETconstructor
 using .xmlParser
 
+import Pkg; Pkg.add("TimeZones")
+
 makedocs(
     modules     = [entsoeAPI, GETconstructor, xmlParser],
     format      = Documenter.HTML(mathengine = Documenter.MathJax()),
