@@ -30,10 +30,10 @@ query_year_ahead_margin(outBiddingZone_Domain::Union{mappings.Area, String}, per
 ## Parse function
 
 ```@docs
-parse_actual_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-parse_day_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-parse_week_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-parse_month_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-parse_year_ahead_total_load(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
-parse_year_ahead_margin(outBiddingZone_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+parse_actual_total_load(xml::Vector{UInt8}, tz::TimeZone)
+parse_day_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
+parse_week_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
+parse_month_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
+parse_year_ahead_total_load(xml::Vector{UInt8}, tz::TimeZone)
+parse_year_ahead_margin(xml::Vector{UInt8}, tz::TimeZone)
 ```
