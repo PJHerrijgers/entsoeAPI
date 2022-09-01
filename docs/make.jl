@@ -10,11 +10,11 @@ makedocs(
               "Manual"  => [
                             "Getting Started"                         => "quickguide.md",
                             "Load"                                    => "load.md",
-                            "Generation"                              => "generation.md",
                             "Transmission"                            => "transmission.md",
+                            "Congestion management"                   => "congestion.md",
+                            "Generation"                              => "generation.md",
                             "Balancing"                               => "balancing.md",
                             "Outages"                                 => "outages.md",
-                            "Congestion management"                   => "congestion.md",
                             ]
                  ]
 )

@@ -663,7 +663,7 @@ function query_total_commercial_schedules(contract_MarketAgreementType::String, 
 end
 
 """
-    query_phyiscal_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+    query_physical_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
 
 Constructs the HTTP request for the data of the physical flows over a certain border (article 12.1 G: https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/data-views/transmission-domain/Data-view%20Cross%20Border%20Physical%20Flows.html).
 Returns the received HTTP response, together with the used timezone.
@@ -677,7 +677,7 @@ Minimum time interval in query response is MTU period!
 
 ! One year range limit applies !
 """
-function query_phyiscal_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+function query_physical_flows(in_Domain::Union{mappings.Area, String}, out_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
     argumentLimitations.check_range_limit(periodStart, periodEnd, Period(Year(1)))
     
     param = Dict{String, String}("documentType" => "A11")
