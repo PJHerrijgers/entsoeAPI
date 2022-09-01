@@ -20,5 +20,5 @@ makedocs(
 )
 
 deploydocs(
-     repo = "github.com/PJHerrijgers/entsoeAPI.git"
+     repo = "github.com/PJHerrijgers/entsoeAPI"
 )
