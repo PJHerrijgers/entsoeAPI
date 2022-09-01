@@ -1,13 +1,7 @@
-include("../src/entsoeAPI.jl")
-include("../src/GETconstructor.jl")
-include("../src/xmlParser.jl")
-using Documenter
-using .entsoeAPI
-using .GETconstructor
-using .xmlParser
+using Documenter, entsoeAPI
 
 makedocs(
-    modules     = [entsoeAPI, GETconstructor, xmlParser],
+    modules     = [entsoeAPI],
     format      = Documenter.HTML(mathengine = Documenter.MathJax()),
     sitename    = "entsoeAPI.jl",
     authors     = "Pieter-Jan Herrijgers",
