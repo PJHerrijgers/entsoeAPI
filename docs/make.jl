@@ -20,6 +20,6 @@ makedocs(
 )
 
 deploydocs(
-     repo = "github.com/PJHerrijgers/entsoeAPI",
+     repo = "github.com/PJHerrijgers/entsoeAPI.git",
      devbranch = "main"
 )
