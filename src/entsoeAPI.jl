@@ -1364,7 +1364,9 @@ function sharing_of_reserves(processType::String, acquiring_Domain::Union{mappin
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function balancing_border_capacity_limitations()
     xml, tz = GETconstructor.query_balancing_border_capacity_limitations()
     df = xmlParser.parse_balancing_border_capacity_limitation(xml, tz)
@@ -1372,7 +1374,9 @@ function balancing_border_capacity_limitations()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function permanent_allocation_limitations_HVDC()
     xml, tz = GETconstructor.query_permanent_allocation_limitations_HVDC()
     df = xmlParser.parse_permanent_allocation_limitations_HVDC(xml, tz)
@@ -1380,7 +1384,9 @@ function permanent_allocation_limitations_HVDC()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function netted_and_exchanged_volumes()
     xml, tz = GETconstructor.query_netted_and_exchanged_volumes()
     df = xmlParser.parse_netted_and_exchanged_volumes(xml, tz)
@@ -1538,7 +1544,9 @@ function unavailability_transmission_infrastructure(in_Domain::Union{mappings.Ar
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function fallBacks()
     xml, tz = GETconstructor.query_fallBacks()
     df = xmlParser.parse_fallBacks(xml, tz)

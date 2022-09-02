@@ -1907,16 +1907,28 @@ function query_sharing_of_reserves(processType::String, acquiring_Domain::Union{
     return response, tz
 end
 
+# NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function query_balancing_border_capacity_limitations()
-    # NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+   return
 end
 
+# NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function query_permanent_allocation_limitations_HVDC()
-    # NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+    return
 end
 
+# NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function query_netted_and_exchanged_volumes()
-    # NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+    return 
 end
 
 ######################### Outages data ################################
@@ -2231,8 +2243,12 @@ function query_unavailability_transmission_infrastructure(in_Domain::Union{mappi
     return response, in_Domain.tz
 end
 
+# NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function query_fallBacks()
-    # NOT IMPLEMENTED YET, CAUSE BAD DOCUMENTATION
+    
 end
 
 end

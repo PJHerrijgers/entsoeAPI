@@ -1321,7 +1321,9 @@ function parse_intraday_generation_forecasts_wind_solar(xml::Vector{UInt8}, tz::
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_actual_generation_per_generation_unit(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
@@ -1453,7 +1455,9 @@ end
 #################### master data ###########################
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_production_generation_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
@@ -1514,7 +1518,9 @@ function parse_current_balancing_state(xml::Vector{UInt8}, tz::TimeZone)
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_balancing_energy_bids(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
@@ -1598,19 +1604,25 @@ function parse_aggregated_balancing_energy_bids(xml::Vector{UInt8}, tz::TimeZone
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_procured_balancing_capcity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_crossZonal_balancing_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_volumes_and_prices_contracted_reserves(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
@@ -1922,7 +1934,9 @@ function parse_prices_activated_balancing_energy(xml::Vector{UInt8}, tz::TimeZon
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_imbalance_prices(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
@@ -2054,7 +2068,9 @@ function parse_financial_expenses(xml::Vector{UInt8}, tz::TimeZone)
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_crossBorder_balancing(xml::Vector{UInt8}, tz::TimeZone)
     #=
     root = prepare_file(xml)
@@ -2117,55 +2133,73 @@ function parse_crossBorder_balancing(xml::Vector{UInt8}, tz::TimeZone)
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_FCR_total_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_share_capacity_FCR(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parser_contracted_reserver_capacity_FCR(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_FRR_actual_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_RR_actual_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_sharing_of_reserves(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_balancing_border_capacity_limitation(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_permanent_allocation_limitations_HVDC(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_netted_and_exchanged_volumes(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
@@ -2177,33 +2211,45 @@ end
 function parse_unavailability_consumption_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_unavailability_generation_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_unavailability_production_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_unavailability_offshore_grid(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_unavailability_transmission_infrastructure(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_fallBacks(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
