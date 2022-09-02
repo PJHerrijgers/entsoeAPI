@@ -15,7 +15,8 @@ makedocs(
                             "Generation"                              => "generation.md",
                             "Balancing"                               => "balancing.md",
                             "Outages"                                 => "outages.md",
-                            ]
+                            ],
+               "Further development" => "further.md"
                  ]
 )
 
