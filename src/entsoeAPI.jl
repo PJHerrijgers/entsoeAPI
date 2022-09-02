@@ -1357,7 +1357,7 @@ Parses the received HTTP response and returns the data in a dataframe.
 
 ! One year range limit applies !
 """
-function query_sharing_of_reserves(processType::String, acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
+function sharing_of_reserves(processType::String, acquiring_Domain::Union{mappings.Area, String}, connecting_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime)
     xml, tz = GETconstructor.query_sharing_of_reserves(processType, acquiring_Domain, connecting_Domain, periodStart, periodEnd)
     df = xmlParser.parse_sharing_of_reserves(xml, tz)
     return df

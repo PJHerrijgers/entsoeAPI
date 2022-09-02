@@ -1,0 +1,45 @@
+# Generation functions
+
+This file describes the usage of all the functions under the generation tab in the ENTSOE-E transparancy platform.
+
+## User functions
+
+```@docs
+entsoeAPI.installed_generation_capacity_aggregated
+entsoeAPI.installed_generation_capacity_per_unit
+entsoeAPI.day_ahead_aggregated_generation
+entsoeAPI.day_ahead_generation_forecasts_wind_solar
+entsoeAPI.current_generation_forecasts_wind_solar
+entsoeAPI.intraday_generation_forecasts_wind_solar
+entsoeAPI.actual_generation_per_generation_unit
+entsoeAPI.aggregated_generation_per_type
+entsoeAPI.aggregated_filling_rate
+```
+
+## GET functions
+
+```@docs
+entsoeAPI.GETconstructor.query_installed_generation_capacity_aggregated
+entsoeAPI.GETconstructor.query_installed_generation_capacity_per_unit
+entsoeAPI.GETconstructor.query_day_ahead_aggregated_generation
+entsoeAPI.GETconstructor.query_day_ahead_generation_forecasts_wind_solar
+entsoeAPI.GETconstructor.query_current_generation_forecasts_wind_solar
+entsoeAPI.GETconstructor.query_intraday_generation_forecasts_wind_solar
+entsoeAPI.GETconstructor.query_actual_generation_per_generation_unit
+entsoeAPI.GETconstructor.query_aggregated_generation_per_type
+entsoeAPI.GETconstructor.query_aggregated_filling_rate
+```
+
+## Parse functions
+
+```@docs
+entsoeAPI.xmlParser.parse_installed_generation_capacity_aggregated
+entsoeAPI.xmlParser.parse_installed_generation_capacity_per_unit
+entsoeAPI.xmlParser.parse_day_ahead_aggregated_generation
+entsoeAPI.xmlParser.parse_day_ahead_generation_forecasts_wind_solar
+entsoeAPI.xmlParser.parse_current_generation_forecasts_wind_solar
+entsoeAPI.xmlParser.parse_intraday_generation_forecasts_wind_solar
+entsoeAPI.xmlParser.parse_actual_generation_per_generation_unit
+entsoeAPI.xmlParser.parse_aggregated_generation_per_type
+entsoeAPI.xmlParser.parse_aggregated_filling_rate
+```

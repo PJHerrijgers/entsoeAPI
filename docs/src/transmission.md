@@ -1,6 +1,6 @@
 # Transmission functions
 
-This file describes the usage of all the functions under the load tab in the ENTSOE-E transparancy platform.
+This file describes the usage of all the functions under the transmission tab in the ENTSOE-E transparancy platform.
 
 ## User functions
 
