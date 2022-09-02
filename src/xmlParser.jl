@@ -2213,9 +2213,7 @@ STILL NEEDS TO BE IMPLEMENTED
 function parse_unavailability_consumption_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
-"""
-STILL NEEDS TO BE IMPLEMENTED
-"""
+
 ############ STILL NEEDS TO BE IMPLEMENTED ################
 """
 STILL NEEDS TO BE IMPLEMENTED
