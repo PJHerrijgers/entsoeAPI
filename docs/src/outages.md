@@ -10,7 +10,7 @@ entsoeAPI.unavailability_generation_units
 entsoeAPI.unavailability_production_units
 entsoeAPI.unavailability_offshore_grid
 entsoeAPI.unavailability_transmission_infrastructure
-entsoeAPI.fallbacks
+entsoeAPI.fallBacks
 ```
 
 ## GET functions
@@ -21,7 +21,7 @@ entsoeAPI.GETconstructor.query_unavailability_generation_units
 entsoeAPI.GETconstructor.query_unavailability_production_units
 entsoeAPI.GETconstructor.query_unavailability_offshore_grid
 entsoeAPI.GETconstructor.query_unavailability_transmission_infrastructure
-entsoeAPI.GETconstructor.query_fallbacks
+entsoeAPI.GETconstructor.query_fallBacks
 ```
 
 ## Parse functions
@@ -32,5 +32,5 @@ entsoeAPI.xmlParser.parse_unavailability_generation_units
 entsoeAPI.xmlParser.parse_unavailability_production_units
 entsoeAPI.xmlParser.parse_unavailability_offshore_grid
 entsoeAPI.xmlParser.parse_unavailability_transmission_infrastructure
-entsoeAPI.xmlParser.parse_fallbacks
+entsoeAPI.xmlParser.parse_fallBacks
 ```

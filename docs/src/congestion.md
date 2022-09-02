@@ -24,7 +24,7 @@ entsoeAPI.GETconstructor.query_congestion_costs
 
 ```@docs
 entsoeAPI.xmlParser.parse_expansion_and_dismantling
-entsoeAPI.xmlParser.parse_redsispatching
+entsoeAPI.xmlParser.parse_redispatching
 entsoeAPI.xmlParser.parse_countertrading
 entsoeAPI.xmlParser.parse_congestion_costs
 ```

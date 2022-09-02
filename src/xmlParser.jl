@@ -1607,7 +1607,7 @@ end
 """
 STILL NEEDS TO BE IMPLEMENTED
 """
-function parse_procured_balancing_capcity(xml::Vector{UInt8}, tz::TimeZone)
+function parse_procured_balancing_capacity(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
@@ -2152,7 +2152,7 @@ end
 """
 STILL NEEDS TO BE IMPLEMENTED
 """
-function parser_contracted_reserver_capacity_FCR(xml::Vector{UInt8}, tz::TimeZone)
+function parser_contracted_reserve_capacity_FCR(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
@@ -2184,7 +2184,7 @@ end
 """
 STILL NEEDS TO BE IMPLEMENTED
 """
-function parse_balancing_border_capacity_limitation(xml::Vector{UInt8}, tz::TimeZone)
+function parse_balancing_border_capacity_limitations(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end
 
@@ -2207,7 +2207,9 @@ end
 ######################### Outages data ################################
 
 ############ STILL NEEDS TO BE IMPLEMENTED ################
-
+"""
+STILL NEEDS TO BE IMPLEMENTED
+"""
 function parse_unavailability_consumption_units(xml::Vector{UInt8}, tz::TimeZone)
     return DataFrame()
 end

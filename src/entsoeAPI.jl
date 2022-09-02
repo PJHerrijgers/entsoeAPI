@@ -1369,7 +1369,7 @@ STILL NEEDS TO BE IMPLEMENTED
 """
 function balancing_border_capacity_limitations()
     xml, tz = GETconstructor.query_balancing_border_capacity_limitations()
-    df = xmlParser.parse_balancing_border_capacity_limitation(xml, tz)
+    df = xmlParser.parse_balancing_border_capacity_limitations(xml, tz)
     return df
 end
 
