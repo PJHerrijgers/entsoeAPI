@@ -6,7 +6,7 @@ makedocs(
     sitename    = "entsoeAPI.jl",
     authors     = "Pieter-Jan Herrijgers",
     pages       = [
-              "0. Table of contents"    => "Index.md",
+              "0. Table of contents"    => "index.md",
               "Manual"  => [
                             "1. Getting Started"                         => "quickguide.md",
                             "2. Load"                                    => "load.md",
