@@ -6,15 +6,15 @@ makedocs(
     sitename    = "entsoeAPI.jl",
     authors     = "Pieter-Jan Herrijgers",
     pages       = [
-              "Home"    => "index.md",
+              "Table of contents"    => "0. Index.md",
               "Manual"  => [
-                            "Getting Started"                         => "quickguide.md",
-                            "Load"                                    => "load.md",
-                            "Transmission"                            => "transmission.md",
-                            "Congestion management"                   => "congestion.md",
-                            "Generation"                              => "generation.md",
-                            "Balancing"                               => "balancing.md",
-                            "Outages"                                 => "outages.md",
+                            "1. Getting Started"                         => "quickguide.md",
+                            "2. Load"                                    => "load.md",
+                            "3. Transmission"                            => "transmission.md",
+                            "4. Congestion management"                   => "congestion.md",
+                            "5. Generation"                              => "generation.md",
+                            "6. Balancing"                               => "balancing.md",
+                            "7. Outages"                                 => "outages.md",
                             ],
                "Further development" => "further.md"
                  ]
