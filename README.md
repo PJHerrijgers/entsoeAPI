@@ -107,7 +107,10 @@ BE = Area("BE", "10YBE----------2", "Belgium, Elia BZ / CA / MBA", TimeZone("Eur
 ```
 
 ### Dates and Times
-Dates and TImes need to be entered as a `DateTime()` object. The correct timezone is choosen automatically based on the entered domain. More information on the `DateTime()`object and the `Dates` packages can be found on https://docs.julialang.org/en/v1/stdlib/Dates/
+Dates and TImes need to be entered as a `DateTime()` object. The correct timezone is choosen automatically based on the entered domain. More information on the `DateTime()`object and the `Dates` packages can be found on https://docs.julialang.org/en/v1/stdlib/Dates/.
+
+### Limitations
+Some arguments can only have a limited set of values. Those restricitions are set in two ways. Firstly you have the files  `mappings.jl` and `xmlMappings.jl`: here are all the possible values for some parameters as stated by the ENTSO-E. But in some cases only a subset of those values can be used, those subsets are created in the file `argumentLimitations.jl`.
 
 ## Example
 Hereafter an example will be discussed to clarify how to use the API.

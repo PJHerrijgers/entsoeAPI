@@ -93,7 +93,7 @@ println(entsoeAPI.total_commercial_schedules("A05", "10YCZ-CEPS-----N", "10YSK-S
 println(entsoeAPI.total_commercial_schedules("A01", "10YCZ-CEPS-----N", "PL", DateTime(2020,12,31,23,00), DateTime(2021,12,31,23,00)))
 # example in API documentation gives wrong results
 
-println(entsoeAPI.phyiscal_flows("10YCZ-CEPS-----N", "PL", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
+println(entsoeAPI.physical_flows("10YCZ-CEPS-----N", "PL", DateTime(2015,12,31,23,00), DateTime(2016,12,31,23,00)))
 
 println(entsoeAPI.capacity_allocated_outside_EU("A02", "A01", "10YUA-WEPS-----0", "10YSK-SEPS-----K", DateTime(2016,01,01,23,00), DateTime(2016,01,02,23,00), "A04", "1"))
 
