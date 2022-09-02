@@ -6,7 +6,7 @@ This document describes shortly what still has to be completed to obtain full fu
 
 Almost all functions are already written, for some functions it is still necessary to complete the documentation and the arguments after the corresponding functions in `GETconstructor.jl` and `xmlParser.jl` are completed. This has to be done in the following way: the arguments for the functions in `entsoeAPI.jl` are the same as for the corresponding functions in `GETconstructor.jl`. The documentation has to contain the following things: header of the function, description of what the function does, description of the return format and description of the arguments. Please follow the julia documentation rules (same lay-out as docuemntation already written).
 
-### documentation missing
+### Documentation missing
 
 ```julia
 function actual_generation_per_generation_unit(in_Domain::Union{mappings.Area, String}, periodStart::DateTime, periodEnd::DateTime, psrType::String = "", registeredResource::String = "")
@@ -34,7 +34,7 @@ function unavailability_transmission_infrastructure(in_Domain::Union{mappings.Ar
 function fallBacks()
 ```
 
-### arguments missing
+### Arguments missing
 
 ```julia
 function balancing_border_capacity_limitations()
@@ -86,5 +86,4 @@ function parse_unavailability_production_units(xml::Vector{UInt8}, tz::TimeZone)
 function parse_unavailability_offshore_grid(xml::Vector{UInt8}, tz::TimeZone)
 function parse_unavailability_transmission_infrastructure(xml::Vector{UInt8}, tz::TimeZone)
 function parse_fallBacks(xml::Vector{UInt8}, tz::TimeZone)
-
 ```
